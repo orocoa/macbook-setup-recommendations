@@ -4,7 +4,11 @@
 
 A bilingual, visual, and interactive guide to 14 Finder, System Settings, and practical utility recommendations for a new MacBook. Each recommendation explains what changes, where to find it, how to make the change manually, and how to restore the previous behavior.
 
-This repository contains a GitHub Pages-ready release candidate. It has not yet been published or deployed as a live website.
+## Open the guide
+
+[Open MacBook Setup Recommendations](https://kai-nex.github.io/macbook-setup-recommendations/)
+
+No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
 ## What it includes
 
@@ -38,32 +42,6 @@ Then open:
 
 If supported by your macOS security settings, you can also double-click `run.command`.
 
-## Publish with GitHub Pages
-
-This is a static site and does not require a build step. After publishing the repository to GitHub, open **Settings > Pages**, choose **Deploy from a branch**, then select **main** and **/(root)**. GitHub Pages will serve `index.html` directly.
-
-The default `github.io` address may be unreliable on some networks. A custom domain can be connected later without changing the product architecture.
-
-## How it works
-
-```text
-data/settings.json or data/settings.en.json
-                    ↓ fetch
-                  app.js
-      search · selection · rendering · checklist
-                    ↓ DOM
-              index.html + CSS
-                    ↕
-       browser Local Storage for progress
-```
-
-- Chinese content is loaded from `data/settings.json`.
-- English content is loaded from `data/settings.en.json`.
-- The selected language is kept in the URL and Local Storage.
-- The selected setting is represented in the URL so browser history can restore navigation.
-- Search filters the in-memory settings; it does not modify either JSON file.
-- Checklist progress stays in the current browser profile and is not uploaded or synced.
-
 ## Sources and editorial boundaries
 
 Each recommendation includes one or more source links, primarily to Apple Support or the Mac User Guide. These sources support macOS feature behavior, requirements, and setting locations.
@@ -90,16 +68,6 @@ node tests/validate-data.mjs
 
 The test checks both language files, required fields, unique IDs, source URLs, visual types, referenced assets, and structural parity between Chinese and English content. It does not prove that every recommendation is factually correct on every Mac or macOS release.
 
-## Manual acceptance checks
-
-1. Switch between Chinese and English and confirm the interface and all 14 recommendations change language.
-2. Open every recommendation and confirm the detail pane starts at its title.
-3. Search for known terms in both languages and verify the expected settings remain visible.
-4. Check and uncheck items, refresh the page, and confirm progress is restored in the same browser.
-5. Open source links and compare paths and terminology with the target macOS version.
-6. Confirm conceptual visuals remain understandable when reduced motion is enabled.
-7. Break a JSON path temporarily in a development copy and confirm the interface shows a load error instead of an empty page.
-
 ## Known limitations
 
 - The guide is intended for recent macOS versions and does not document legacy versions.
@@ -107,8 +75,8 @@ The test checks both language files, required fields, unique IDs, source URLs, v
 - Personal recommendations are not universal defaults and may not fit every workflow.
 - Third-party utilities can require additional permissions, have their own licenses, and change independently of macOS; verify their current release notes and permission needs before installation.
 - Local Storage is browser-specific and provides no account sync, backup, or confirmation of the real system state.
-- The current prototype has no production deployment, broad user study, automated browser test suite, or cross-browser compatibility matrix.
-- Several Apple-, Adobe-, or user-supplied reference assets require replacement or explicit redistribution confirmation before public release.
+- The current version has not undergone broad user research or a complete cross-browser compatibility review.
+- Apple-, Adobe-, or user-supplied reference assets remain subject to their respective rights and are not covered by the MIT License.
 - Original project code and documentation are provided under the MIT License. Third-party names, marks, screenshots, and reference assets are excluded; see `THIRD_PARTY_NOTICES.md`.
 
 ## Project structure
