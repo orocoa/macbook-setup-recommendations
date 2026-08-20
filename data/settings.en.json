@@ -61,14 +61,15 @@
     },
     "change_paths": [["Finder", "Settings", "Advanced", "Show all filename extensions"]],
     "steps": [
-      "Open Finder.",
-      "Press Command-Comma to open Finder Settings.",
+      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click Finder in the menu bar, then click Settings.",
       "Click Advanced.",
       "Turn on “Show all filename extensions.”",
       "Return to a Finder window containing several file types and confirm that extensions such as .txt, .pdf, and .mov are visible."
     ],
     "restore_steps": [
-      "Return to Finder > Settings > Advanced, then turn off “Show all filename extensions.”"
+      "Open a Finder window, then click Finder > Settings > Advanced in the upper-left menu bar and turn off “Show all filename extensions.”"
     ],
     "sources": [
       {
@@ -422,27 +423,59 @@
     },
     "change_paths": [["Finder", "Settings", "Advanced", "Keep folders on top"]],
     "steps": [
-      "Open Finder.",
-      "Press Command-Comma to open Finder Settings. This shortcut opens settings in many Mac apps, but individual apps can differ.",
+      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click Finder in the menu bar, then click Settings.",
       "Click Advanced.",
       "Under Keep folders on top, turn on “In windows when sorting by name” and “On Desktop.”",
       "Sort a Finder window and the desktop by name, then confirm that folders appear before files."
     ],
     "restore_steps": [
-      "Return to Finder > Settings > Advanced and turn off the two options under Keep folders on top."
+      "Open a Finder window, then click Finder > Settings > Advanced in the upper-left menu bar and turn off the two options under Keep folders on top."
     ],
     "sources": [
       {
         "label": "Apple Support — Change Finder settings on Mac",
         "url": "https://support.apple.com/guide/mac-help/mchlp2803/mac"
-      },
-      {
-        "label": "Apple Support — Mac keyboard shortcuts",
-        "url": "https://support.apple.com/102650"
       }
     ],
     "_editorial": {
       "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "finder-customize-toolbar",
+    "content_type": "system_setting",
+    "master_section": "Finder",
+    "master_order": 40,
+    "title": "Customize the Finder toolbar",
+    "description": "Keep the Finder actions you use most at the top of the window, so you do not have to look through menus every time.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Keep only the actions you regularly use. A toolbar with too many items is no quicker to scan."
+    },
+    "before_state": "The Finder toolbar keeps its default items, and actions you need may require a search through the menu bar.",
+    "after_state": "The Finder toolbar keeps the items that fit your workflow and removes items you do not need.",
+    "visual_demo": null,
+    "change_paths": [["Finder", "View", "Customize Toolbar"]],
+    "steps": [
+      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click View in the menu bar, then click Customize Toolbar.",
+      "In the panel that appears, drag frequently used items into the toolbar at the top of the Finder window. Drag items you do not need out of the toolbar.",
+      "Close the panel, open a folder, and confirm that the actions you use most are available without making the toolbar crowded."
+    ],
+    "restore_steps": [
+      "Open View > Customize Toolbar again, drag out later additions you no longer need, and arrange the remaining items for your workflow."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Customize the Finder toolbar on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp3011/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
     }
   },
   {
@@ -586,9 +619,9 @@
   {
     "id": "mos-separate-mouse-scroll-direction",
     "content_type": "app_recommendation",
-    "master_section": "App Recommendations",
+    "master_section": "Utilities & shortcuts",
     "master_order": 10,
-    "title": "Use Mos for separate mouse and trackpad scrolling",
+    "title": "Adjust mouse scrolling direction with Mos",
     "description": "Keep Natural Scrolling on the trackpad while reversing an external mouse wheel independently, with optional smoother wheel movement.",
     "before_label": "System settings only",
     "after_label": "With Mos",
@@ -631,6 +664,45 @@
     "_editorial": {
       "last_verified": "2026-08-20",
       "observation": "This app recommendation reflects the guide author's external-mouse workflow; it is not an Apple recommendation. Mos is a standalone menu bar app, not a system plug-in."
+    }
+  },
+  {
+    "id": "keyboard-shortcuts-quick-actions",
+    "content_type": "usage_tip",
+    "master_section": "Utilities & shortcuts",
+    "master_order": 20,
+    "title": "Start with common keyboard shortcuts",
+    "description": "Use key combinations for common actions such as copy, paste, undo, switching apps, and searching, so you spend less time finding commands in menus.",
+    "guidance": {
+      "kind": "learning_recommendation",
+      "note": "Guide recommendation: Start with one repeated action rather than trying to memorize a long shortcut list."
+    },
+    "before_state": "Each action requires moving to the mouse or trackpad and finding a command in the menu bar.",
+    "after_state": "Common actions can be completed directly with key combinations, and many menu commands show their shortcut beside the name.",
+    "visual_demo": null,
+    "change_paths": [["Any app", "Menu bar in the upper-left corner", "Shortcut symbols beside menu commands"]],
+    "steps": [
+      "Open an app such as Finder or Safari.",
+      "Look at the menu bar in the upper-left corner of the screen. Open a menu such as File or Edit and notice that many commands show shortcut symbols on the right.",
+      "Start with three combinations: hold the key labeled Command or ⌘, then press C to copy, V to paste, or Z to undo.",
+      "When those feel familiar, try Command-Tab to switch apps and Command-Space to open Spotlight search.",
+      "No system setting needs to be changed. Start using a shortcut whenever you repeat the related action."
+    ],
+    "restore_steps": [
+      "Nothing needs to be restored. To change or turn off system shortcuts, click the Apple menu in the upper-left corner, then choose System Settings > Keyboard > Keyboard Shortcuts."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Intro to Mac keyboard shortcuts",
+        "url": "https://support.apple.com/guide/mac-help/mchld6b9e240/mac"
+      },
+      {
+        "label": "Apple Support — Mac keyboard shortcuts",
+        "url": "https://support.apple.com/102650"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
     }
   }
 ]

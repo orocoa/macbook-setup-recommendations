@@ -60,14 +60,15 @@
       ]
     ],
     "steps": [
-      "打开访达。",
-      "按 Command + , 打开访达的「设置」。",
+      "在程序坞中点按蓝白笑脸的「访达」图标，打开访达窗口。",
+      "查看屏幕左上角菜单栏；确认最左侧显示「访达」。",
+      "在菜单栏中点按「访达」，然后点按「设置」。",
       "点按「高级」。",
       "开启「显示所有文件扩展名」。",
       "回到包含不同格式文件的访达窗口，确认文件名末尾显示 .txt、.pdf、.mov 等扩展名。"
     ],
     "restore_steps": [
-      "回到「访达」>「设置」>「高级」，关闭「显示所有文件扩展名」。"
+      "打开访达窗口后，在屏幕左上角菜单栏中点按「访达」>「设置」>「高级」，关闭「显示所有文件扩展名」。"
     ],
     "sources": [
       {
@@ -370,25 +371,53 @@
       ["访达", "设置", "高级", "将以下位置的文件夹保持在顶部", "桌面上"]
     ],
     "steps": [
-      "打开访达。",
-      "按 Command + , 打开当前访达的「设置」；这也是许多 Mac App 常用的“打开当前 App 设置”快捷键，但不是每个 App 都保证支持。",
+      "在程序坞中点按蓝白笑脸的「访达」图标，打开访达窗口。",
+      "查看屏幕左上角菜单栏；确认最左侧显示「访达」。",
+      "在菜单栏中点按「访达」，然后点按「设置」。",
       "点按「高级」。",
       "开启「将以下位置的文件夹保持在顶部」下的「按名称排序时的窗口中」和「桌面上」。",
       "在访达窗口和桌面选择按名称排序，确认文件夹都排在文件前面。"
     ],
-    "restore_steps": ["回到「访达」>「设置」>「高级」，关闭上述两个「将以下位置的文件夹保持在顶部」选项。"],
+    "restore_steps": ["打开访达窗口后，在屏幕左上角菜单栏中点按「访达」>「设置」>「高级」，关闭上述两个「将以下位置的文件夹保持在顶部」选项。"],
     "sources": [
       {
         "label": "Apple 支持｜在 Mac 上更改“访达”设置",
         "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp2803/mac"
-      },
-      {
-        "label": "Apple 支持｜Mac 键盘快捷键",
-        "url": "https://support.apple.com/zh-cn/102650"
       }
     ],
     "_editorial": {
       "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "finder-customize-toolbar",
+    "content_type": "system_setting",
+    "master_section": "访达",
+    "master_order": 40,
+    "title": "自定义访达工具栏",
+    "description": "把常用的访达操作放在窗口顶部工具栏，减少每次从菜单中寻找的次数。",
+    "before_state": "访达工具栏保留默认项目；常用操作可能需要从菜单栏中查找。",
+    "after_state": "访达工具栏按照自己的工作方式保留常用项目，并移除不需要的项目。",
+    "visual_demo": null,
+    "change_paths": [["访达", "显示", "自定义工具栏"]],
+    "steps": [
+      "在程序坞中点按蓝白笑脸的「访达」图标，打开访达窗口。",
+      "查看屏幕左上角菜单栏；确认最左侧显示「访达」。",
+      "在菜单栏中点按「显示」，再点按「自定义工具栏」。",
+      "在出现的面板中，将常用项目拖到访达窗口顶部的工具栏；将不需要的项目拖出工具栏。",
+      "完成后关闭面板，打开一个文件夹，确认常用项目出现在工具栏中且不会让窗口显得拥挤。"
+    ],
+    "restore_steps": [
+      "重新打开「显示」>「自定义工具栏」，将后来添加但不再需要的项目拖出工具栏，再按自己的习惯排列剩余项目。"
+    ],
+    "sources": [
+      {
+        "label": "Apple 支持｜在 Mac 上自定义“访达”工具栏",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp3011/26/mac/26"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
     }
   },
   {
@@ -514,9 +543,9 @@
   {
     "id": "mos-separate-mouse-scroll-direction",
     "content_type": "app_recommendation",
-    "master_section": "工具推荐",
+    "master_section": "工具与快捷操作",
     "master_order": 10,
-    "title": "用 Mos 分开鼠标与触控板滚动方向",
+    "title": "用 Mos 调整鼠标滚动方向",
     "description": "使用外接鼠标时，让触控板继续自然滚动，同时单独反转鼠标滚轮，并可改善滚轮的平滑度。",
     "before_label": "只使用系统设置",
     "after_label": "使用 Mos",
@@ -559,6 +588,41 @@
     "_editorial": {
       "last_verified": "2026-08-20",
       "observation": "工具推荐来自本指南作者的外接鼠标工作流，不代表 Apple 推荐；Mos 是独立菜单栏 App，不是系统插件。"
+    }
+  },
+  {
+    "id": "keyboard-shortcuts-quick-actions",
+    "content_type": "usage_tip",
+    "master_section": "工具与快捷操作",
+    "master_order": 20,
+    "title": "从常用键盘快捷键开始",
+    "description": "用组合按键完成拷贝、粘贴、撤销、切换 App 和搜索等常用操作，减少在菜单中寻找的次数。",
+    "before_state": "每次操作都需要移动鼠标或触控板，再从菜单栏中寻找命令。",
+    "after_state": "常用操作可以直接用组合按键完成；菜单栏也会在许多命令右侧显示对应的快捷键。",
+    "visual_demo": null,
+    "change_paths": [["任意 App", "屏幕左上角菜单栏", "菜单项右侧的快捷键符号"]],
+    "steps": [
+      "先打开一个 App，例如访达或 Safari 浏览器。",
+      "查看屏幕左上角的菜单栏；点开「文件」或「编辑」等菜单，观察许多命令右侧显示的快捷键符号。",
+      "先尝试三个最常用组合：按住键盘上标有 Command 或 ⌘ 的键，再按 C 拷贝、V 粘贴或 Z 撤销。",
+      "熟悉后再尝试 Command + Tab 切换 App，以及 Command + 空格键打开聚焦搜索。",
+      "不需要打开系统设置；从每天会重复的一个操作开始使用即可。"
+    ],
+    "restore_steps": [
+      "无需恢复。若要更改或停用系统快捷键，在屏幕左上角点按苹果菜单 >「系统设置」>「键盘」>「键盘快捷键」。"
+    ],
+    "sources": [
+      {
+        "label": "Apple 支持｜Mac 键盘快捷键介绍",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchld6b9e240/26/mac/26"
+      },
+      {
+        "label": "Apple 支持｜Mac 键盘快捷键",
+        "url": "https://support.apple.com/zh-cn/102650"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
     }
   }
 ]

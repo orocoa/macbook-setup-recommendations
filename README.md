@@ -2,7 +2,7 @@
 
 [简体中文](./README.zh-CN.md)
 
-A bilingual, visual, and interactive guide to 14 Finder, System Settings, and practical utility recommendations for a new MacBook. Each recommendation explains what changes, where to find it, how to make the change manually, and how to restore the previous behavior.
+A bilingual, visual, and interactive guide to 16 Finder, System Settings, utility, and shortcut recommendations for a new MacBook. Each recommendation explains what changes, where to find it, how to make the change manually, and how to restore the previous behavior.
 
 ## Open the guide
 
@@ -12,7 +12,7 @@ No download or installation is required. For the intended experience, open it in
 
 ## What it includes
 
-- 14 recommendations: 3 in Finder, 10 in System Settings, and 1 independent utility recommendation.
+- 16 recommendations: 4 in Finder, 10 in System Settings, 1 independent utility recommendation, and 1 built-in shortcut recommendation.
 - Simplified Chinese and English content, switchable from the interface.
 - Search across visible setting content, including titles, descriptions, paths, and instructions.
 - A desktop Master–Detail layout: select a setting in the sidebar and read its details without leaving the page.
