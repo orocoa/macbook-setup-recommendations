@@ -23,7 +23,9 @@
     "change_paths": [["Finder", "View", "Show Path Bar"]],
     "steps": [
       "Open a Finder window.",
-      "Choose View > Show Path Bar from the menu bar."
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Choose View > Show Path Bar from the menu bar.",
+      "Check the bottom of the Finder window and confirm that the current folder hierarchy appears."
     ],
     "restore_steps": [
       "In Finder, choose View > Hide Path Bar from the menu bar."
@@ -688,6 +690,37 @@
       "When those feel familiar, try Command-Tab to switch apps and Command-Space to open Spotlight search.",
       "No system setting needs to be changed. Start using a shortcut whenever you repeat the related action."
     ],
+    "shortcut_table": {
+      "title": "Common keyboard shortcuts",
+      "headers": ["Action", "Shortcut", "Description"],
+      "rows": [
+        ["Close", "Command-W", "Close the window."],
+        ["Copy", "Command-C", "Copy the selected content."],
+        ["Cut", "Command-X", "Cut the selected content."],
+        ["Delete", "Delete", "Delete the character before the cursor."],
+        ["Find", "Command-F", "Find text."],
+        ["Force Quit", "Option-Command-Escape", "Force quit an unresponsive app."],
+        ["Forward Delete", "Fn-Delete", "Delete the character after the cursor."],
+        ["Hide", "Command-H", "Hide the active app."],
+        ["New", "Command-N", "Open a new Finder window or create a new document in another app."],
+        ["New Tab", "Command-T", "Open a new tab in Finder, a document, or Safari."],
+        ["Paste", "Command-V", "Paste a copy of the last copied or cut item."],
+        ["Paste and Match Style", "Option-Shift-Command-V", "Paste a copy while matching the current document’s style."],
+        ["Print", "Command-P", "Print a document."],
+        ["Quick Look", "Space bar", "Select one or more items, then preview their contents without opening the related app."],
+        ["Quit", "Command-Q", "Quit an app."],
+        ["Secondary Click", "Control-click", "Open a shortcut menu."],
+        ["Save", "Command-S", "Save a document."],
+        ["Capture the full screen", "Shift-Command-3", "Capture the entire screen."],
+        ["Capture a selected area", "Shift-Command-4", "Capture part of the screen."],
+        ["Open Screenshot", "Shift-Command-5", "Take a screenshot or screen recording."],
+        ["Select All", "Command-A", "Select all content."],
+        ["Show Emoji and Symbols", "Fn/Globe key", "Open the Character Viewer to find emoji and symbols."],
+        ["Spotlight search", "Command-Space", "Search for anything on your Mac."],
+        ["Switch apps", "Command-Tab", "Press Command-Tab again for the next app, or Shift-Command-Tab for the previous app."],
+        ["Undo", "Command-Z", "Undo the previous action."]
+      ]
+    },
     "restore_steps": [
       "Nothing needs to be restored. To change or turn off system shortcuts, click the Apple menu in the upper-left corner, then choose System Settings > Keyboard > Keyboard Shortcuts."
     ],

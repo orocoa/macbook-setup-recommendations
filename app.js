@@ -34,6 +34,10 @@ const detailPrerequisitesListElement = document.querySelector("#detail-prerequis
 const detailConflictsElement = document.querySelector("#detail-conflicts");
 const detailConflictsListElement = document.querySelector("#detail-conflicts-list");
 const detailStepsElement = document.querySelector("#detail-steps");
+const detailShortcutTableElement = document.querySelector("#detail-shortcut-table");
+const shortcutTableHeadingElement = document.querySelector("#shortcut-table-heading");
+const detailShortcutTableHeadElement = document.querySelector("#detail-shortcut-table-head");
+const detailShortcutTableBodyElement = document.querySelector("#detail-shortcut-table-body");
 const detailRestoreStepsElement = document.querySelector("#detail-restore-steps");
 const detailSourceLinksElement = document.querySelector("#detail-source-links");
 const conceptLabelElement = document.querySelector("#concept-label");
@@ -579,6 +583,7 @@ function renderDetailContent(setting) {
   renderOptionalList(detailConflictsElement, detailConflictsListElement, setting.conflicts);
   renderChangePaths(setting.change_paths);
   renderDetailList(detailStepsElement, setting.steps);
+  renderShortcutTable(setting.shortcut_table);
   renderDetailList(detailRestoreStepsElement, setting.restore_steps);
   renderSources(setting.sources);
   detailElement.scrollTop = 0;
@@ -1084,6 +1089,39 @@ function renderDetailList(element, values) {
   });
 
   element.replaceChildren(...listItems);
+}
+
+function renderShortcutTable(shortcutTable) {
+  const hasRows = Array.isArray(shortcutTable?.rows) && shortcutTable.rows.length > 0;
+  detailShortcutTableElement.hidden = !hasRows;
+
+  if (!hasRows) {
+    detailShortcutTableHeadElement.replaceChildren();
+    detailShortcutTableBodyElement.replaceChildren();
+    return;
+  }
+
+  shortcutTableHeadingElement.textContent = shortcutTable.title;
+
+  const headerRow = document.createElement("tr");
+  (shortcutTable.headers || []).forEach((header) => {
+    const headerCell = document.createElement("th");
+    headerCell.scope = "col";
+    headerCell.textContent = header;
+    headerRow.append(headerCell);
+  });
+  detailShortcutTableHeadElement.replaceChildren(headerRow);
+
+  const rows = shortcutTable.rows.map((row) => {
+    const rowElement = document.createElement("tr");
+    row.forEach((value) => {
+      const cell = document.createElement("td");
+      cell.textContent = value;
+      rowElement.append(cell);
+    });
+    return rowElement;
+  });
+  detailShortcutTableBodyElement.replaceChildren(...rows);
 }
 
 applyInterfaceLanguage();

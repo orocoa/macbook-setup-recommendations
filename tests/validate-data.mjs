@@ -51,6 +51,18 @@ for (const [locale, settings] of Object.entries(settingsByLocale)) {
       assert(/^https:\/\//.test(source.url || ""), `${label} 的来源必须是独立 HTTPS URL`);
     }
 
+    if (setting.shortcut_table !== undefined) {
+      const table = setting.shortcut_table;
+      assert(table && typeof table === "object" && !Array.isArray(table), `${label} 的 shortcut_table 必须是对象`);
+      assert(typeof table.title === "string" && table.title.trim(), `${label} 的 shortcut_table 缺少 title`);
+      assert(Array.isArray(table.headers) && table.headers.length > 0, `${label} 的 shortcut_table 缺少 headers`);
+      assert(Array.isArray(table.rows) && table.rows.length > 0, `${label} 的 shortcut_table 缺少 rows`);
+      for (const row of table.rows) {
+        assert(Array.isArray(row) && row.length === table.headers.length, `${label} 的 shortcut_table 行列数不一致`);
+        assert(row.every((cell) => typeof cell === "string" && cell.trim()), `${label} 的 shortcut_table 不能包含空单元格`);
+      }
+    }
+
     assert(setting.visual_demo === null || typeof setting.visual_demo === "object", `${label} 的 visual_demo 必须是对象或 null`);
     if (!setting.visual_demo) continue;
     assert(supportedVisualTypes.has(setting.visual_demo.type), `${label} 使用了未实现的视觉类型`);
@@ -76,6 +88,8 @@ for (const englishSetting of englishSettings) {
   assert.equal(englishSetting.master_order, chineseSetting.master_order, `${englishSetting.id} 的排序必须一致`);
   assert.equal(englishSetting.visual_demo?.type ?? null, chineseSetting.visual_demo?.type ?? null, `${englishSetting.id} 的视觉类型必须一致`);
   assert.equal(englishSetting.visual_demo?.variant ?? null, chineseSetting.visual_demo?.variant ?? null, `${englishSetting.id} 的视觉变体必须一致`);
+  assert.equal(englishSetting.shortcut_table?.headers.length ?? null, chineseSetting.shortcut_table?.headers.length ?? null, `${englishSetting.id} 的快捷键表结构必须一致`);
+  assert.equal(englishSetting.shortcut_table?.rows.length ?? null, chineseSetting.shortcut_table?.rows.length ?? null, `${englishSetting.id} 的快捷键表行数必须一致`);
 }
 
 console.log(`数据检查通过：${chineseSettings.length} 条设置，中英文 id 与视觉结构一致。`);

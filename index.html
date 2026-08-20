@@ -1826,6 +1826,54 @@
         padding: 0;
       }
 
+      #detail-shortcut-table {
+        margin-top: 28px;
+      }
+
+      .shortcut-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--separator);
+        border-radius: 12px;
+        background: var(--grouped-background);
+      }
+
+      .shortcut-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 620px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .shortcut-table th,
+      .shortcut-table td {
+        padding: 12px 14px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--separator);
+      }
+
+      .shortcut-table th {
+        color: var(--secondary-label);
+        font-weight: 600;
+      }
+
+      .shortcut-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .shortcut-table td:nth-child(1) {
+        width: 18%;
+        font-weight: 600;
+      }
+
+      .shortcut-table td:nth-child(2) {
+        width: 25%;
+        color: var(--label);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+      }
+
       #guide-introduction {
         align-self: stretch;
         max-width: 820px;
@@ -2007,6 +2055,16 @@
         <h3 id="steps-heading">如何修改</h3>
         <ol id="detail-steps"></ol>
 
+        <section id="detail-shortcut-table" hidden aria-labelledby="shortcut-table-heading">
+          <h3 id="shortcut-table-heading"></h3>
+          <div class="shortcut-table-wrap">
+            <table class="shortcut-table">
+              <thead id="detail-shortcut-table-head"></thead>
+              <tbody id="detail-shortcut-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
         <h3 id="restore-heading">如何恢复？</h3>
         <ol id="detail-restore-steps"></ol>
 
@@ -2018,6 +2076,6 @@
       </div>
     </main>
 
-    <script type="module" src="./app.js?v=2026-08-20-21"></script>
+    <script type="module" src="./app.js?v=2026-08-20-22"></script>
   </body>
 </html>
