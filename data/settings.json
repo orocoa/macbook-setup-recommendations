@@ -212,40 +212,6 @@
     }
   },
   {
-    "id": "mission-control-group-windows-by-application",
-    "content_type": "system_setting",
-    "master_section": "系统设置",
-    "master_order": 55,
-    "title": "使窗口按应用程序成组",
-    "description": "让同一 App 的窗口在调度中心中成组显示。",
-    "before_state": "调度中心分别显示各个窗口。",
-    "after_state": "同一 App 的窗口在调度中心中成组显示。",
-    "visual_demo": null,
-    "change_paths": [["系统设置", "桌面与程序坞", "调度中心", "使窗口按应用程序成组"]],
-    "steps": [
-      "打开「系统设置」。",
-      "选择「桌面与程序坞」，然后向下滚动到「调度中心」。",
-      "开启「使窗口按应用程序成组」。",
-      "打开多个 App，并让其中至少一个 App 有多个窗口。",
-      "使用当前系统设置中显示的手势打开调度中心。",
-      "确认同一 App 的窗口被组织在一起。"
-    ],
-    "restore_steps": ["回到「桌面与程序坞」>「调度中心」，关闭「使窗口按应用程序成组」。"],
-    "sources": [
-      {
-        "label": "Apple 支持｜在 Mac 上更改“桌面与程序坞”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp1119/mac"
-      },
-      {
-        "label": "Apple 支持｜在 Mac 上查看所有打开的窗口",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlb7beb9af/mac"
-      }
-    ],
-    "_editorial": {
-      "last_verified": "2026-08-18"
-    }
-  },
-  {
     "id": "hot-corners-desktop-and-display-sleep",
     "content_type": "setup_recipe",
     "master_section": "系统设置",

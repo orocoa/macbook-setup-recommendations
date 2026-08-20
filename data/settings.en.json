@@ -245,46 +245,6 @@
     }
   },
   {
-    "id": "mission-control-group-windows-by-application",
-    "content_type": "system_setting",
-    "master_section": "System Settings",
-    "master_order": 55,
-    "title": "Group windows by application",
-    "description": "Organize windows by app in Mission Control so it is easier to scan which windows belong together.",
-    "guidance": {
-      "kind": "personal_recommendation",
-      "note": "Guide recommendation: Turn this on if you often use several windows from several apps at the same time."
-    },
-    "before_state": "When the option is off, windows from multiple apps can appear across the same Mission Control view, so each window must be identified individually.",
-    "after_state": "When the option is on, windows are organized by app in Mission Control, allowing you to identify the app first and then its windows.",
-    "visual_demo": null,
-    "change_paths": [["System Settings", "Desktop & Dock", "Mission Control", "Group windows by application"]],
-    "steps": [
-      "Open System Settings.",
-      "Click Desktop & Dock in the sidebar, then scroll to Mission Control.",
-      "Turn on “Group windows by application.”",
-      "Open several apps and make sure at least one app has multiple windows.",
-      "Open Mission Control using the gesture currently configured on your Mac. Depending on your trackpad settings and macOS version, this may be a three- or four-finger swipe up.",
-      "Confirm that windows from the same app are organized together."
-    ],
-    "restore_steps": [
-      "Return to Desktop & Dock > Mission Control and turn off “Group windows by application.”"
-    ],
-    "sources": [
-      {
-        "label": "Apple Support — Change Desktop & Dock settings on Mac",
-        "url": "https://support.apple.com/guide/mac-help/mchlp1119/mac"
-      },
-      {
-        "label": "Apple Support — See all your open windows on Mac",
-        "url": "https://support.apple.com/guide/mac-help/mchlb7beb9af/mac"
-      }
-    ],
-    "_editorial": {
-      "last_verified": "2026-08-18"
-    }
-  },
-  {
     "id": "hot-corners-desktop-and-display-sleep",
     "content_type": "system_setting",
     "master_section": "System Settings",
