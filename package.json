@@ -1,0 +1,8 @@
+{
+  "name": "macbook-setup-recommendations",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node tests/validate-data.mjs"
+  }
+}
