@@ -63,7 +63,7 @@
     },
     "change_paths": [["Finder", "Settings", "Advanced", "Show all filename extensions"]],
     "steps": [
-      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
       "Click Finder in the menu bar, then click Settings.",
       "Click Advanced.",
@@ -385,7 +385,7 @@
     },
     "change_paths": [["Finder", "Settings", "Advanced", "Keep folders on top"]],
     "steps": [
-      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
       "Click Finder in the menu bar, then click Settings.",
       "Click Advanced.",
@@ -421,7 +421,7 @@
     "visual_demo": null,
     "change_paths": [["Finder", "View", "Customize Toolbar"]],
     "steps": [
-      "Click the blue-and-white smiling Finder icon in the Dock to open a Finder window.",
+      "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
       "Click View in the menu bar, then click Customize Toolbar.",
       "In the panel that appears, drag frequently used items into the toolbar at the top of the Finder window. Drag items you do not need out of the toolbar.",
