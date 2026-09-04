@@ -15,6 +15,8 @@
         --completion: var(--selected);
         --completion-dark: #0071e3;
         --completion-rgb: 10 132 255;
+        --checkbox-size: 17.6px;
+        --checkbox-icon-size: 11.2px;
         --window-background: #f1f1f4;
         --glass-background: rgb(248 248 250 / 74%);
         --glass-border: rgb(255 255 255 / 72%);
@@ -337,13 +339,13 @@
         position: relative;
         display: flex;
         box-sizing: border-box;
-        width: 22px;
-        height: 22px;
+        width: var(--checkbox-size);
+        height: var(--checkbox-size);
         align-items: center;
         justify-content: center;
         overflow: visible;
-        border: 2px solid #d1d5db;
-        border-radius: 6px;
+        border: 1.6px solid #d1d5db;
+        border-radius: 4.8px;
         background: #ffffff;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -354,7 +356,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        border-radius: 4px;
+        border-radius: 3.2px;
         background: linear-gradient(135deg, var(--completion) 0%, var(--completion-dark) 100%);
         opacity: 0;
         transform: scale(0);
@@ -371,8 +373,8 @@
 
       .check-icon {
         display: block;
-        width: 14px;
-        height: 14px;
+        width: var(--checkbox-icon-size);
+        height: var(--checkbox-icon-size);
         fill: #ffffff;
         filter: drop-shadow(0 1px 2px rgb(0 0 0 / 20%));
       }
@@ -392,15 +394,15 @@
 
       .checkbox-label:hover .checkbox-box {
         border-color: var(--completion);
-        box-shadow: 0 0 0 2px rgb(var(--completion-rgb) / 10%);
+        box-shadow: 0 0 0 1.6px rgb(var(--completion-rgb) / 10%);
       }
 
       .task-checkbox:checked + .checkbox-label .checkbox-box {
         border-color: var(--completion);
         background: var(--completion);
         box-shadow:
-          0 4px 12px rgb(var(--completion-rgb) / 30%),
-          0 0 0 2px rgb(var(--completion-rgb) / 20%);
+          0 3.2px 9.6px rgb(var(--completion-rgb) / 30%),
+          0 0 0 1.6px rgb(var(--completion-rgb) / 20%);
       }
 
       .task-checkbox:checked + .checkbox-label .checkbox-fill {
@@ -419,8 +421,8 @@
       }
 
       .task-checkbox:focus-visible + .checkbox-label .checkbox-box {
-        outline: 3px solid rgb(var(--completion-rgb) / 30%);
-        outline-offset: 2px;
+        outline: 2.4px solid rgb(var(--completion-rgb) / 30%);
+        outline-offset: 1.6px;
       }
 
       .checkbox-label:active .checkbox-box {
@@ -453,14 +455,14 @@
         }
 
         70% {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
           opacity: 0.3;
         }
 
         100% {
-          width: 60px;
-          height: 60px;
+          width: 48px;
+          height: 48px;
           opacity: 0;
         }
       }
