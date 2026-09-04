@@ -12,6 +12,9 @@
         --separator: #d2d2d7;
         --grouped-background: #f5f5f7;
         --selected: #0a84ff;
+        --completion: var(--selected);
+        --completion-dark: #0071e3;
+        --completion-rgb: 10 132 255;
         --window-background: #f1f1f4;
         --glass-background: rgb(248 248 250 / 74%);
         --glass-border: rgb(255 255 255 / 72%);
@@ -284,19 +287,182 @@
       }
 
       #settings-list .master-item input[type="checkbox"] {
-        accent-color: var(--selected);
-        cursor: pointer;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
       }
 
       .completion-control {
-        display: grid;
+        position: relative;
         box-sizing: border-box;
-        flex: 0 0 28px;
-        width: 28px;
+        flex: 0 0 32px;
+        width: 32px;
         min-height: 36px;
+      }
+
+      .checkbox-container {
+        display: inline-block;
+        margin: 0;
+        user-select: none;
+      }
+
+      .checkbox-label {
+        display: flex;
+        width: 100%;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
         border-radius: 8px;
+        color: #374151;
         cursor: pointer;
-        place-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .checkbox-label:hover {
+        background: rgb(var(--completion-rgb) / 5%);
+        color: #111827;
+      }
+
+      .checkbox-box {
+        position: relative;
+        display: flex;
+        box-sizing: border-box;
+        width: 22px;
+        height: 22px;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+        border: 2px solid #d1d5db;
+        border-radius: 6px;
+        background: #ffffff;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .checkbox-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(135deg, var(--completion) 0%, var(--completion-dark) 100%);
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .checkmark {
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        transform: scale(0.3) rotate(20deg);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .check-icon {
+        display: block;
+        width: 14px;
+        height: 14px;
+        fill: #ffffff;
+        filter: drop-shadow(0 1px 2px rgb(0 0 0 / 20%));
+      }
+
+      .success-ripple {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgb(var(--completion-rgb) / 40%);
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+
+      .checkbox-label:hover .checkbox-box {
+        border-color: var(--completion);
+        box-shadow: 0 0 0 2px rgb(var(--completion-rgb) / 10%);
+      }
+
+      .task-checkbox:checked + .checkbox-label .checkbox-box {
+        border-color: var(--completion);
+        background: var(--completion);
+        box-shadow:
+          0 4px 12px rgb(var(--completion-rgb) / 30%),
+          0 0 0 2px rgb(var(--completion-rgb) / 20%);
+      }
+
+      .task-checkbox:checked + .checkbox-label .checkbox-fill {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .task-checkbox:checked + .checkbox-label .checkmark {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        animation: check-pop 0.3s ease-out 0.2s;
+      }
+
+      .task-checkbox:checked + .checkbox-label .success-ripple {
+        animation: ripple-success 0.6s ease-out;
+      }
+
+      .task-checkbox:focus-visible + .checkbox-label .checkbox-box {
+        outline: 3px solid rgb(var(--completion-rgb) / 30%);
+        outline-offset: 2px;
+      }
+
+      .checkbox-label:active .checkbox-box {
+        transform: scale(0.95);
+      }
+
+      #settings-list .master-item.is-selected .checkbox-box {
+        border-color: rgb(255 255 255 / 88%);
+      }
+
+      @keyframes check-pop {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+
+        50% {
+          transform: scale(1.2) rotate(-5deg);
+        }
+
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      @keyframes ripple-success {
+        0% {
+          width: 0;
+          height: 0;
+          opacity: 0.6;
+        }
+
+        70% {
+          width: 50px;
+          height: 50px;
+          opacity: 0.3;
+        }
+
+        100% {
+          width: 60px;
+          height: 60px;
+          opacity: 0;
+        }
       }
 
       #settings-overview button {
@@ -1790,7 +1956,11 @@
         .demo-hot-sleep-screen,
         .demo-hot-sleep-corner,
         .demo-hot-sleep-cursor,
-        .demo-hot-sleep-state {
+        .demo-hot-sleep-state,
+        .checkbox-box,
+        .checkbox-fill,
+        .checkmark,
+        .success-ripple {
           animation: none !important;
           transition: none !important;
         }
@@ -2076,6 +2246,6 @@
       </div>
     </main>
 
-    <script type="module" src="./app.js?v=2026-08-21-23"></script>
+    <script type="module" src="./app.js?v=2026-09-04-26"></script>
   </body>
 </html>

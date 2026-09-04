@@ -166,6 +166,7 @@ let searchTerm = "";
 let activeLanguage = getInitialLanguage();
 let completedBySettingId = loadCompletedState();
 let detailTransitionTimer = null;
+let settingsLoadVersion = 0;
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => changeLanguage(button.dataset.language));
@@ -201,6 +202,16 @@ clearSearchButtonElement.addEventListener("click", () => {
   searchElement.focus();
 });
 
+listElement.addEventListener("change", (event) => {
+  const checkbox = event.target.closest(".task-checkbox");
+  if (!checkbox || !listElement.contains(checkbox)) {
+    return;
+  }
+
+  completedBySettingId[checkbox.dataset.settingId] = checkbox.checked;
+  saveCompletedState();
+});
+
 window.addEventListener("popstate", () => {
   const routeLanguage = new URLSearchParams(window.location.search).get("lang");
   if (SUPPORTED_LANGUAGES.has(routeLanguage) && routeLanguage !== activeLanguage) {
@@ -227,6 +238,8 @@ window.addEventListener("popstate", () => {
 });
 
 async function loadSettings({ preserveRoute = false } = {}) {
+  const loadVersion = ++settingsLoadVersion;
+
   try {
     const dataFile = activeLanguage === "en" ? "settings.en.json" : "settings.json";
     const response = await fetch(`./data/${dataFile}`);
@@ -235,8 +248,13 @@ async function loadSettings({ preserveRoute = false } = {}) {
       throw new Error(`Settings request failed: ${response.status}`);
     }
 
-    allSettings = await response.json();
-    validateSettings(allSettings);
+    const settings = await response.json();
+    if (loadVersion !== settingsLoadVersion) {
+      return;
+    }
+
+    validateSettings(settings);
+    allSettings = settings;
     pruneCompletedState();
     statusElement.hidden = true;
     retryLoadButtonElement.hidden = true;
@@ -252,6 +270,10 @@ async function loadSettings({ preserveRoute = false } = {}) {
       initializeRoute();
     }
   } catch (error) {
+    if (loadVersion !== settingsLoadVersion) {
+      return;
+    }
+
     statusElement.textContent = textFor("loadError");
     statusElement.hidden = false;
     retryLoadButtonElement.hidden = false;
@@ -459,24 +481,58 @@ function createMasterItem(setting) {
   button.textContent = setting.title;
   button.addEventListener("click", () => showDetail(setting));
 
-  const completionCheckbox = document.createElement("input");
-  completionCheckbox.type = "checkbox";
-  completionCheckbox.checked = completedBySettingId[setting.id] === true;
-  completionCheckbox.dataset.settingId = setting.id;
-  completionCheckbox.setAttribute("aria-label", textFor("checkbox")(setting.title));
-  completionCheckbox.addEventListener("change", (event) => {
-    completedBySettingId[setting.id] = event.target.checked;
-    saveCompletedState();
-    syncCompletionControls();
-  });
-
-  const completionControl = document.createElement("label");
-  completionControl.className = "completion-control";
-  completionControl.title = textFor("checkbox")(setting.title);
-  completionControl.append(completionCheckbox);
+  const completionControl = createCompletionControl(setting);
 
   listItem.append(button, completionControl);
   return listItem;
+}
+
+function createCompletionControl(setting) {
+  const completionCheckbox = document.createElement("input");
+  completionCheckbox.type = "checkbox";
+  completionCheckbox.className = "task-checkbox";
+  completionCheckbox.id = `task-check-${setting.id}`;
+  completionCheckbox.checked = completedBySettingId[setting.id] === true;
+  completionCheckbox.dataset.settingId = setting.id;
+  completionCheckbox.setAttribute("aria-label", textFor("checkbox")(setting.title));
+
+  const completionControl = document.createElement("div");
+  completionControl.className = "completion-control checkbox-container";
+  completionControl.title = textFor("checkbox")(setting.title);
+
+  // Visual structure adapted from a Uiverse checkbox by MattiaCode-IT.
+  // The native input above remains the source of truth for state and accessibility.
+  const checkboxLabel = document.createElement("label");
+  checkboxLabel.className = "checkbox-label";
+  checkboxLabel.htmlFor = completionCheckbox.id;
+
+  const checkboxBox = document.createElement("span");
+  checkboxBox.className = "checkbox-box";
+
+  const checkboxFill = document.createElement("span");
+  checkboxFill.className = "checkbox-fill";
+
+  const checkmark = document.createElement("span");
+  checkmark.className = "checkmark";
+
+  const checkIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  checkIcon.classList.add("check-icon");
+  checkIcon.setAttribute("viewBox", "0 0 24 24");
+  checkIcon.setAttribute("aria-hidden", "true");
+
+  const checkPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  checkPath.setAttribute("d", "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z");
+  checkIcon.append(checkPath);
+  checkmark.append(checkIcon);
+
+  const successRipple = document.createElement("span");
+  successRipple.className = "success-ripple";
+
+  checkboxBox.append(checkboxFill, checkmark, successRipple);
+  checkboxLabel.append(checkboxBox);
+  completionControl.append(completionCheckbox, checkboxLabel);
+
+  return completionControl;
 }
 
 function pruneCompletedState() {
@@ -1048,14 +1104,6 @@ function createDocumentTextIcon() {
   });
 
   return svg;
-}
-
-function syncCompletionControls() {
-  const listCheckboxes = listElement.querySelectorAll("input[type='checkbox']");
-  listCheckboxes.forEach((checkbox) => {
-    checkbox.checked = completedBySettingId[checkbox.dataset.settingId] === true;
-  });
-
 }
 
 function syncSelectedListItem() {

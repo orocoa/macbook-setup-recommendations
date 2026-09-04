@@ -82,3 +82,7 @@ These files are retained as design references and are not currently required by 
 Apple, Mac, MacBook, macOS, Finder, and related names and artwork are trademarks or property of Apple Inc. Adobe and the Adobe PDF logo are trademarks or property of Adobe. Other names and marks belong to their respective owners.
 
 This independent project is not affiliated with, endorsed by, or sponsored by Apple Inc. or Adobe.
+
+## Interface inspiration
+
+- The custom checklist control structure and completion animation are adapted from a Uiverse checkbox shared by MattiaCode-IT. This project removes the example text and spacing, fits the control into the existing Master list, and keeps the native HTML checkbox keyboard-accessible.
