@@ -3,6 +3,6 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "test": "node tests/validate-data.mjs"
+    "test": "node tests/validate-data.mjs && node --test tests/storage.test.mjs"
   }
 }

@@ -68,6 +68,9 @@ const UI_TEXT = {
     after: "修改后",
     concept: "概念示意",
     replay: "重新播放",
+    play: "播放演示",
+    fileLoaded: "文件已加入",
+    hotDesktopFlow: "移到右下角 → 拖住桌面文件 → 再移到右下角 → 放入 App",
     prerequisites: "开始前",
     conflicts: "注意",
     path: "修改路径",
@@ -90,7 +93,7 @@ const UI_TEXT = {
     suggestedSpeed: "倒数第三格",
     fast: "快",
     dockBefore: "前三个为固定 App；分隔线后为建议或最近使用的 App",
-    dockAfter: "仅保留你固定放置的 App",
+    dockAfter: "固定 App 不变；此段不再显示建议与最近 App",
     window: "窗口",
     hotDesktopTitle: "右下角：显示桌面并带文件返回",
     desktop: "桌面",
@@ -122,6 +125,9 @@ const UI_TEXT = {
     after: "After",
     concept: "Concept visual",
     replay: "Replay",
+    play: "Play demo",
+    fileLoaded: "File added",
+    hotDesktopFlow: "Move to bottom-right → Drag a desktop file → Return via bottom-right → Drop into the app",
     prerequisites: "Before you start",
     conflicts: "Note",
     path: "Where to find it",
@@ -144,7 +150,7 @@ const UI_TEXT = {
     suggestedSpeed: "Third from right",
     fast: "Fast",
     dockBefore: "The first three apps are pinned; suggested or recent apps appear after the divider",
-    dockAfter: "Only the apps you pinned remain",
+    dockAfter: "Pinned apps stay; the suggested/recent section is hidden",
     window: "Window",
     hotDesktopTitle: "Bottom-right: show the desktop and bring a file back",
     desktop: "Desktop",
@@ -173,12 +179,16 @@ languageButtons.forEach((button) => {
 });
 
 detailVisualDemoMotionControlElement.addEventListener("click", () => {
-  const currentVisual = detailVisualDemoContentElement.firstElementChild;
-  if (!currentVisual) {
-    return;
-  }
-  detailVisualDemoContentElement.replaceChildren(currentVisual.cloneNode(true));
+  replayAnimations(detailVisualDemoContentElement);
 });
+
+// Restart existing animation timelines without replacing DOM or losing focus/listeners.
+function replayAnimations(element) {
+  element.getAnimations({ subtree: true }).forEach((animation) => {
+    animation.currentTime = 0;
+    animation.play();
+  });
+}
 
 searchElement.addEventListener("input", (event) => {
   searchTerm = event.target.value;
@@ -216,7 +226,7 @@ window.addEventListener("popstate", () => {
   const routeLanguage = new URLSearchParams(window.location.search).get("lang");
   if (SUPPORTED_LANGUAGES.has(routeLanguage) && routeLanguage !== activeLanguage) {
     activeLanguage = routeLanguage;
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
+    saveLanguagePreference();
     applyInterfaceLanguage();
     loadSettings({ preserveRoute: true });
     return;
@@ -239,10 +249,13 @@ window.addEventListener("popstate", () => {
 
 async function loadSettings({ preserveRoute = false } = {}) {
   const loadVersion = ++settingsLoadVersion;
+  window.clearTimeout(detailTransitionTimer);
+  detailElement.removeAttribute("aria-busy");
 
   try {
     const dataFile = activeLanguage === "en" ? "settings.en.json" : "settings.json";
-    const response = await fetch(`./data/${dataFile}`);
+    // Revalidate published content rather than mixing a new UI with cached old JSON.
+    const response = await fetch(`./data/${dataFile}`, { cache: "no-cache" });
 
     if (!response.ok) {
       throw new Error(`Settings request failed: ${response.status}`);
@@ -287,12 +300,25 @@ function getInitialLanguage() {
     return routeLanguage;
   }
 
-  const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-  if (SUPPORTED_LANGUAGES.has(savedLanguage)) {
-    return savedLanguage;
+  try {
+    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (SUPPORTED_LANGUAGES.has(savedLanguage)) {
+      return savedLanguage;
+    }
+  } catch (error) {
+    console.warn("Language preference unavailable; using the default language.", error);
   }
 
   return "zh-CN";
+}
+
+function saveLanguagePreference() {
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
+  } catch (error) {
+    // The URL still preserves the language; storage must not block navigation.
+    console.warn("Language preference could not be saved; using the URL instead.", error);
+  }
 }
 
 function textFor(key) {
@@ -332,7 +358,7 @@ async function changeLanguage(language) {
   }
 
   activeLanguage = language;
-  localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
+  saveLanguagePreference();
   searchTerm = "";
   searchElement.value = "";
   applyInterfaceLanguage();
@@ -525,10 +551,7 @@ function createCompletionControl(setting) {
   checkIcon.append(checkPath);
   checkmark.append(checkIcon);
 
-  const successRipple = document.createElement("span");
-  successRipple.className = "success-ripple";
-
-  checkboxBox.append(checkboxFill, checkmark, successRipple);
+  checkboxBox.append(checkboxFill, checkmark);
   checkboxLabel.append(checkboxBox);
   completionControl.append(completionCheckbox, checkboxLabel);
 
@@ -738,7 +761,7 @@ function renderVisualDemo(visualDemo, labels = {}) {
   detailVisualDemoElement.hidden = false;
   detailVisualDemoTitleElement.textContent = visualDemo.title;
   detailVisualDemoDescriptionElement.textContent = visualDemo.description;
-  detailVisualDemoMotionControlElement.hidden = !["motion_comparison", "workflow"].includes(visualDemo.type);
+  detailVisualDemoMotionControlElement.hidden = visualDemo.type !== "motion_comparison";
 
   if (visualDemo.type === "official_reference") {
     detailVisualDemoContentElement.replaceChildren(createOfficialReferenceVisual(visualDemo));
@@ -789,6 +812,7 @@ function createWorkflowVisual(visualDemo) {
   const workflow = document.createElement("section");
   workflow.className = `workflow-visual workflow-${visualDemo.variant}`;
   workflow.append(createVisualScene(visualDemo.variant, "workflow"));
+  if (visualDemo.variant === "hot-corners") return workflow;
   workflow.append(createDemoElement("p", "workflow-primary-caption", visualDemo.primary_caption));
   workflow.append(createDemoElement("p", "workflow-secondary-caption", visualDemo.secondary_caption));
   return workflow;
@@ -882,7 +906,7 @@ function createTrackingSpeedScene(scene, phase) {
   screenTrack.append(
     createDemoElement("span", "demo-pointer-start"),
     createDemoElement("span", "demo-pointer-end"),
-    createDemoElement("span", "demo-pointer", "➤"),
+    createMacSystemCursor("demo-pointer"),
   );
   const scale = createDemoElement("div", "demo-speed-scale");
   scale.append(createDemoElement("span", "", textFor("slow")), createDemoElement("span", "", phase === "after" ? textFor("suggestedSpeed") : textFor("lower")), createDemoElement("span", "", textFor("fast")));
@@ -918,30 +942,52 @@ function createDockMinimizeScene(scene, phase) {
 }
 
 function createHotCornersScene(scene) {
+  // Controls stay accessible; only the illustrative screens are hidden from AT.
+  scene.removeAttribute("aria-hidden");
   const desktopBlock = createDemoElement("section", "demo-hot-animation-block");
   desktopBlock.append(createDemoElement("p", "demo-hot-animation-title", textFor("hotDesktopTitle")));
   const screen = createDemoElement("div", "demo-hot-corner-screen");
+  screen.setAttribute("aria-hidden", "true");
   const desktop = createDemoElement("div", "demo-hot-desktop");
   desktop.append(createDemoElement("span", "demo-hot-desktop-label", textFor("desktop")), createDemoElement("span", "demo-hot-desktop-file", textFor("exampleFilesAfter")[0]));
   const app = createDemoElement("div", "demo-hot-app");
-  app.append(createDemoElement("span", "demo-hot-app-title", textFor("currentApp")), createDemoElement("span", "demo-hot-upload-zone", textFor("dropHere")));
+  const uploadZone = createDemoElement("span", "demo-hot-upload-zone");
+  uploadZone.append(createDemoElement("span", "demo-hot-drop-hint", textFor("dropHere")), createDemoElement("span", "demo-hot-loaded", `✓ ${textFor("fileLoaded")}`));
+  app.append(createDemoElement("span", "demo-hot-app-title", textFor("currentApp")), uploadZone);
   const cursor = createMacSystemCursor("demo-hot-cursor");
   const draggedFile = createDemoElement("span", "demo-hot-dragged-file", textFor("exampleFilesAfter")[0]);
+  // One moving parent keeps the grabbed file attached to the same cursor point.
+  const pointerGroup = createDemoElement("div", "demo-hot-pointer-group");
+  pointerGroup.append(draggedFile, cursor);
   const corner = createDemoElement("span", "demo-hot-corner", textFor("bottomRight"));
-  screen.append(desktop, app, draggedFile, cursor, corner);
-  desktopBlock.append(screen);
+  screen.append(desktop, app, pointerGroup, corner);
+  desktopBlock.append(screen, createDemoElement("p", "demo-motion-description", textFor("hotDesktopFlow")));
+  addMotionControl(desktopBlock, screen, textFor("hotDesktopTitle"));
 
   const sleepBlock = createDemoElement("section", "demo-hot-animation-block");
   sleepBlock.append(createDemoElement("p", "demo-hot-animation-title", textFor("hotSleepTitle")));
   const sleep = createDemoElement("div", "demo-hot-sleep");
+  sleep.setAttribute("aria-hidden", "true");
   const command = createDemoElement("span", "demo-hot-sleep-command");
   command.append(createDemoElement("kbd", "demo-command-key", "⌘"), createDemoElement("span", "", textFor("holdCommand")));
   const sleepScreen = createDemoElement("div", "demo-hot-sleep-screen");
   sleepScreen.append(createDemoElement("span", "demo-hot-sleep-title", textFor("display")), createDemoElement("span", "demo-hot-sleep-corner", textFor("topRight")), createMacSystemCursor("demo-hot-sleep-cursor"), createDemoElement("span", "demo-hot-sleep-state", textFor("sleeping")));
   sleep.append(command, createDemoElement("span", "demo-sleep-arrow", "→"), sleepScreen);
   sleepBlock.append(sleep);
+  addMotionControl(sleepBlock, sleep, textFor("hotSleepTitle"));
 
   scene.append(desktopBlock, sleepBlock);
+}
+
+function addMotionControl(block, animationRoot, title) {
+  // Inserting the scene starts its one-shot CSS animations; this button only replays them.
+  const button = createDemoElement("button", "visual-demo-motion-control", textFor("replay"));
+  button.type = "button";
+  button.setAttribute("aria-label", `${textFor("replay")}: ${title}`);
+  button.addEventListener("click", () => {
+    replayAnimations(animationRoot);
+  });
+  block.append(button);
 }
 
 function createInputSourceScene(scene, phase) {
@@ -949,7 +995,7 @@ function createInputSourceScene(scene, phase) {
   const chinese = createDemoElement("div", "demo-document doc-cn");
   chinese.append(createDemoElement("span", "demo-document-title", "再造怡园"), createDemoElement("span", "demo-document-sample", "你好"), createDemoElement("span", "demo-document-input", "拼音"));
   const english = createDemoElement("div", "demo-document doc-en");
-  english.append(createDemoElement("span", "demo-document-title", "Special guest menu"), createDemoElement("span", "demo-document-sample", phase === "after" ? "Hello" : "你好"), createDemoElement("span", "demo-document-input", phase === "after" ? "ABC" : "拼音"));
+  english.append(createDemoElement("span", "demo-document-title", "Special guest menu"), createDemoElement("span", "demo-document-sample", "Hello"), createDemoElement("span", "demo-document-input", phase === "after" ? "ABC" : "拼音"));
   documents.append(chinese, english);
   scene.append(documents);
 }
@@ -997,13 +1043,19 @@ function createDockAppIcon(app) {
   const icon = createDemoElement("span", "demo-app-icon");
   icon.title = labels[app];
   icon.setAttribute("aria-label", labels[app]);
+  const label = createDemoElement("span", "demo-app-label", labels[app]);
 
   const image = document.createElement("img");
   image.className = "demo-app-icon-image";
   image.src = `./assets/app-icons/${app}.png`;
   image.alt = "";
+  image.hidden = true;
+  image.addEventListener("load", () => {
+    image.hidden = false;
+    label.hidden = true;
+  });
   image.addEventListener("error", () => image.remove());
-  icon.append(image);
+  icon.append(label, image);
   return icon;
 }
 

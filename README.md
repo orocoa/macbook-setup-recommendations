@@ -64,9 +64,12 @@ The underlying command is:
 
 ```bash
 node tests/validate-data.mjs
+node --test tests/storage.test.mjs
 ```
 
 The test checks both language files, required fields, unique IDs, source URLs, visual types, referenced assets, and structural parity between Chinese and English content. It does not prove that every recommendation is factually correct on every Mac or macOS release.
+
+Preference tests also cover restoring a saved language, URL precedence, and safe behavior when browser storage is unavailable.
 
 ## Known limitations
 
@@ -82,12 +85,14 @@ The test checks both language files, required fields, unique IDs, source URLs, v
 ## Project structure
 
 ```text
-index.html                  Interface structure and styles
+index.html                  Interface structure
+styles.css                  Visual styles, motion, and reduced-motion alternatives
 app.js                      Data loading, language, search, routing, and state
 data/settings.json          Simplified Chinese recommendations
 data/settings.en.json       English recommendations
 assets/                     Visual and reference assets
 tests/validate-data.mjs     Static data validation
+tests/storage.test.mjs      Language preference and storage-failure regression tests
 run.command                 Local preview helper
 THIRD_PARTY_NOTICES.md      Asset provenance and redistribution notes
 ```

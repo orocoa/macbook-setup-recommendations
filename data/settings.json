@@ -161,9 +161,9 @@
       "type": "state_comparison",
       "variant": "dock-recents",
       "title": "程序坞末端对比",
-      "description": "固定 App 保持不变；只比较分隔线后是否出现系统自动加入的最近 App。",
+      "description": "仅展示程序坞的部分区域，以 App 名称示意：前三项固定 App 保持不变；比较分隔线后的建议与最近 App。其他区域未展示。",
       "before_caption": "末端多出自动变化的最近 App",
-      "after_caption": "只保留自己固定的 App"
+      "after_caption": "此段不再显示建议与最近 App；固定 App 不变"
     },
     "change_paths": [["系统设置", "桌面与程序坞", "在程序坞中显示建议的 App 和最近使用的 App"]],
     "steps": [
@@ -400,10 +400,10 @@
     "before_state": "切换文稿后继续使用上一个文稿的输入法。",
     "after_state": "返回仍打开的文稿时，系统恢复该文稿之前使用的输入法；关闭文稿后不再保留这一临时对应关系。",
     "visual_demo": {
-      "type": "motion_comparison",
+      "type": "state_comparison",
       "variant": "input-source-by-document",
       "title": "两个文稿的输入法记忆",
-      "description": "在中文任务书和英文 Special guest menu 之间切换；比较输入法保持不变，还是随文稿恢复。",
+      "description": "在「再造怡园」和 Special guest menu 之间切换。文稿正文不会改变；这里只比较返回文稿时，输入法是否恢复为该文稿之前选择的输入法。",
       "before_caption": "切换文稿后仍停留在上一个输入法",
       "after_caption": "中文文稿恢复拼音，英文文稿恢复 ABC"
     },

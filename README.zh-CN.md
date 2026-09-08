@@ -64,9 +64,12 @@ npm test
 
 ```bash
 node tests/validate-data.mjs
+node --test tests/storage.test.mjs
 ```
 
 测试会检查两种语言的数据文件、必填字段、唯一 ID、来源 URL、视觉类型、引用资产，以及中英文内容的结构一致性。测试不能证明每项建议在所有 Mac 或 macOS 版本上都完全正确。
+
+偏好测试还覆盖语言恢复、URL 优先级，以及浏览器存储不可用时的安全降级。
 
 ## 已知限制
 
@@ -82,12 +85,14 @@ node tests/validate-data.mjs
 ## 项目结构
 
 ```text
-index.html                  界面结构与样式
+index.html                  界面结构
+styles.css                  视觉样式、动效与减少动态效果的替代呈现
 app.js                      数据加载、语言、搜索、路由与状态
 data/settings.json          简体中文设置建议
 data/settings.en.json       英文设置建议
 assets/                     视觉与参考资产
 tests/validate-data.mjs     静态数据检查
+tests/storage.test.mjs      语言偏好与存储失败回归测试
 run.command                 本地预览辅助脚本
 THIRD_PARTY_NOTICES.md      资产来源与再分发说明
 ```

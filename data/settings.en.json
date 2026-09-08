@@ -186,9 +186,9 @@
       "type": "state_comparison",
       "variant": "dock-recents",
       "title": "Dock end comparison",
-      "description": "Pinned apps stay the same; only the automatically changing apps after the separator are removed.",
+      "description": "A partial Dock view using app names: the first three pinned apps stay the same; compare the suggested and recent apps after the separator. Other Dock areas are not shown.",
       "before_caption": "Suggested or recent apps appear after the separator",
-      "after_caption": "Only apps you intentionally keep in the Dock remain"
+      "after_caption": "The suggested/recent section is hidden; pinned apps stay"
     },
     "change_paths": [["System Settings", "Desktop & Dock", "Show suggested and recent apps in Dock"]],
     "steps": [
@@ -456,10 +456,10 @@
     "before_state": "When you switch between Chinese and English documents, the input source remains the one most recently used, so you may need to change it manually.",
     "after_state": "After you choose an input source for each open document, returning to that document restores its input source until the document is closed.",
     "visual_demo": {
-      "type": "motion_comparison",
+      "type": "state_comparison",
       "variant": "input-source-by-document",
       "title": "Input source memory across two documents",
-      "description": "Switch between a Chinese document and the English “Special guest menu” document to compare a single persistent input source with document-specific restoration.",
+      "description": "Switch between “再造怡园” and “Special guest menu”. The document text stays unchanged; compare whether returning to a document restores its previously selected input source.",
       "before_caption": "The previous input source remains after switching documents",
       "after_caption": "The Chinese document restores Pinyin and the English document restores ABC"
     },

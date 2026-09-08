@@ -35,7 +35,7 @@ The public redistribution permission for every asset listed below remains to be 
 
 ### `assets/apple-system-cursor.png`
 
-- Description: macOS cursor image used in the Hot Corners concept animation.
+- Description: macOS cursor image used in the Hot Corners and tracking-speed concept animations.
 - Known source: extracted from a local macOS system/interface resource during prototype development; no separate redistribution license was recorded.
 - Rights context: Apple system artwork.
 - Redistribution status: public redistribution permission is unconfirmed.
@@ -85,4 +85,4 @@ This independent project is not affiliated with, endorsed by, or sponsored by Ap
 
 ## Interface inspiration
 
-- The custom checklist control structure and completion animation are adapted from a Uiverse checkbox shared by MattiaCode-IT. This project removes the example text and spacing, fits the control into the existing Master list, and keeps the native HTML checkbox keyboard-accessible.
+- The custom checklist control structure originated from a Uiverse checkbox shared by MattiaCode-IT. This project removes the example text and spacing, fits the control into the existing Master list, and keeps the native HTML checkbox keyboard-accessible. The September 2026 refinement replaces the ripple and overshooting bounce with brief fill/check transitions.
