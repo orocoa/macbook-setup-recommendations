@@ -10,6 +10,14 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
+## Product case & ownership
+
+An independent project by [KAI](https://github.com/KAI-NEX), built with AI-assisted development. I own the problem definition, content structure, bilingual interaction design, implementation process, validation, and release.
+
+The product goal is to turn scattered setup advice into a guide people can understand, act on, and reverse. I kept the implementation static: the task needs readable instructions and a local checklist, not an account or a model call. A completed checklist means the user handled a recommendation; it does not claim to detect or change macOS settings.
+
+The delivered result is a public, bilingual guide with 15 recommendations and documented data/storage checks. Broad user research and measured onboarding improvements have not been established. A useful next study would observe new Mac users finding, understanding, and completing a setting without assistance. This is a product-delivery and information-design project; AI assisted its development, but it is not an AI-powered application.
+
 ## What it includes
 
 - 15 recommendations: 4 in Finder, 9 in System Settings, 1 independent utility recommendation, and 1 built-in shortcut recommendation.
