@@ -6,7 +6,7 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 ## Open the guide
 
-[Open MacBook Setup Recommendations](http://macsetup.kai-nex.com/)
+[Open MacBook Setup Recommendations](https://kai-nex.com/macsetup/)
 
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 

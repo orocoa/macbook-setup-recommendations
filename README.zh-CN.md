@@ -6,7 +6,7 @@
 
 ## 直接使用
 
-[打开 MacBook 设置建议](http://macsetup.kai-nex.com/)
+[打开 MacBook 设置建议](https://kai-nex.com/macsetup/)
 
 无需下载或安装，建议直接在 MacBook 的浏览器中打开。
 
