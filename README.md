@@ -6,13 +6,13 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 ## Open the guide
 
-[Open MacBook Setup Recommendations](https://kai-nex.github.io/macbook-setup-recommendations/)
+[Open MacBook Setup Recommendations](http://macsetup.kai-nex.com/)
 
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
 ## Product case & ownership
 
-An independent project by [KAI](https://github.com/KAI-NEX), built with AI-assisted development. I own the problem definition, content structure, bilingual interaction design, implementation process, validation, and release.
+An independent project by [KAI](https://github.com/orocoa), built with AI-assisted development. I own the problem definition, content structure, bilingual interaction design, implementation process, validation, and release.
 
 The product goal is to turn scattered setup advice into a guide people can understand, act on, and reverse. I kept the implementation static: the task needs readable instructions and a local checklist, not an account or a model call. A completed checklist means the user handled a recommendation; it does not claim to detect or change macOS settings.
 
@@ -23,7 +23,8 @@ The delivered result is a public, bilingual guide with 15 recommendations and do
 - 15 recommendations: 4 in Finder, 9 in System Settings, 1 independent utility recommendation, and 1 built-in shortcut recommendation.
 - Simplified Chinese and English content, switchable from the interface.
 - Search across visible setting content, including titles, descriptions, paths, and instructions.
-- A desktop Master–Detail layout: select a setting in the sidebar and read its details without leaving the page.
+- A white paper/black grid, viewport-height Master–Detail layout with independent scrolling. Selecting a setting preserves the Master position and resets Detail to its title. Narrow screens use two stacked scrolling panes.
+- A fixed language header and explanatory footer, a visible search field, and restore instructions that expand downward from the + control.
 - A per-setting checklist stored in the browser's Local Storage.
 - Before/after explanations, manual paths, steps, restore instructions, and source links.
 - Static JSON content with no account, database, API, cloud sync, or backend.
@@ -58,7 +59,7 @@ Some values and workflows are editorial recommendations rather than Apple defaul
 
 The Mos entry is an independent app recommendation, not a macOS setting or an Apple recommendation. Mos needs Accessibility permission to process mouse input, so the guide explains that permission before asking the reader to enable it.
 
-Visuals are explanatory prototypes. Some are original HTML/CSS concept illustrations; some existing image assets have unresolved redistribution status. See [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) before publishing or redistributing the repository.
+Website visuals are original HTML/CSS concepts and SVG illustrations, not system screenshots. Historical reference images remain in Git but are excluded from the published website by `_config.yml`. Other redistribution must follow [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) before publishing or redistributing the repository.
 
 ## Validation
 
@@ -72,12 +73,12 @@ The underlying command is:
 
 ```bash
 node tests/validate-data.mjs
-node --test tests/storage.test.mjs
+node --test tests/storage.test.mjs tests/search.test.mjs
 ```
 
 The test checks both language files, required fields, unique IDs, source URLs, visual types, referenced assets, and structural parity between Chinese and English content. It does not prove that every recommendation is factually correct on every Mac or macOS release.
 
-Preference tests also cover restoring a saved language, URL precedence, and safe behavior when browser storage is unavailable.
+Preference tests also cover restoring a saved language, URL precedence, legacy checklist compatibility, and unavailable or malformed browser storage. Production retains `mac-setup-completed-v1` and `mac-setup-language-v1`, preserving existing records on the same origin.
 
 ## Known limitations
 
@@ -98,9 +99,15 @@ styles.css                  Visual styles, motion, and reduced-motion alternativ
 app.js                      Data loading, language, search, routing, and state
 data/settings.json          Simplified Chinese recommendations
 data/settings.en.json       English recommendations
-assets/                     Visual and reference assets
+grid-motion.js              Black grid-line transition motion
+visuals.js / visuals.css     Concept illustrations and interactive demonstrations
+ui-text.js                  Bilingual interface copy
+assets/original/            Original SVGs used by the published website
+assets/                     Retained historical reference assets
+_config.yml                 Pages exclusions for historical reference images
 tests/validate-data.mjs     Static data validation
 tests/storage.test.mjs      Language preference and storage-failure regression tests
+tests/search.test.mjs      Short-word and bilingual search regression tests
 run.command                 Local preview helper
 THIRD_PARTY_NOTICES.md      Asset provenance and redistribution notes
 ```

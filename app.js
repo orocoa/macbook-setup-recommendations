@@ -1,1228 +1,449 @@
-const listElement = document.querySelector("#settings-list");
-const overviewElement = document.querySelector("#settings-overview");
-const productTitleElement = document.querySelector("#product-title");
-const productTaglineElement = document.querySelector("#product-tagline");
-const languageButtons = document.querySelectorAll("[data-language]");
-const statusElement = document.querySelector("#status");
-const searchElement = document.querySelector("#setting-search");
-const retryLoadButtonElement = document.querySelector("#retry-load-button");
-const searchEmptyStateElement = document.querySelector("#search-empty-state");
-const clearSearchButtonElement = document.querySelector("#clear-search-button");
-const searchEmptyMessageElement = document.querySelector("#search-empty-message");
-const introductionElement = document.querySelector("#guide-introduction");
-const introTitleElement = document.querySelector("#intro-title");
-const introDescriptionElement = document.querySelector("#intro-description");
-const introPointWorkflowElement = document.querySelector("#intro-point-workflow");
-const introPointCheckElement = document.querySelector("#intro-point-check");
-const introPointStorageElement = document.querySelector("#intro-point-storage");
-const introPointScopeElement = document.querySelector("#intro-point-scope");
-const detailElement = document.querySelector("#setting-detail");
-const detailTitleElement = document.querySelector("#detail-title");
-const detailDescriptionElement = document.querySelector("#detail-description");
-const detailBeforeLabelElement = document.querySelector("#detail-before-label");
-const detailBeforeStateElement = document.querySelector("#detail-before-state");
-const detailAfterLabelElement = document.querySelector("#detail-after-label");
-const detailAfterStateElement = document.querySelector("#detail-after-state");
-const detailVisualDemoElement = document.querySelector("#detail-visual-demo");
-const detailVisualDemoTitleElement = document.querySelector("#detail-visual-demo-title");
-const detailVisualDemoDescriptionElement = document.querySelector("#detail-visual-demo-description");
-const detailVisualDemoContentElement = document.querySelector("#detail-visual-demo-content");
-const detailVisualDemoMotionControlElement = document.querySelector("#detail-visual-demo-motion-control");
-const detailChangePathsElement = document.querySelector("#detail-change-paths");
-const detailPrerequisitesElement = document.querySelector("#detail-prerequisites");
-const detailPrerequisitesListElement = document.querySelector("#detail-prerequisites-list");
-const detailConflictsElement = document.querySelector("#detail-conflicts");
-const detailConflictsListElement = document.querySelector("#detail-conflicts-list");
-const detailStepsElement = document.querySelector("#detail-steps");
-const detailShortcutTableElement = document.querySelector("#detail-shortcut-table");
-const shortcutTableHeadingElement = document.querySelector("#shortcut-table-heading");
-const detailShortcutTableHeadElement = document.querySelector("#detail-shortcut-table-head");
-const detailShortcutTableBodyElement = document.querySelector("#detail-shortcut-table-body");
-const detailRestoreStepsElement = document.querySelector("#detail-restore-steps");
-const detailSourceLinksElement = document.querySelector("#detail-source-links");
-const conceptLabelElement = document.querySelector("#concept-label");
-const prerequisitesHeadingElement = document.querySelector("#prerequisites-heading");
-const conflictsHeadingElement = document.querySelector("#conflicts-heading");
-const pathHeadingElement = document.querySelector("#path-heading");
-const stepsHeadingElement = document.querySelector("#steps-heading");
-const restoreHeadingElement = document.querySelector("#restore-heading");
+import { viewMotion, gridMotion } from "./grid-motion.js?v=20261009-release";
+import { createVisuals } from "./visuals.js?v=20261009-release";
+import { UI_TEXT } from "./ui-text.js?v=20261009-release";
+
+const $ = selector => document.querySelector(selector);
+const view = $("#guide-view");
+const browser = $("#settings-overview");
+const detail = $("#setting-detail");
+const list = $("#settings-list");
+const search = $("#setting-search");
+const status = $("#status");
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const STORAGE_KEY = "mac-setup-completed-v1";
-const LANGUAGE_STORAGE_KEY = "mac-setup-language-v1";
-const SUPPORTED_LANGUAGES = new Set(["zh-CN", "en"]);
-const UI_TEXT = {
+const LANGUAGE_KEY = "mac-setup-language-v1";
+const languages = new Set(["zh-CN", "en"]);
+let language = initialLanguage();
+let settings = [];
+let selectedId = null;
+let completed = readStorage(STORAGE_KEY, {});
+let loadingVersion = 0;
+let pendingDemonstration = null;
+const foldAnimations = new Map();
+
+const copy = {
   "zh-CN": {
-    productTitle: "MacBook 设置建议",
-    tagline: "理解变化，手动调整，需要时恢复原状",
-    search: "搜索 MacBook 设置建议",
-    noResults: "没有找到相关设置",
-    clearSearch: "清除搜索",
-    retry: "重新加载",
-    loadError: "设置读取失败。请通过项目提供的本地服务器或在线网页打开，而不是直接双击 index.html。",
-    introTitle: "从左侧选择一项设置",
-    introDescription: "这份指南聚焦访达、系统设置与工具和快捷操作。每项都说明可见变化、修改路径和恢复方法。",
-    introWorkflow: "根据自己的工作习惯决定是否采用，不把建议当作统一答案。",
-    introCheck: "左栏方框仅仅是为了方便检查是否修改，没有一键修改的作用。",
-    introStorage: "进度只保存在当前浏览器，不会同步到其他设备。",
-    introScope: "画面是概念示意；设置名称与位置可能随 macOS 更新而变化。",
-    before: "修改前",
-    after: "修改后",
-    concept: "概念示意",
-    replay: "重新播放",
-    play: "播放演示",
-    fileLoaded: "文件已加入",
-    hotDesktopFlow: "移到右下角 → 拖住桌面文件 → 再移到右下角 → 放入 App",
-    prerequisites: "开始前",
-    conflicts: "注意",
-    path: "修改路径",
-    steps: "如何修改",
-    restore: "如何恢复？",
-    sources: "来源",
-    ungrouped: "未分组",
-    checkbox: (title) => `标记“${title}”已处理`,
-    saveError: "进度暂时无法保存；本次选择可能在刷新后丢失。",
-    unsupportedVisual: "暂无视觉示意",
-    projectMaterials: "项目素材",
-    folders: ["01 研究", "02 设计", "03 交付"],
-    pathVisible: "Macintosh HD  ›  用户  ›  项目  ›  素材",
-    pathHidden: "路径栏隐藏",
-    exampleFilesBefore: ["再造怡园", "Special guest menu", "自我介绍"],
-    exampleFilesAfter: ["再造怡园.txt", "Special guest menu.pdf", "自我介绍.mov"],
-    sameDistance: "相同手指距离",
-    slow: "慢",
-    lower: "较低",
-    suggestedSpeed: "倒数第三格",
-    fast: "快",
-    dockBefore: "前三个为固定 App；分隔线后为建议或最近使用的 App",
-    dockAfter: "固定 App 不变；此段不再显示建议与最近 App",
-    window: "窗口",
-    hotDesktopTitle: "右下角：显示桌面并带文件返回",
-    desktop: "桌面",
-    currentApp: "当前 App",
-    dropHere: "将文件放在这里",
-    bottomRight: "右下角",
-    hotSleepTitle: "Command + 右上角：使显示器进入睡眠",
-    holdCommand: "按住 Command",
-    display: "显示器",
-    topRight: "右上角",
-    sleeping: "进入睡眠",
-    settingsApp: "系统设置",
+    directory: "设置列表", search: "搜索设置",
+    footer: "方框用于记录修改进度；设置需要在 Mac 上手动调整。",
+    retry: "重新加载", loading: "正在读取设置…", error: "设置读取失败，请重新加载。",
+    empty: "没有找到相关设置", clear: "清除搜索", restore: "如何恢复", visual: "示意与对比",
   },
   en: {
-    productTitle: "MacBook Setup Recommendations",
-    tagline: "Understand the change, adjust it manually, and restore it when needed",
-    search: "Search MacBook setup recommendations",
-    noResults: "No matching settings",
-    clearSearch: "Clear search",
-    retry: "Reload",
-    loadError: "Settings could not be loaded. Open this project through its local server or a hosted site instead of double-clicking index.html.",
-    introTitle: "Choose a setting from the sidebar",
-    introDescription: "This guide covers Finder, System Settings, and utilities and shortcuts. Each item explains the visible change, where to find it, and how to restore it.",
-    introWorkflow: "Decide whether each recommendation fits your workflow; these are not universal defaults.",
-    introCheck: "The sidebar checkbox only helps you check whether you changed a setting; it cannot change the setting for you.",
-    introStorage: "Progress stays in this browser and is not synced to other devices.",
-    introScope: "Visuals are conceptual. Setting names and locations may change with macOS updates.",
-    before: "Before",
-    after: "After",
-    concept: "Concept visual",
-    replay: "Replay",
-    play: "Play demo",
-    fileLoaded: "File added",
-    hotDesktopFlow: "Move to bottom-right → Drag a desktop file → Return via bottom-right → Drop into the app",
-    prerequisites: "Before you start",
-    conflicts: "Note",
-    path: "Where to find it",
-    steps: "How to change it",
-    restore: "How to restore it",
-    sources: "Sources",
-    ungrouped: "Ungrouped",
-    checkbox: (title) => `Mark “${title}” as handled`,
-    saveError: "Progress could not be saved. This selection may be lost after a refresh.",
-    unsupportedVisual: "No visual available",
-    projectMaterials: "Project Assets",
-    folders: ["01 Research", "02 Design", "03 Delivery"],
-    pathVisible: "Macintosh HD  ›  Users  ›  Projects  ›  Assets",
-    pathHidden: "Path bar hidden",
-    exampleFilesBefore: ["Yiyuan Redesign", "Special guest menu", "Introduction"],
-    exampleFilesAfter: ["Yiyuan Redesign.txt", "Special guest menu.pdf", "Introduction.mov"],
-    sameDistance: "Same finger movement",
-    slow: "Slow",
-    lower: "Lower",
-    suggestedSpeed: "Third from right",
-    fast: "Fast",
-    dockBefore: "The first three apps are pinned; suggested or recent apps appear after the divider",
-    dockAfter: "Pinned apps stay; the suggested/recent section is hidden",
-    window: "Window",
-    hotDesktopTitle: "Bottom-right: show the desktop and bring a file back",
-    desktop: "Desktop",
-    currentApp: "Current App",
-    dropHere: "Drop a file here",
-    bottomRight: "Bottom-right",
-    hotSleepTitle: "Command + top-right: put the display to sleep",
-    holdCommand: "Hold Command",
-    display: "Display",
-    topRight: "Top-right",
-    sleeping: "Sleeping",
-    settingsApp: "System Settings",
+    directory: "Settings", search: "Search settings",
+    footer: "Checkboxes record your progress. Adjust settings manually on your Mac.",
+    retry: "Reload", loading: "Loading settings…", error: "Settings could not be loaded. Please retry.",
+    empty: "No matching settings", clear: "Clear search", restore: "How to restore it", visual: "Visual comparison",
   },
 };
+const text = key => UI_TEXT[language][key];
+const label = key => copy[language][key];
+const visuals = createVisuals(text);
 
-let selectedSetting = null;
-let allSettings = [];
-let searchTerm = "";
-let activeLanguage = getInitialLanguage();
-let completedBySettingId = loadCompletedState();
-let detailTransitionTimer = null;
-let settingsLoadVersion = 0;
+function readStorage(key, fallback) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
+  } catch { return fallback; }
+}
 
-languageButtons.forEach((button) => {
-  button.addEventListener("click", () => changeLanguage(button.dataset.language));
-});
+function initialLanguage() {
+  const routeLanguage = new URL(location.href).searchParams.get("lang");
+  if (languages.has(routeLanguage)) return routeLanguage;
+  try {
+    const stored = localStorage.getItem(LANGUAGE_KEY);
+    if (languages.has(stored)) return stored;
+  } catch { /* The URL still works without browser storage. */ }
+  return "zh-CN";
+}
 
-detailVisualDemoMotionControlElement.addEventListener("click", () => {
-  replayAnimations(detailVisualDemoContentElement);
-});
+function saveStorage(key, value) {
+  try { localStorage.setItem(key, value); }
+  catch {
+    status.hidden = false;
+    status.textContent = text("saveError");
+  }
+}
 
-// Restart existing animation timelines without replacing DOM or losing focus/listeners.
-function replayAnimations(element) {
-  element.getAnimations({ subtree: true }).forEach((animation) => {
-    animation.currentTime = 0;
-    animation.play();
+function element(tag, className = "", value = "") {
+  const node = document.createElement(tag);
+  node.className = className;
+  node.textContent = value;
+  return node;
+}
+
+function listOf(values, tag = "ol") {
+  const node = element(tag);
+  (values || []).forEach(value => node.append(element("li", "", Array.isArray(value) ? value.join("；") : String(value))));
+  return node;
+}
+
+function applyLanguage() {
+  document.documentElement.lang = language;
+  browser.setAttribute("aria-label", label("directory"));
+  $("#guide-caption").textContent = label("footer");
+  search.placeholder = document.activeElement === search ? "" : label("search");
+  search.setAttribute("aria-label", label("search"));
+  $("#empty-message").textContent = label("empty");
+  $("#clear-search").textContent = label("clear");
+  $("#retry").textContent = label("retry");
+  document.querySelectorAll("[data-language]").forEach(button => {
+    button.setAttribute("aria-pressed", String(button.dataset.language === language));
   });
 }
 
-searchElement.addEventListener("input", (event) => {
-  searchTerm = event.target.value;
-  const visibleSettings = getVisibleSettings();
+function updateRoute(id, action = "push") {
+  const url = new URL(location.href);
+  url.searchParams.set("lang", language);
+  if (id) url.searchParams.set("setting", id);
+  else url.searchParams.delete("setting");
+  history[action === "replace" ? "replaceState" : "pushState"]({ setting: id }, "", url.pathname + url.search);
+}
 
-  if (selectedSetting && !visibleSettings.some((setting) => setting.id === selectedSetting.id)) {
-    showList({ replaceHistory: true });
-    return;
-  }
+function filteredSettings() {
+  const query = search.value.trim().toLowerCase();
+  if (!query) return settings;
+  const shortWord = /^[a-z0-9]{1,3}$/.test(query) ? new RegExp("(^|[^a-z0-9])" + query + "($|[^a-z0-9])") : null;
+  const flatten = value => value === null || value === undefined ? "" : typeof value === "object" ? Object.values(value).map(flatten).join(" ") : String(value);
+  return settings.filter(setting => {
+    const searchable = flatten([
+      setting.title, setting.master_section, setting.description, setting.before_state, setting.after_state,
+      setting.change_paths, setting.steps, setting.restore_steps, setting.prerequisites, setting.conflicts, setting.search_keywords,
+    ]).toLowerCase();
+    return shortWord ? shortWord.test(searchable) : searchable.includes(query);
+  });
+}
 
-  renderList(visibleSettings);
-  syncSelectedListItem();
-});
-
-retryLoadButtonElement.addEventListener("click", () => window.location.reload());
-
-clearSearchButtonElement.addEventListener("click", () => {
-  searchElement.value = "";
-  searchTerm = "";
-  renderList(getVisibleSettings());
-  searchElement.focus();
-});
-
-listElement.addEventListener("change", (event) => {
-  const checkbox = event.target.closest(".task-checkbox");
-  if (!checkbox || !listElement.contains(checkbox)) {
-    return;
-  }
-
-  completedBySettingId[checkbox.dataset.settingId] = checkbox.checked;
-  saveCompletedState();
-});
-
-window.addEventListener("popstate", () => {
-  const routeLanguage = new URLSearchParams(window.location.search).get("lang");
-  if (SUPPORTED_LANGUAGES.has(routeLanguage) && routeLanguage !== activeLanguage) {
-    activeLanguage = routeLanguage;
-    saveLanguagePreference();
-    applyInterfaceLanguage();
-    loadSettings({ preserveRoute: true });
-    return;
-  }
-
-  const settingFromUrl = getSettingFromUrl();
-
-  if (settingFromUrl) {
-    if (!getVisibleSettings().some((setting) => setting.id === settingFromUrl.id)) {
-      searchElement.value = "";
-      searchTerm = "";
-      renderList(getVisibleSettings());
+function renderList() {
+  const scroller = list.closest(".settings-list");
+  const scrollTop = scroller.scrollTop;
+  const focused = list.contains(document.activeElement) ? document.activeElement.dataset : null;
+  const focusedSetting = focused?.setting;
+  const focusedCompleted = focused?.completed;
+  const visible = filteredSettings();
+  $("#search-empty-state").hidden = visible.length > 0;
+  const rows = [];
+  let section = null;
+  visible.forEach((setting, index) => {
+    if (section !== setting.master_section) {
+      section = setting.master_section;
+      const group = element("li", "setting-group");
+      group.dataset.select = "group:" + setting.id;
+      group.append(element("h2", "", section));
+      rows.push(group);
     }
-    showDetail(settingFromUrl, { pushHistory: false });
-    return;
+    const row = element("li", "setting-row");
+    row.dataset.select = setting.id;
+    row.classList.toggle("is-selected", setting.id === selectedId);
+    const next = visible[index + 1];
+    row.classList.toggle("is-next-selected", next?.id === selectedId && next.master_section === setting.master_section);
+    row.classList.toggle("is-group-end", Boolean(next && next.master_section !== setting.master_section));
+    const button = element("button");
+    button.type = "button";
+    button.dataset.setting = setting.id;
+    if (setting.id === selectedId) button.setAttribute("aria-current", "page");
+    button.append(element("h3", "", setting.title));
+    const control = element("label", "completion-control");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.dataset.completed = setting.id;
+    checkbox.checked = completed[setting.id] === true;
+    checkbox.setAttribute("aria-label", text("checkbox")(setting.title));
+    const box = element("span", "completion-box");
+    box.setAttribute("aria-hidden", "true");
+    control.append(checkbox, box);
+    row.append(button, control);
+    rows.push(row);
+  });
+  list.replaceChildren(...rows);
+  const focusTarget = [...list.querySelectorAll("[data-setting], [data-completed]")].find(node =>
+    focusedSetting ? node.dataset.setting === focusedSetting : focusedCompleted && node.dataset.completed === focusedCompleted);
+  focusTarget?.focus({ preventScroll: true });
+  scroller.scrollTop = scrollTop;
+}
+
+function renderDetail(setting) {
+  const header = element("header", "detail-header");
+  header.dataset.rule = "recommendation";
+  const overline = element("p", "detail-overline", setting.master_section);
+  const title = element("h2", "", setting.title);
+  title.id = "detail-title";
+  title.tabIndex = -1;
+  const description = element("p", "", setting.description);
+  description.id = "detail-description";
+  header.append(overline, title, description);
+
+  const comparison = element("section", "detail-section comparison-copy");
+  comparison.dataset.rule = "comparison";
+  const phases = [];
+  for (const phase of ["before", "after"]) {
+    const part = element("div", "comparison-state");
+    part.append(element("h3", "", setting[phase + "_label"] || text(phase)), element("p", "", setting[phase + "_state"]));
+    comparison.append(part);
+    phases.push(part);
   }
-
-  showList();
-});
-
-async function loadSettings({ preserveRoute = false } = {}) {
-  const loadVersion = ++settingsLoadVersion;
-  window.clearTimeout(detailTransitionTimer);
-  detailElement.removeAttribute("aria-busy");
-
-  try {
-    const dataFile = activeLanguage === "en" ? "settings.en.json" : "settings.json";
-    // Revalidate published content rather than mixing a new UI with cached old JSON.
-    const response = await fetch(`./data/${dataFile}`, { cache: "no-cache" });
-
-    if (!response.ok) {
-      throw new Error(`Settings request failed: ${response.status}`);
+  const sections = [header, comparison];
+  if (setting.visual_demo) {
+    const demonstration = element("section", "detail-section");
+    demonstration.dataset.rule = "demonstration";
+    demonstration.id = "detail-visual-demo";
+    const heading = element("div", "visual-demo-heading");
+    const controls = element("div");
+    controls.append(element("span", "concept-label", text("concept")));
+    heading.append(element("h3", "", setting.visual_demo.title || label("visual")), controls);
+    const description = element("p", "", setting.visual_demo.description);
+    description.id = "detail-visual-demo-description";
+    const content = visuals.render(setting.visual_demo, {
+      before: setting.before_label || text("before"), after: setting.after_label || text("after"),
+    });
+    let replayRoot = content;
+    if (setting.visual_demo.type === "motion_comparison") {
+      const replay = element("button", "visual-demo-motion-control", text("replay"));
+      replay.type = "button";
+      replay.addEventListener("click", () => visuals.replayAnimations(replayRoot));
+      controls.append(document.createTextNode(" "), replay);
     }
-
-    const settings = await response.json();
-    if (loadVersion !== settingsLoadVersion) {
-      return;
-    }
-
-    validateSettings(settings);
-    allSettings = settings;
-    pruneCompletedState();
-    statusElement.hidden = true;
-    retryLoadButtonElement.hidden = true;
-    if (preserveRoute) {
-      const settingFromUrl = getSettingFromUrl();
-      renderList(getVisibleSettings());
-      if (settingFromUrl) {
-        showDetail(settingFromUrl, { pushHistory: false });
-      } else {
-        showList();
-      }
+    if (content.classList.contains("visual-demo-grid")) {
+      // Each state and its illustration belong to the same before/after column.
+      // A shared heading introduces the comparison once, above both states.
+      comparison.classList.replace("comparison-copy", "comparison-block");
+      comparison.id = "detail-visual-demo";
+      const overview = element("div", "comparison-heading");
+      overview.dataset.rule = "comparison-heading";
+      overview.append(heading, description);
+      const grid = element("div", "comparison-grid");
+      [...content.children].forEach((panel, index) => {
+        panel.querySelector(".visual-demo-panel-title")?.remove();
+        const caption = panel.querySelector(".visual-demo-caption");
+        panel.classList.add("comparison-visual");
+        const phase = element("div", "comparison-phase " + (index ? "is-after" : "is-before"));
+        phase.append(phases[index], panel);
+        if (caption) phase.append(caption);
+        grid.append(phase);
+      });
+      comparison.replaceChildren(overview, grid);
+      replayRoot = comparison;
     } else {
-      initializeRoute();
+      demonstration.classList.add("demonstration-block");
+      const overview = element("div", "demonstration-heading");
+      overview.dataset.rule = "demonstration-heading";
+      overview.append(heading, description);
+      demonstration.append(overview, content);
+      sections.push(demonstration);
     }
-  } catch (error) {
-    if (loadVersion !== settingsLoadVersion) {
-      return;
-    }
+  }
 
-    statusElement.textContent = textFor("loadError");
-    statusElement.hidden = false;
-    retryLoadButtonElement.hidden = false;
+  const instructions = element("section", "detail-section");
+  instructions.dataset.rule = "instructions";
+  instructions.append(element("h3", "", text("steps")));
+  const paths = element("ul", "detail-paths");
+  (setting.change_paths || []).forEach(path => {
+    const row = element("li");
+    path.forEach((step, index) => {
+      if (index) row.append(document.createTextNode("  >  "));
+      row.append(element("span", "", step));
+    });
+    paths.append(row);
+  });
+  instructions.append(paths, listOf(setting.steps));
+  for (const [key, heading] of [["prerequisites", "prerequisites"], ["conflicts", "conflicts"]]) {
+    if (!setting[key]?.length) continue;
+    const notice = element("aside", "detail-notice");
+    notice.append(element("h3", "", text(heading)), listOf(setting[key], "ul"));
+    instructions.append(notice);
+  }
+  sections.push(instructions);
+
+  if (setting.shortcut_table?.rows?.length) {
+    const section = element("section", "detail-section");
+    section.dataset.rule = "shortcuts";
+    section.append(element("h3", "", setting.shortcut_table.title));
+    const wrap = element("div", "shortcut-table-wrap");
+    const table = element("table", "shortcut-table");
+    const thead = element("thead");
+    const tr = element("tr");
+    setting.shortcut_table.headers.forEach(value => { const th = element("th", "", value); th.scope = "col"; tr.append(th); });
+    thead.append(tr);
+    const tbody = element("tbody");
+    setting.shortcut_table.rows.forEach(values => { const row = element("tr"); values.forEach(value => row.append(element("td", "", value))); tbody.append(row); });
+    table.append(thead, tbody);
+    wrap.append(table);
+    section.append(wrap);
+    sections.push(section);
+  }
+
+  const restore = element("section", "preview-menu");
+  const toggle = element("button", "preview-toggle");
+  toggle.type = "button";
+  toggle.dataset.disclosure = "restore-panel";
+  toggle.setAttribute("aria-controls", "restore-panel");
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.append(element("span", "", label("restore")), element("span", "fold-icon", "+"));
+  const panel = element("div", "disclosure-panel");
+  panel.id = "restore-panel";
+  panel.hidden = true;
+  const inner = element("div", "disclosure-content");
+  inner.append(listOf(setting.restore_steps));
+  panel.append(inner);
+  restore.append(toggle, panel);
+  sections.push(restore);
+  const sources = element("footer", "detail-sources", text("sources"));
+  setting.sources.forEach(source => {
+    const a = element("a", "", source.label + " ↗");
+    a.href = source.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    sources.append(a);
+  });
+  sections.push(sources);
+  detail.replaceChildren(...sections);
+  document.title = setting.title + " | " + text("productTitle");
+}
+
+function clearFoldAnimations() {
+  for (const fold of [...foldAnimations.values()]) fold.finish();
+}
+
+function startDemonstration() {
+  const pending = pendingDemonstration;
+  if (!pending || selectedId !== pending.id) return;
+  pendingDemonstration = null;
+  pending.animations.forEach(animation => { animation.currentTime = 0; animation.play(); });
+}
+
+function navigate(id, { historyAction = "push", animate = true } = {}) {
+  const setting = settings.find(item => item.id === id) || settings[0];
+  if (!setting) return;
+  const compact = view.clientWidth <= 760;
+  if (animate && selectedId === setting.id && !viewMotion.active && detail.scrollTop === 0) return;
+  const before = animate && selectedId && !compact ? viewMotion.capture("guide", true) : null;
+  // Capture the currently painted lines before cancelling an interrupted motion.
+  viewMotion.cancel();
+  clearFoldAnimations();
+  selectedId = setting.id;
+  pendingDemonstration = null;
+  detail.hidden = false;
+  renderList();
+  renderDetail(setting);
+  // Master retains its reading position. Only Detail resets.
+  detail.scrollTop = 0;
+  if (historyAction) updateRoute(selectedId, historyAction);
+  const demoAnimations = detail.getAnimations({ subtree: true }).filter(animation => animation.animationName?.startsWith("demo-"));
+  pendingDemonstration = { id: setting.id, animations: demoAnimations };
+  if (before) demoAnimations.forEach(animation => animation.pause());
+  const ready = () => {
+    if (selectedId !== setting.id) return;
+    // Demonstrations start after their explanatory content has appeared.
+    startDemonstration();
+  };
+  if (before) viewMotion.open(before, ready);
+  else ready();
+}
+
+function togglePanel(button) {
+  const panel = document.getElementById(button.dataset.disclosure);
+  foldAnimations.get(panel)?.stop();
+  const start = panel.hidden ? 0 : panel.getBoundingClientRect().height;
+  const open = button.getAttribute("aria-expanded") !== "true";
+  button.setAttribute("aria-expanded", String(open));
+  button.querySelector(".fold-icon").textContent = open ? "−" : "+";
+  panel.hidden = false;
+  panel.inert = !open;
+  panel.style.height = start + "px";
+  panel.style.overflow = "hidden";
+  const end = open ? panel.firstElementChild.scrollHeight + parseFloat(getComputedStyle(panel).borderTopWidth) : 0;
+  let animation = null;
+  const finish = () => {
+    animation?.cancel();
+    panel.hidden = !open;
+    panel.inert = !open;
+    panel.style.height = "";
+    panel.style.overflow = "";
+    foldAnimations.delete(panel);
+  };
+  if (reducedMotion.matches) { finish(); return; }
+  animation = panel.animate([{ height: start + "px" }, { height: end + "px" }], { duration: 420, easing: gridMotion.easing, fill: "both" });
+  const fold = { finish, stop() {
+    // A rapid second click reverses from the currently painted height.
+    panel.style.height = panel.getBoundingClientRect().height + "px";
+    animation.cancel();
+    foldAnimations.delete(panel);
+  } };
+  foldAnimations.set(panel, fold);
+  animation.finished.then(() => { if (foldAnimations.get(panel) === fold) finish(); }).catch(() => {});
+}
+
+async function load() {
+  const version = ++loadingVersion;
+  window.demoReady = false;
+  status.hidden = false;
+  status.textContent = label("loading");
+  $("#retry").hidden = true;
+  try {
+    const response = await fetch("./data/" + (language === "en" ? "settings.en.json" : "settings.json"), { cache: "no-cache" });
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    const data = await response.json();
+    if (version !== loadingVersion) return;
+    const ids = new Set();
+    if (!Array.isArray(data)) throw new Error("Settings must be an array");
+    for (const item of data) {
+      if (!item.id || !item.title || ids.has(item.id)) throw new Error("Missing or duplicate setting identity");
+      ids.add(item.id);
+    }
+    const order = new Map();
+    data.forEach(setting => { if (!order.has(setting.master_section)) order.set(setting.master_section, order.size); });
+    settings = data.sort((a, b) => order.get(a.master_section) - order.get(b.master_section) || a.master_order - b.master_order);
+    status.hidden = true;
+    navigate(new URL(location.href).searchParams.get("setting"), { historyAction: "replace", animate: false });
+    window.demoReady = true;
+  } catch (error) {
+    if (version !== loadingVersion) return;
+    status.hidden = false;
+    status.textContent = label("error");
+    $("#retry").hidden = false;
     console.error(error);
   }
 }
 
-function getInitialLanguage() {
-  const routeLanguage = new URLSearchParams(window.location.search).get("lang");
-  if (SUPPORTED_LANGUAGES.has(routeLanguage)) {
-    return routeLanguage;
+document.addEventListener("click", async event => {
+  const button = event.target.closest("button");
+  if (!button) return;
+  if (button.dataset.setting) navigate(button.dataset.setting);
+  else if (button.hasAttribute("data-disclosure")) togglePanel(button);
+  else if (button.id === "clear-search") { search.value = ""; renderList(); search.focus(); }
+  else if (button.id === "retry") load();
+  else if (button.dataset.language && language !== button.dataset.language) {
+    viewMotion.cancel();
+    language = button.dataset.language;
+    saveStorage(LANGUAGE_KEY, language);
+    search.value = "";
+    applyLanguage();
+    updateRoute(selectedId, "replace");
+    await load();
   }
-
-  try {
-    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (SUPPORTED_LANGUAGES.has(savedLanguage)) {
-      return savedLanguage;
-    }
-  } catch (error) {
-    console.warn("Language preference unavailable; using the default language.", error);
-  }
-
-  return "zh-CN";
-}
-
-function saveLanguagePreference() {
-  try {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
-  } catch (error) {
-    // The URL still preserves the language; storage must not block navigation.
-    console.warn("Language preference could not be saved; using the URL instead.", error);
-  }
-}
-
-function textFor(key) {
-  return UI_TEXT[activeLanguage][key];
-}
-
-function applyInterfaceLanguage() {
-  document.documentElement.lang = activeLanguage;
-  productTitleElement.textContent = textFor("productTitle");
-  productTaglineElement.textContent = textFor("tagline");
-  searchElement.placeholder = textFor("search");
-  searchElement.setAttribute("aria-label", textFor("search"));
-  retryLoadButtonElement.textContent = textFor("retry");
-  searchEmptyMessageElement.textContent = textFor("noResults");
-  clearSearchButtonElement.textContent = textFor("clearSearch");
-  introTitleElement.textContent = textFor("introTitle");
-  introDescriptionElement.textContent = textFor("introDescription");
-  introPointWorkflowElement.textContent = textFor("introWorkflow");
-  introPointCheckElement.textContent = textFor("introCheck");
-  introPointStorageElement.textContent = textFor("introStorage");
-  introPointScopeElement.textContent = textFor("introScope");
-  conceptLabelElement.textContent = textFor("concept");
-  detailVisualDemoMotionControlElement.textContent = textFor("replay");
-  prerequisitesHeadingElement.textContent = textFor("prerequisites");
-  conflictsHeadingElement.textContent = textFor("conflicts");
-  pathHeadingElement.textContent = textFor("path");
-  stepsHeadingElement.textContent = textFor("steps");
-  restoreHeadingElement.textContent = textFor("restore");
-  languageButtons.forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.language === activeLanguage));
-  });
-}
-
-async function changeLanguage(language) {
-  if (!SUPPORTED_LANGUAGES.has(language) || language === activeLanguage) {
-    return;
-  }
-
-  activeLanguage = language;
-  saveLanguagePreference();
-  searchTerm = "";
-  searchElement.value = "";
-  applyInterfaceLanguage();
-  updateRoute({ settingId: selectedSetting?.id ?? null, replace: true });
-  await loadSettings({ preserveRoute: true });
-}
-
-function getVisibleSettings() {
-  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
-
-  return allSettings.filter((setting) => {
-    if (!normalizedSearchTerm) {
-      return true;
-    }
-
-    const searchableText = getSearchableText([
-      setting.title,
-      setting.description,
-      setting.before_state,
-      setting.after_state,
-      setting.change_paths,
-      setting.steps,
-      setting.restore_steps,
-      setting.prerequisites,
-      setting.conflicts,
-      setting.search_keywords,
-    ]).toLowerCase();
-
-    return matchesSearch(searchableText, normalizedSearchTerm);
-  });
-}
-
-function matchesSearch(searchableText, normalizedSearchTerm) {
-  if (/^[a-z0-9]{1,3}$/.test(normalizedSearchTerm)) {
-    const escapedTerm = normalizedSearchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const shortWordPattern = new RegExp(`(^|[^a-z0-9])${escapedTerm}($|[^a-z0-9])`);
-    return shortWordPattern.test(searchableText);
-  }
-
-  return searchableText.includes(normalizedSearchTerm);
-}
-
-function getSearchableText(value) {
-  if (value === null || value === undefined) {
-    return "";
-  }
-
-  if (Array.isArray(value)) {
-    return value.map((item) => getSearchableText(item)).join(" ");
-  }
-
-  if (typeof value === "object") {
-    return Object.values(value)
-      .map((item) => getSearchableText(item))
-      .join(" ");
-  }
-
-  return String(value);
-}
-
-function renderList(settings) {
-  searchEmptyStateElement.hidden = settings.length > 0;
-  const masterSections = groupSettingsByMasterSection(settings);
-  const sectionElements = masterSections.map((section) => {
-    const sectionItem = document.createElement("li");
-    sectionItem.className = "master-area";
-
-    const sectionTitle = document.createElement("h2");
-    sectionTitle.className = "master-area-title";
-    sectionTitle.textContent = section.title;
-
-    const settingList = document.createElement("ul");
-    settingList.className = "master-setting-items";
-    section.settings.forEach((setting) => settingList.append(createMasterItem(setting)));
-
-    sectionItem.append(sectionTitle, settingList);
-    return sectionItem;
-  });
-
-  listElement.replaceChildren(...sectionElements);
-}
-
-function validateSettings(settings) {
-  if (!Array.isArray(settings)) {
-    throw new Error("设置数据根节点必须是数组。");
-  }
-
-  const settingIds = new Set();
-  settings.forEach((setting, index) => {
-    if (!setting || typeof setting !== "object") {
-      throw new Error(`第 ${index + 1} 条设置不是对象。`);
-    }
-    if (typeof setting.id !== "string" || !setting.id.trim() || settingIds.has(setting.id)) {
-      throw new Error(`第 ${index + 1} 条设置缺少唯一 id。`);
-    }
-    if (typeof setting.title !== "string" || !setting.title.trim()) {
-      throw new Error(`${setting.id} 缺少标题。`);
-    }
-    ["change_paths", "steps", "restore_steps"].forEach((fieldName) => {
-      if (!Array.isArray(setting[fieldName])) {
-        throw new Error(`${setting.id} 的 ${fieldName} 必须是数组。`);
-      }
-    });
-    if (!Array.isArray(setting.sources) || setting.sources.length === 0) {
-      throw new Error(`${setting.id} 缺少结构化来源。`);
-    }
-    setting.sources.forEach((source) => {
-      if (!source?.label || !/^https:\/\//.test(source.url || "")) {
-        throw new Error(`${setting.id} 包含无效来源。`);
-      }
-    });
-    settingIds.add(setting.id);
-  });
-}
-
-function groupSettingsByMasterSection(settings) {
-  const sections = [];
-
-  settings.forEach((setting) => {
-    const sectionTitle = setting.master_section || textFor("ungrouped");
-
-    let section = sections.find((candidate) => candidate.title === sectionTitle);
-    if (!section) {
-      section = { title: sectionTitle, settings: [] };
-      sections.push(section);
-    }
-
-    section.settings.push(setting);
-  });
-
-  sections.forEach((section) => {
-    section.settings.sort((first, second) => first.master_order - second.master_order);
-  });
-
-  return sections;
-}
-
-function createMasterItem(setting) {
-  const listItem = document.createElement("li");
-  listItem.className = "master-item";
-  listItem.dataset.settingId = setting.id;
-  listItem.classList.toggle("is-selected", selectedSetting?.id === setting.id);
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.textContent = setting.title;
-  button.addEventListener("click", () => showDetail(setting));
-
-  const completionControl = createCompletionControl(setting);
-
-  listItem.append(button, completionControl);
-  return listItem;
-}
-
-function createCompletionControl(setting) {
-  const completionCheckbox = document.createElement("input");
-  completionCheckbox.type = "checkbox";
-  completionCheckbox.className = "task-checkbox";
-  completionCheckbox.id = `task-check-${setting.id}`;
-  completionCheckbox.checked = completedBySettingId[setting.id] === true;
-  completionCheckbox.dataset.settingId = setting.id;
-  completionCheckbox.setAttribute("aria-label", textFor("checkbox")(setting.title));
-
-  const completionControl = document.createElement("div");
-  completionControl.className = "completion-control checkbox-container";
-  completionControl.title = textFor("checkbox")(setting.title);
-
-  // Visual structure adapted from a Uiverse checkbox by MattiaCode-IT.
-  // The native input above remains the source of truth for state and accessibility.
-  const checkboxLabel = document.createElement("label");
-  checkboxLabel.className = "checkbox-label";
-  checkboxLabel.htmlFor = completionCheckbox.id;
-
-  const checkboxBox = document.createElement("span");
-  checkboxBox.className = "checkbox-box";
-
-  const checkboxFill = document.createElement("span");
-  checkboxFill.className = "checkbox-fill";
-
-  const checkmark = document.createElement("span");
-  checkmark.className = "checkmark";
-
-  const checkIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  checkIcon.classList.add("check-icon");
-  checkIcon.setAttribute("viewBox", "0 0 24 24");
-  checkIcon.setAttribute("aria-hidden", "true");
-
-  const checkPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  checkPath.setAttribute("d", "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z");
-  checkIcon.append(checkPath);
-  checkmark.append(checkIcon);
-
-  checkboxBox.append(checkboxFill, checkmark);
-  checkboxLabel.append(checkboxBox);
-  completionControl.append(completionCheckbox, checkboxLabel);
-
-  return completionControl;
-}
-
-function pruneCompletedState() {
-  const currentSettingIds = new Set(allSettings.map((setting) => setting.id));
-  const currentStateEntries = Object.entries(completedBySettingId);
-  const validStateEntries = currentStateEntries.filter(([settingId]) => currentSettingIds.has(settingId));
-
-  if (validStateEntries.length === currentStateEntries.length) {
-    return;
-  }
-
-  completedBySettingId = Object.fromEntries(validStateEntries);
-  saveCompletedState();
-}
-
-function loadCompletedState() {
-  try {
-    const savedState = localStorage.getItem(STORAGE_KEY);
-    if (!savedState) {
-      return {};
-    }
-    const parsedState = JSON.parse(savedState);
-    if (!parsedState || typeof parsedState !== "object" || Array.isArray(parsedState)) {
-      return {};
-    }
-    return Object.fromEntries(
-      Object.entries(parsedState).filter(([, value]) => typeof value === "boolean"),
-    );
-  } catch (error) {
-    console.warn("完成状态读取失败，将从空状态开始。", error);
-    return {};
-  }
-}
-
-function saveCompletedState() {
-  try {
-    const stateAsText = JSON.stringify(completedBySettingId);
-    localStorage.setItem(STORAGE_KEY, stateAsText);
-  } catch (error) {
-    statusElement.textContent = textFor("saveError");
-    statusElement.hidden = false;
-    console.warn("完成状态保存失败。", error);
-  }
-}
-
-function showList({ replaceHistory = false } = {}) {
-  window.clearTimeout(detailTransitionTimer);
-  selectedSetting = null;
-  overviewElement.hidden = false;
-  introductionElement.hidden = false;
-  detailElement.hidden = true;
-  detailElement.removeAttribute("aria-busy");
-
-  if (replaceHistory) {
-    updateRoute({ settingId: null, replace: true });
-  }
-
-  renderList(getVisibleSettings());
-  document.title = textFor("productTitle");
-}
-
-function showDetail(setting, { pushHistory = true } = {}) {
-  if (pushHistory && selectedSetting?.id === setting.id) {
-    detailElement.scrollTop = 0;
-    return;
-  }
-  selectedSetting = setting;
-
-  if (pushHistory) {
-    updateRoute({ settingId: selectedSetting.id });
-  }
-
-  overviewElement.hidden = false;
-  introductionElement.hidden = true;
-  detailElement.hidden = false;
-  syncSelectedListItem();
-  detailElement.setAttribute("aria-busy", "true");
-  window.clearTimeout(detailTransitionTimer);
-
-  const renderSelectedDetail = () => {
-    if (selectedSetting?.id !== setting.id) {
-      return;
-    }
-
-    renderDetailContent(setting);
-    detailElement.removeAttribute("aria-busy");
-  };
-
-  detailTransitionTimer = window.setTimeout(renderSelectedDetail, 180);
-}
-
-function renderDetailContent(setting) {
-  detailTitleElement.textContent = setting.title;
-  detailDescriptionElement.textContent = setting.description;
-  detailBeforeLabelElement.textContent = setting.before_label || textFor("before");
-  detailBeforeStateElement.textContent = formatDetailValue(setting.before_state);
-  detailAfterLabelElement.textContent = setting.after_label || textFor("after");
-  detailAfterStateElement.textContent = formatDetailValue(setting.after_state);
-  renderVisualDemo(setting.visual_demo, {
-    beforeLabel: setting.before_label || textFor("before"),
-    afterLabel: setting.after_label || textFor("after"),
-  });
-  renderOptionalList(detailPrerequisitesElement, detailPrerequisitesListElement, setting.prerequisites);
-  renderOptionalList(detailConflictsElement, detailConflictsListElement, setting.conflicts);
-  renderChangePaths(setting.change_paths);
-  renderDetailList(detailStepsElement, setting.steps);
-  renderShortcutTable(setting.shortcut_table);
-  renderDetailList(detailRestoreStepsElement, setting.restore_steps);
-  renderSources(setting.sources);
-  detailElement.scrollTop = 0;
-  document.title = `${setting.title} | ${textFor("productTitle")}`;
-}
-
-function renderOptionalList(sectionElement, listElement, values) {
-  const hasValues = Array.isArray(values) && values.length > 0;
-  sectionElement.hidden = !hasValues;
-  renderDetailList(listElement, hasValues ? values : []);
-}
-
-function renderSources(sources) {
-  const sourceNodes = [];
-  sources.forEach((source, index) => {
-    if (index > 0) {
-      sourceNodes.push(document.createTextNode(" · "));
-    }
-    const link = document.createElement("a");
-    link.href = source.url;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = source.label;
-    sourceNodes.push(link);
-  });
-
-  const sourceSeparator = activeLanguage === "zh-CN" ? "：" : ": ";
-  detailSourceLinksElement.replaceChildren(document.createTextNode(`${textFor("sources")}${sourceSeparator}`), ...sourceNodes);
-}
-
-function getSettingFromUrl() {
-  const settingId = new URLSearchParams(window.location.search).get("setting");
-  return allSettings.find((setting) => setting.id === settingId) ?? null;
-}
-
-function initializeRoute() {
-  const settingFromUrl = getSettingFromUrl();
-
-  if (settingFromUrl) {
-    updateRoute({ settingId: settingFromUrl.id, replace: true });
-    renderList(getVisibleSettings());
-    showDetail(settingFromUrl, { pushHistory: false });
-    return;
-  }
-
-  updateRoute({ settingId: null, replace: true });
-  showList();
-}
-
-function updateRoute({ settingId = null, replace = false } = {}) {
-  const url = new URL(window.location.href);
-  url.searchParams.set("lang", activeLanguage);
-  if (settingId) {
-    url.searchParams.set("setting", settingId);
-  } else {
-    url.searchParams.delete("setting");
-  }
-
-  const state = settingId ? { route: "detail", settingId } : { route: "list" };
-  history[replace ? "replaceState" : "pushState"](state, "", `${url.pathname}${url.search}`);
-}
-
-function renderChangePaths(paths) {
-  const pathItems = paths.map((path) => {
-    const listItem = document.createElement("li");
-    listItem.className = "change-path";
-
-    path.forEach((step, index) => {
-      const pathStep = document.createElement("span");
-      pathStep.className = "change-path-step";
-      pathStep.textContent = step;
-      listItem.append(pathStep);
-
-      if (index < path.length - 1) {
-        const separator = document.createElement("span");
-        separator.className = "change-path-separator";
-        separator.textContent = ">";
-        listItem.append(separator);
-      }
-    });
-
-    return listItem;
-  });
-
-  detailChangePathsElement.replaceChildren(...pathItems);
-}
-
-function renderVisualDemo(visualDemo, labels = {}) {
-  if (!visualDemo) {
-    detailVisualDemoElement.hidden = true;
-    detailVisualDemoMotionControlElement.hidden = true;
-    detailVisualDemoContentElement.replaceChildren();
-    return;
-  }
-
-  detailVisualDemoElement.hidden = false;
-  detailVisualDemoTitleElement.textContent = visualDemo.title;
-  detailVisualDemoDescriptionElement.textContent = visualDemo.description;
-  detailVisualDemoMotionControlElement.hidden = visualDemo.type !== "motion_comparison";
-
-  if (visualDemo.type === "official_reference") {
-    detailVisualDemoContentElement.replaceChildren(createOfficialReferenceVisual(visualDemo));
-    return;
-  }
-
-  if (visualDemo.type === "workflow") {
-    detailVisualDemoContentElement.replaceChildren(createWorkflowVisual(visualDemo));
-    return;
-  }
-
-  const grid = document.createElement("div");
-  grid.className = "visual-demo-grid";
-
-  if (visualDemo.variant === "folders-on-top") {
-    grid.append(
-      createVisualDemoPanel(labels.beforeLabel || textFor("before"), visualDemo.before_rows),
-      createVisualDemoPanel(labels.afterLabel || textFor("after"), visualDemo.after_rows, { isAfter: true }),
-    );
-  } else {
-    grid.append(
-      createVisualScenePanel(labels.beforeLabel || textFor("before"), visualDemo, "before"),
-      createVisualScenePanel(labels.afterLabel || textFor("after"), visualDemo, "after", { isAfter: true }),
-    );
-  }
-
-  detailVisualDemoContentElement.replaceChildren(grid);
-}
-
-function createVisualScenePanel(title, visualDemo, phase, { isAfter = false } = {}) {
-  const panel = document.createElement("section");
-  panel.className = "visual-demo-panel visual-scene-panel";
-  panel.classList.toggle("is-after", isAfter);
-
-  const panelTitle = createDemoElement("p", "visual-demo-panel-title", title);
-  const scene = createVisualScene(visualDemo.variant, phase);
-  const caption = createDemoElement(
-    "p",
-    "visual-demo-caption",
-    phase === "before" ? visualDemo.before_caption : visualDemo.after_caption,
-  );
-
-  panel.append(panelTitle, scene, caption);
-  return panel;
-}
-
-function createWorkflowVisual(visualDemo) {
-  const workflow = document.createElement("section");
-  workflow.className = `workflow-visual workflow-${visualDemo.variant}`;
-  workflow.append(createVisualScene(visualDemo.variant, "workflow"));
-  if (visualDemo.variant === "hot-corners") return workflow;
-  workflow.append(createDemoElement("p", "workflow-primary-caption", visualDemo.primary_caption));
-  workflow.append(createDemoElement("p", "workflow-secondary-caption", visualDemo.secondary_caption));
-  return workflow;
-}
-
-function createOfficialReferenceVisual(visualDemo) {
-  const figure = document.createElement("figure");
-  figure.className = "official-reference-visual";
-  const image = document.createElement("img");
-  image.src = visualDemo.image_src;
-  image.alt = visualDemo.alt;
-  const caption = createDemoElement("figcaption", "official-reference-caption", visualDemo.caption);
-  figure.append(image, caption);
-  return figure;
-}
-
-function createVisualScene(variant, phase) {
-  const scene = document.createElement("div");
-  scene.className = `demo-scene demo-${variant} is-${phase}`;
-  scene.setAttribute("aria-hidden", "true");
-
-  const sceneBuilders = {
-    "finder-path-bar": createFinderPathScene,
-    "file-extensions": createFileExtensionsScene,
-    "tap-to-click": createTapToClickScene,
-    "tracking-speed": createTrackingSpeedScene,
-    "dock-recents": createDockRecentsScene,
-    "dock-minimize": createDockMinimizeScene,
-    "hot-corners": createHotCornersScene,
-    "input-source-by-document": createInputSourceScene,
-    "watch-unlock": createWatchUnlockScene,
-    "three-finger-drag": createThreeFingerDragScene,
-  };
-
-  const builder = sceneBuilders[variant];
-  if (!builder) {
-    scene.append(createDemoElement("span", "demo-unsupported", textFor("unsupportedVisual")));
-    return scene;
-  }
-
-  builder(scene, phase);
-  return scene;
-}
-
-function createFinderPathScene(scene, phase) {
-  const windowMock = createDemoElement("div", "demo-window");
-  const toolbar = createDemoElement("div", "demo-window-toolbar");
-  toolbar.append(createDemoElement("span", "demo-window-dot"), createDemoElement("span", "demo-window-title", textFor("projectMaterials")));
-
-  const body = createDemoElement("div", "demo-finder-body");
-  textFor("folders").forEach((name) => {
-    const folder = createDemoElement("span", "demo-finder-folder", name);
-    body.append(folder);
-  });
-
-  const path = createDemoElement(
-    "div",
-    `demo-path-bar ${phase === "after" ? "is-visible" : "is-hidden"}`,
-    phase === "after" ? textFor("pathVisible") : textFor("pathHidden"),
-  );
-  windowMock.append(toolbar, body, path);
-  scene.append(windowMock);
-}
-
-function createFileExtensionsScene(scene, phase) {
-  const names = phase === "after" ? textFor("exampleFilesAfter") : textFor("exampleFilesBefore");
-  const kinds = ["text", "pdf", "video"];
-  const list = createDemoElement("div", "demo-file-list");
-  names.forEach((name, index) => {
-    const row = createDemoElement("div", "demo-file-row");
-    row.append(createFileIcon(kinds[index]));
-    row.append(createDemoElement("span", "demo-file-name", name));
-    list.append(row);
-  });
-  scene.append(list);
-}
-
-function createTapToClickScene(scene, phase) {
-  const trackpad = createDemoElement("div", "demo-trackpad");
-  const finger = createDemoElement("span", "demo-finger");
-  const ripple = createDemoElement("span", "demo-click-ripple");
-  const label = createDemoElement("span", "demo-action-label", phase === "after" ? "仅需轻触" : "需要压力");
-  trackpad.append(finger, ripple);
-  scene.append(trackpad, label, createDemoElement("span", "demo-result-pill", "✓ 已选择"));
-}
-
-function createTrackingSpeedScene(scene, phase) {
-  const gestureTrack = createDemoElement("div", "demo-gesture-track");
-  gestureTrack.append(createDemoElement("span", "demo-gesture-finger"));
-  const screenTrack = createDemoElement("div", "demo-screen-track");
-  screenTrack.append(
-    createDemoElement("span", "demo-pointer-start"),
-    createDemoElement("span", "demo-pointer-end"),
-    createMacSystemCursor("demo-pointer"),
-  );
-  const scale = createDemoElement("div", "demo-speed-scale");
-  scale.append(createDemoElement("span", "", textFor("slow")), createDemoElement("span", "", phase === "after" ? textFor("suggestedSpeed") : textFor("lower")), createDemoElement("span", "", textFor("fast")));
-  scene.append(createDemoElement("span", "demo-track-label", textFor("sameDistance")), gestureTrack, screenTrack, scale);
-}
-
-function createDockRecentsScene(scene, phase) {
-  const dock = createDemoElement("div", "demo-dock");
-  const fixedApps = ["app-store", "pages", "keynote"];
-  fixedApps.forEach((app) => dock.append(createDockAppIcon(app)));
-  if (phase === "before") {
-    const separator = createDemoElement("span", "demo-dock-separator");
-    separator.setAttribute("role", "separator");
-    dock.append(separator);
-    ["safari", "settings"].forEach((app) => dock.append(createDockAppIcon(app)));
-  }
-  scene.append(dock, createDemoElement("span", "demo-dock-note", phase === "before" ? textFor("dockBefore") : textFor("dockAfter")));
-}
-
-function createDockMinimizeScene(scene, phase) {
-  const desktop = createDemoElement("div", "demo-mini-desktop");
-  [1, 2, 3].forEach((number) => desktop.append(createDemoElement("span", `demo-mini-window window-${number}`, `${textFor("window")} ${number}`)));
-  const dock = createDemoElement("div", "demo-mini-dock");
-  const appIcon = createDemoElement("span", "demo-mini-app", "A");
-  dock.append(appIcon);
-  if (phase === "before") {
-    [1, 2, 3].forEach((number) => dock.append(createDemoElement("span", `demo-window-thumb thumb-${number}`, String(number))));
-  } else {
-    appIcon.append(createDemoElement("span", "demo-window-count", "3"));
-  }
-  desktop.append(dock);
-  scene.append(desktop);
-}
-
-function createHotCornersScene(scene) {
-  // Controls stay accessible; only the illustrative screens are hidden from AT.
-  scene.removeAttribute("aria-hidden");
-  const desktopBlock = createDemoElement("section", "demo-hot-animation-block");
-  desktopBlock.append(createDemoElement("p", "demo-hot-animation-title", textFor("hotDesktopTitle")));
-  const screen = createDemoElement("div", "demo-hot-corner-screen");
-  screen.setAttribute("aria-hidden", "true");
-  const desktop = createDemoElement("div", "demo-hot-desktop");
-  desktop.append(createDemoElement("span", "demo-hot-desktop-label", textFor("desktop")), createDemoElement("span", "demo-hot-desktop-file", textFor("exampleFilesAfter")[0]));
-  const app = createDemoElement("div", "demo-hot-app");
-  const uploadZone = createDemoElement("span", "demo-hot-upload-zone");
-  uploadZone.append(createDemoElement("span", "demo-hot-drop-hint", textFor("dropHere")), createDemoElement("span", "demo-hot-loaded", `✓ ${textFor("fileLoaded")}`));
-  app.append(createDemoElement("span", "demo-hot-app-title", textFor("currentApp")), uploadZone);
-  const cursor = createMacSystemCursor("demo-hot-cursor");
-  const draggedFile = createDemoElement("span", "demo-hot-dragged-file", textFor("exampleFilesAfter")[0]);
-  // One moving parent keeps the grabbed file attached to the same cursor point.
-  const pointerGroup = createDemoElement("div", "demo-hot-pointer-group");
-  pointerGroup.append(draggedFile, cursor);
-  const corner = createDemoElement("span", "demo-hot-corner", textFor("bottomRight"));
-  screen.append(desktop, app, pointerGroup, corner);
-  desktopBlock.append(screen, createDemoElement("p", "demo-motion-description", textFor("hotDesktopFlow")));
-  addMotionControl(desktopBlock, screen, textFor("hotDesktopTitle"));
-
-  const sleepBlock = createDemoElement("section", "demo-hot-animation-block");
-  sleepBlock.append(createDemoElement("p", "demo-hot-animation-title", textFor("hotSleepTitle")));
-  const sleep = createDemoElement("div", "demo-hot-sleep");
-  sleep.setAttribute("aria-hidden", "true");
-  const command = createDemoElement("span", "demo-hot-sleep-command");
-  command.append(createDemoElement("kbd", "demo-command-key", "⌘"), createDemoElement("span", "", textFor("holdCommand")));
-  const sleepScreen = createDemoElement("div", "demo-hot-sleep-screen");
-  sleepScreen.append(createDemoElement("span", "demo-hot-sleep-title", textFor("display")), createDemoElement("span", "demo-hot-sleep-corner", textFor("topRight")), createMacSystemCursor("demo-hot-sleep-cursor"), createDemoElement("span", "demo-hot-sleep-state", textFor("sleeping")));
-  sleep.append(command, createDemoElement("span", "demo-sleep-arrow", "→"), sleepScreen);
-  sleepBlock.append(sleep);
-  addMotionControl(sleepBlock, sleep, textFor("hotSleepTitle"));
-
-  scene.append(desktopBlock, sleepBlock);
-}
-
-function addMotionControl(block, animationRoot, title) {
-  // Inserting the scene starts its one-shot CSS animations; this button only replays them.
-  const button = createDemoElement("button", "visual-demo-motion-control", textFor("replay"));
-  button.type = "button";
-  button.setAttribute("aria-label", `${textFor("replay")}: ${title}`);
-  button.addEventListener("click", () => {
-    replayAnimations(animationRoot);
-  });
-  block.append(button);
-}
-
-function createInputSourceScene(scene, phase) {
-  const documents = createDemoElement("div", "demo-documents");
-  const chinese = createDemoElement("div", "demo-document doc-cn");
-  chinese.append(createDemoElement("span", "demo-document-title", "再造怡园"), createDemoElement("span", "demo-document-sample", "你好"), createDemoElement("span", "demo-document-input", "拼音"));
-  const english = createDemoElement("div", "demo-document doc-en");
-  english.append(createDemoElement("span", "demo-document-title", "Special guest menu"), createDemoElement("span", "demo-document-sample", "Hello"), createDemoElement("span", "demo-document-input", phase === "after" ? "ABC" : "拼音"));
-  documents.append(chinese, english);
-  scene.append(documents);
-}
-
-function createWatchUnlockScene(scene) {
-  const flow = createDemoElement("div", "demo-watch-flow");
-  const watch = createDemoElement("div", "demo-watch-device");
-  watch.append(createDemoElement("span", "demo-watch-check", "✓"));
-  const waves = createDemoElement("div", "demo-proximity-waves", ")))");
-  const mac = createDemoElement("div", "demo-mac-device");
-  const lockState = createDemoElement("span", "demo-lock-state");
-  lockState.append(createDemoElement("span", "demo-lock-glyph"));
-  mac.append(lockState, createDemoElement("span", "demo-unlock-state", "✓"));
-  flow.append(watch, waves, mac);
-  scene.append(flow);
-}
-
-function createThreeFingerDragScene(scene, phase) {
-  const stage = createDemoElement("div", `demo-three-finger-stage ${phase === "after" ? "is-three-finger" : "is-press-drag"}`);
-  const trackpad = createDemoElement("div", "demo-drag-trackpad");
-  const touchGroup = createDemoElement("div", "demo-drag-touch-group");
-  const fingerCount = phase === "after" ? 3 : 1;
-  for (let index = 0; index < fingerCount; index += 1) {
-    touchGroup.append(createDemoElement("span", `demo-drag-finger finger-${index + 1}`));
-  }
-  trackpad.append(touchGroup);
-  const file = createDemoElement("span", "demo-drag-file", "再造怡园.txt");
-  const target = createDemoElement("span", "demo-drop-folder");
-  target.append(createDemoElement("span", "demo-drop-folder-label", "项目文件夹"));
-  if (phase === "after") {
-    target.append(createDemoElement("span", "demo-drop-tap", "轻点放下"));
-  }
-  stage.append(trackpad, file, target);
-  scene.append(stage);
-}
-
-function createDockAppIcon(app) {
-  const labels = {
-    "app-store": "App Store",
-    pages: "Pages",
-    keynote: "Keynote",
-    safari: "Safari",
-    settings: textFor("settingsApp"),
-  };
-  const icon = createDemoElement("span", "demo-app-icon");
-  icon.title = labels[app];
-  icon.setAttribute("aria-label", labels[app]);
-  const label = createDemoElement("span", "demo-app-label", labels[app]);
-
-  const image = document.createElement("img");
-  image.className = "demo-app-icon-image";
-  image.src = `./assets/app-icons/${app}.png`;
-  image.alt = "";
-  image.hidden = true;
-  image.addEventListener("load", () => {
-    image.hidden = false;
-    label.hidden = true;
-  });
-  image.addEventListener("error", () => image.remove());
-  icon.append(label, image);
-  return icon;
-}
-
-function createMacSystemCursor(className) {
-  const cursor = document.createElement("img");
-  cursor.className = className;
-  cursor.src = "./assets/apple-system-cursor.png";
-  cursor.alt = "";
-  cursor.setAttribute("aria-hidden", "true");
-  return cursor;
-}
-
-function createFileIcon(kind, iconAsset = "") {
-  const icon = createDemoElement("span", `file-icon kind-${kind}`);
-  if (iconAsset || kind === "pdf") {
-    const image = document.createElement("img");
-    image.className = "file-icon-image";
-    image.src = iconAsset || "./assets/adobe-pdf-icon.png";
-    image.alt = "";
-    icon.append(image);
-  } else if (kind === "text") {
-    icon.append(createDocumentTextIcon());
-  } else if (kind === "video") {
-    icon.append(createDemoElement("span", "file-icon-play", "▶"));
-  } else if (kind === "image") {
-    icon.append(createDemoElement("span", "file-icon-image-glyph", "▧"));
-  }
-  return icon;
-}
-
-function createDemoElement(tagName, className = "", textContent = "") {
-  const element = document.createElement(tagName);
-  if (className) {
-    element.className = className;
-  }
-  if (textContent) {
-    element.textContent = textContent;
-  }
-  return element;
-}
-
-function createVisualDemoPanel(title, rows, { isAfter = false } = {}) {
-  const panel = document.createElement("section");
-  panel.className = "visual-demo-panel";
-  panel.classList.toggle("is-after", isAfter);
-
-  const panelTitle = document.createElement("p");
-  panelTitle.className = "visual-demo-panel-title";
-  panelTitle.textContent = title;
-
-  const list = document.createElement("ul");
-  list.className = "visual-demo-list";
-  rows.forEach((row) => list.append(createVisualDemoRow(row)));
-
-  panel.append(panelTitle, list);
-  return panel;
-}
-
-function createVisualDemoRow(row) {
-  const item = document.createElement("li");
-  item.className = "visual-demo-row";
-  item.classList.add(`is-${row.kind}`);
-
-  const icon = createFileIcon(row.kind, row.icon_asset);
-  icon.setAttribute("aria-hidden", "true");
-
-  const name = document.createElement("span");
-  name.className = "visual-demo-name";
-  name.textContent = row.name;
-
-  const type = document.createElement("span");
-  type.className = "visual-demo-type";
-  type.textContent = row.type;
-
-  item.append(icon, name, type);
-  return item;
-}
-
-function createDocumentTextIcon() {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.classList.add("visual-demo-document-text-icon");
-  svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("fill", "none");
-  svg.setAttribute("stroke", "currentColor");
-  svg.setAttribute("stroke-width", "1.8");
-  svg.setAttribute("stroke-linecap", "round");
-  svg.setAttribute("stroke-linejoin", "round");
-
-  [
-    "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z",
-    "M14 2v6h6",
-    "M8 13h8",
-    "M8 17h6",
-  ].forEach((d) => {
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", d);
-    svg.append(path);
-  });
-
-  return svg;
-}
-
-function syncSelectedListItem() {
-  const listItems = listElement.querySelectorAll(".master-item");
-  listItems.forEach((listItem) => {
-    const isSelected = listItem.dataset.settingId === selectedSetting?.id;
-    listItem.classList.toggle("is-selected", isSelected);
-    const button = listItem.querySelector("button");
-    if (isSelected) {
-      button.setAttribute("aria-current", "page");
-    } else {
-      button.removeAttribute("aria-current");
-    }
-  });
-}
-
-function formatDetailValue(value) {
-  if (Array.isArray(value)) {
-    return value.join("；");
-  }
-
-  return String(value ?? "unknown");
-}
-
-function renderDetailList(element, values) {
-  const items = Array.isArray(values) ? values : [values];
-  const listItems = items.map((value) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = formatDetailValue(value);
-    return listItem;
-  });
-
-  element.replaceChildren(...listItems);
-}
-
-function renderShortcutTable(shortcutTable) {
-  const hasRows = Array.isArray(shortcutTable?.rows) && shortcutTable.rows.length > 0;
-  detailShortcutTableElement.hidden = !hasRows;
-
-  if (!hasRows) {
-    detailShortcutTableHeadElement.replaceChildren();
-    detailShortcutTableBodyElement.replaceChildren();
-    return;
-  }
-
-  shortcutTableHeadingElement.textContent = shortcutTable.title;
-
-  const headerRow = document.createElement("tr");
-  (shortcutTable.headers || []).forEach((header) => {
-    const headerCell = document.createElement("th");
-    headerCell.scope = "col";
-    headerCell.textContent = header;
-    headerRow.append(headerCell);
-  });
-  detailShortcutTableHeadElement.replaceChildren(headerRow);
-
-  const rows = shortcutTable.rows.map((row) => {
-    const rowElement = document.createElement("tr");
-    row.forEach((value) => {
-      const cell = document.createElement("td");
-      cell.textContent = value;
-      rowElement.append(cell);
-    });
-    return rowElement;
-  });
-  detailShortcutTableBodyElement.replaceChildren(...rows);
-}
-
-applyInterfaceLanguage();
-loadSettings();
+});
+list.addEventListener("change", event => {
+  const checkbox = event.target.closest("[data-completed]");
+  if (!checkbox) return;
+  completed[checkbox.dataset.completed] = checkbox.checked;
+  saveStorage(STORAGE_KEY, JSON.stringify(completed));
+});
+search.addEventListener("focus", () => { search.placeholder = ""; });
+search.addEventListener("click", () => { search.placeholder = ""; });
+search.addEventListener("blur", () => { search.placeholder = label("search"); });
+search.addEventListener("input", () => {
+  viewMotion.cancel();
+  startDemonstration();
+  renderList();
+});
+window.addEventListener("popstate", () => {
+  const routeLanguage = new URL(location.href).searchParams.get("lang");
+  if (languages.has(routeLanguage) && routeLanguage !== language) { language = routeLanguage; applyLanguage(); load(); }
+  else navigate(new URL(location.href).searchParams.get("setting"), { historyAction: null });
+});
+window.addEventListener("resize", () => { clearFoldAnimations(); startDemonstration(); });
+detail.addEventListener("scroll", () => {
+  if (!viewMotion.active) startDemonstration();
+}, { passive: true });
+reducedMotion.addEventListener("change", () => { viewMotion.cancel(); clearFoldAnimations(); startDemonstration(); });
+applyLanguage();
+load();

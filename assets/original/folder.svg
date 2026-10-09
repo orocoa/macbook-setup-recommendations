@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 76">
+  <defs><linearGradient id="paper-folder" x2="0" y2="1"><stop stop-color="#72d1ee"/><stop offset="1" stop-color="#279bcb"/></linearGradient></defs>
+  <path d="M5 15a6 6 0 0 1 6-6h23l10 10h41a6 6 0 0 1 6 6v41a6 6 0 0 1-6 6H11a6 6 0 0 1-6-6Z" fill="#2498bf"/>
+  <path d="M5 27a6 6 0 0 1 6-6h74a6 6 0 0 1 6 6v39a6 6 0 0 1-6 6H11a6 6 0 0 1-6-6Z" fill="url(#paper-folder)" stroke="#2599c6"/>
+  <path d="M12 25h71" stroke="#c2effb" stroke-width="2" opacity=".65"/>
+</svg>

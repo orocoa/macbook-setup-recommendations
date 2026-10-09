@@ -2,124 +2,52 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
     <title>MacBook 设置建议</title>
-    <link rel="stylesheet" href="./styles.css?v=2026-09-08-demo-clarity" />
+    <link rel="stylesheet" href="./visuals.css?v=20261009-release" />
+    <link rel="stylesheet" href="./styles.css?v=20261009-release" />
   </head>
   <body>
-    <main>
-      <header class="guide-header">
-        <div class="visually-hidden">
-          <h1 id="product-title">MacBook 设置建议</h1>
-          <p id="product-tagline" class="guide-tagline">理解变化，手动调整，需要时恢复原状</p>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="project-identity">
+          <h1 class="brand">Mac Setup</h1>
+        </div>
+        <div class="language-switch" role="group" aria-label="语言 / Language">
+            <span aria-hidden="true">[</span>
+            <button type="button" data-language="zh-CN" aria-pressed="true">中</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language="en" aria-pressed="false">EN</button>
+            <span aria-hidden="true">]</span>
         </div>
       </header>
 
-      <div id="app-layout">
-        <section id="settings-overview">
-          <div class="master-controls">
-            <p id="status" role="status" hidden>正在读取设置……</p>
-            <button id="retry-load-button" type="button" hidden>重新加载</button>
-
+      <section id="guide-view" class="view browser-layout" aria-label="Mac Setup">
+        <aside id="settings-overview" class="settings-browser" aria-label="设置列表">
+          <div class="settings-browser-contents">
             <label class="search-field">
-              <input
-                id="setting-search"
-                type="search"
-                placeholder="搜索 MacBook 设置建议"
-                aria-label="搜索 MacBook 设置建议"
-                autocomplete="off"
-              />
+              <input id="setting-search" type="search" placeholder="搜索设置" aria-label="搜索设置" autocomplete="off" />
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="6.5" /><path d="m15 15 6 6" /></svg></span>
             </label>
-          </div>
-
-          <div class="master-scroll">
-            <ul id="settings-list"></ul>
-            <div id="search-empty-state" hidden>
-              <p id="search-empty-message">没有找到相关设置</p>
-              <button id="clear-search-button" type="button">清除搜索</button>
+            <div class="settings-list">
+              <p id="status" role="status">正在读取设置…</p>
+              <button id="retry" type="button" hidden>重新加载</button>
+              <ul id="settings-list"></ul>
+              <div class="empty-list" id="search-empty-state" hidden>
+                <p id="empty-message">没有找到相关设置</p>
+                <button id="clear-search" type="button">清除搜索</button>
+              </div>
             </div>
           </div>
+        </aside>
 
-          <div class="master-footer">
-            <div class="language-switcher" role="group" aria-label="语言 / Language">
-              <button type="button" data-language="zh-CN" aria-pressed="true">中文</button>
-              <button type="button" data-language="en" aria-pressed="false">English</button>
-            </div>
-          </div>
-        </section>
-
-        <section id="guide-introduction">
-          <div class="guide-intro-card">
-            <h2 id="intro-title">从左侧选择一项设置</h2>
-            <p id="intro-description">这份指南聚焦访达、系统设置与工具和快捷操作。每项都说明可见变化、修改路径和恢复方法。</p>
-            <ul>
-              <li id="intro-point-workflow">根据自己的工作习惯决定是否采用，不把建议当作统一答案。</li>
-              <li id="intro-point-check">左栏方框仅仅是为了方便检查是否修改，没有一键修改的作用。</li>
-              <li id="intro-point-storage">进度只保存在当前浏览器，不会同步到其他设备。</li>
-              <li id="intro-point-scope">画面是概念示意；设置名称与位置可能随 macOS 更新而变化。</li>
-            </ul>
-          </div>
-        </section>
-
-        <section id="setting-detail" hidden>
-        <h2 id="detail-title"></h2>
-        <p id="detail-description"></p>
-
-        <h3 id="detail-before-label">修改前</h3>
-        <p id="detail-before-state"></p>
-
-        <h3 id="detail-after-label">修改后</h3>
-        <p id="detail-after-state"></p>
-
-        <section id="detail-visual-demo" hidden aria-labelledby="detail-visual-demo-title">
-          <div class="visual-demo-heading">
-            <h3 id="detail-visual-demo-title"></h3>
-            <div>
-              <span id="concept-label" class="concept-label">概念示意</span>
-              <button id="detail-visual-demo-motion-control" class="visual-demo-motion-control" type="button" hidden>重新播放</button>
-            </div>
-          </div>
-          <p id="detail-visual-demo-description"></p>
-          <div id="detail-visual-demo-content"></div>
-        </section>
-
-        <section id="detail-prerequisites" class="detail-notice" hidden>
-          <h3 id="prerequisites-heading">开始前</h3>
-          <ul id="detail-prerequisites-list"></ul>
-        </section>
-
-        <section id="detail-conflicts" class="detail-notice" hidden>
-          <h3 id="conflicts-heading">注意</h3>
-          <ul id="detail-conflicts-list"></ul>
-        </section>
-
-        <h3 id="path-heading">修改路径</h3>
-        <ul id="detail-change-paths"></ul>
-
-        <h3 id="steps-heading">如何修改</h3>
-        <ol id="detail-steps"></ol>
-
-        <section id="detail-shortcut-table" hidden aria-labelledby="shortcut-table-heading">
-          <h3 id="shortcut-table-heading"></h3>
-          <div class="shortcut-table-wrap">
-            <table class="shortcut-table">
-              <thead id="detail-shortcut-table-head"></thead>
-              <tbody id="detail-shortcut-table-body"></tbody>
-            </table>
-          </div>
-        </section>
-
-        <h3 id="restore-heading">如何恢复？</h3>
-        <ol id="detail-restore-steps"></ol>
-
-        <footer id="detail-source">
-          <p id="detail-source-links"></p>
-        </footer>
-
-        </section>
-      </div>
+        <article id="setting-detail" class="setting-detail" hidden></article>
+      </section>
+      <footer class="guide-footer">
+        <p id="guide-caption">方框用于记录修改进度；设置需要在 Mac 上手动调整。</p>
+      </footer>
     </main>
-
-    <script type="module" src="./app.js?v=2026-09-08-demo-clarity"></script>
+    <script type="module" src="./app.js?v=20261009-release"></script>
   </body>
 </html>

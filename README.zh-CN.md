@@ -6,13 +6,13 @@
 
 ## 直接使用
 
-[打开 MacBook 设置建议](https://kai-nex.github.io/macbook-setup-recommendations/)
+[打开 MacBook 设置建议](http://macsetup.kai-nex.com/)
 
 无需下载或安装，建议直接在 MacBook 的浏览器中打开。
 
 ## 产品案例与个人贡献
 
-这是由 [KAI](https://github.com/KAI-NEX) 独立完成、使用 AI 工具辅助开发的项目。我负责问题定义、内容结构、双语交互、实现推进、验证与发布；独立完成指项目整体责任，不表示每一行代码都未经 AI 辅助。
+这是由 [KAI](https://github.com/orocoa) 独立完成、使用 AI 工具辅助开发的项目。我负责问题定义、内容结构、双语交互、实现推进、验证与发布；独立完成指项目整体责任，不表示每一行代码都未经 AI 辅助。
 
 目标是把分散的设置建议变成能理解、能执行、能恢复的指南。我选择静态页面和本地清单，因为核心任务是清晰的说明与操作记录，不需要账号或模型调用。勾选只代表用户已处理该建议，不代表网站检测或修改了系统设置。
 
@@ -23,7 +23,8 @@
 - 15 项建议：4 项访达、9 项系统设置、1 项独立工具推荐和 1 项内置快捷操作建议。
 - 简体中文和英文内容，可在界面中切换。
 - 搜索用户可见的设置内容，包括标题、说明、路径和操作步骤。
-- 桌面端 Master–Detail 布局：在左侧选择设置，在不离开页面的情况下阅读右侧详情。
+- 白纸黑线网格与适应视口高度的 Master–Detail 布局。两栏独立滚动；切换条目保留左栏位置，右栏回到标题。窄屏改为上下两块独立滚动区域。
+- 固定顶部语言切换和底部说明，搜索栏保持可见；恢复说明点击 + 向下展开。
 - 使用浏览器 Local Storage 保存的逐项清单。
 - 修改前后说明、手动路径、操作步骤、恢复方法和来源链接。
 - 静态 JSON 内容；不包含账号、数据库、API、云同步或后端。
@@ -58,7 +59,7 @@ python3 -m http.server 4177 --bind 127.0.0.1
 
 Mos 条目属于独立 App 推荐，不是 macOS 设置，也不代表 Apple 推荐。Mos 需要辅助功能权限来处理鼠标输入，因此指南会先解释权限用途，再引导用户决定是否授权。
 
-视觉内容属于说明性原型：部分是原创 HTML/CSS 概念示意，部分现有图片资产的公开再分发许可尚未确认。公开发布或再分发仓库前，请先阅读 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
+网站的视觉内容是原创 HTML/CSS 概念示意和 SVG 图，不是系统截图。历史参考图片保留在 Git，但通过 `_config.yml` 排除在发布网站之外。其他再分发仍需遵循 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
 
 ## 数据检查
 
@@ -72,12 +73,12 @@ npm test
 
 ```bash
 node tests/validate-data.mjs
-node --test tests/storage.test.mjs
+node --test tests/storage.test.mjs tests/search.test.mjs
 ```
 
 测试会检查两种语言的数据文件、必填字段、唯一 ID、来源 URL、视觉类型、引用资产，以及中英文内容的结构一致性。测试不能证明每项建议在所有 Mac 或 macOS 版本上都完全正确。
 
-偏好测试还覆盖语言恢复、URL 优先级，以及浏览器存储不可用时的安全降级。
+偏好测试还覆盖语言恢复、URL 优先级、已有勾选记录兼容，以及浏览器存储不可用或内容损坏时的安全降级。发布版沿用 `mac-setup-completed-v1` 和 `mac-setup-language-v1`，同一来源的已有记录继续有效。
 
 ## 已知限制
 
@@ -98,9 +99,15 @@ styles.css                  视觉样式、动效与减少动态效果的替代�
 app.js                      数据加载、语言、搜索、路由与状态
 data/settings.json          简体中文设置建议
 data/settings.en.json       英文设置建议
-assets/                     视觉与参考资产
+grid-motion.js              黑色网格线切换动画
+visuals.js / visuals.css     概念示意与交互演示
+ui-text.js                  双语界面文案
+assets/original/            发布网站使用的原创 SVG
+assets/                     保留的历史参考资产
+_config.yml                 Pages 构建排除历史参考图
 tests/validate-data.mjs     静态数据检查
 tests/storage.test.mjs      语言偏好与存储失败回归测试
+tests/search.test.mjs      短词与双语搜索回归测试
 run.command                 本地预览辅助脚本
 THIRD_PARTY_NOTICES.md      资产来源与再分发说明
 ```

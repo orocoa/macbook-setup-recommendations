@@ -1,0 +1,13 @@
+# Keep historical reference files in Git, but exclude them from the published site.
+exclude:
+  - assets/adobe-pdf-icon.png
+  - assets/apple-dock-icons-reference.png
+  - assets/apple-finder-folder-reference.png
+  - assets/apple-finder-folder-user-reference.png
+  - assets/apple-menu-bar-official-reference.png
+  - assets/apple-menu-bar-reference.png
+  - assets/apple-system-cursor.png
+  - assets/app-icons
+  - tests
+  - package.json
+  - run.command

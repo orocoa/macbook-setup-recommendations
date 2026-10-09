@@ -18,9 +18,15 @@
       "title": "Path location comparison",
       "description": "The same nested folder is shown in both states; the only difference is whether the Path Bar appears at the bottom of the window.",
       "before_caption": "The full folder hierarchy is not shown at the bottom",
-      "after_caption": "The Path Bar shows Macintosh HD > Users > Projects"
+      "after_caption": "The Path Bar shows Macintosh HD > Users > Documents > Mac Setups"
     },
-    "change_paths": [["Finder", "View", "Show Path Bar"]],
+    "change_paths": [
+      [
+        "Finder",
+        "View",
+        "Show Path Bar"
+      ]
+    ],
     "steps": [
       "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
@@ -51,8 +57,8 @@
       "kind": "personal_recommendation",
       "note": "Guide recommendation: Turn this on when the file type indicated by the filename matters in your workflow."
     },
-    "before_state": "Finder may hide some filename extensions and show names such as “Reimagining Yiyuan,” “Special guest menu,” or “Self-introduction.” The file type may not be clear from the name alone.",
-    "after_state": "Finder shows full filenames such as “Reimagining Yiyuan.txt,” “Special guest menu.pdf,” and “Self-introduction.mov,” making each format visible in the filename.",
+    "before_state": "Finder may hide some filename extensions and show names such as “Setup Notes,” “Setup Guide,” or “Setup Demo.” The file type may not be clear from the name alone.",
+    "after_state": "Finder shows full filenames such as “Setup Notes.txt,” “Setup Guide.pdf,” and “Setup Demo.mov,” making each format visible in the filename.",
     "visual_demo": {
       "type": "state_comparison",
       "variant": "file-extensions",
@@ -61,7 +67,14 @@
       "before_caption": "Similar names can make the file type unclear",
       "after_caption": ".txt, .pdf, and .mov identify the format directly"
     },
-    "change_paths": [["Finder", "Settings", "Advanced", "Show all filename extensions"]],
+    "change_paths": [
+      [
+        "Finder",
+        "Settings",
+        "Advanced",
+        "Show all filename extensions"
+      ]
+    ],
     "steps": [
       "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
@@ -101,7 +114,14 @@
     "before_state": "When Tap to click is off, you need to press the trackpad to perform a click.",
     "after_state": "When Tap to click is on, tapping the trackpad with one finger performs a click without requiring a physical press.",
     "visual_demo": null,
-    "change_paths": [["System Settings", "Trackpad", "Point & Click", "Tap to click"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Trackpad",
+        "Point & Click",
+        "Tap to click"
+      ]
+    ],
     "steps": [
       "Open System Settings.",
       "Click Trackpad in the sidebar, then click Point & Click.",
@@ -148,7 +168,14 @@
       "before_caption": "Lower speed: shorter pointer travel",
       "after_caption": "Suggested starting point: longer pointer travel"
     },
-    "change_paths": [["System Settings", "Trackpad", "Point & Click", "Tracking speed"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Trackpad",
+        "Point & Click",
+        "Tracking speed"
+      ]
+    ],
     "steps": [
       "Take a screenshot of the current Tracking speed slider or record its position.",
       "Open System Settings.",
@@ -190,7 +217,13 @@
       "before_caption": "Suggested or recent apps appear after the separator",
       "after_caption": "The suggested/recent section is hidden; pinned apps stay"
     },
-    "change_paths": [["System Settings", "Desktop & Dock", "Show suggested and recent apps in Dock"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Show suggested and recent apps in Dock"
+      ]
+    ],
     "steps": [
       "Open System Settings.",
       "Click Desktop & Dock in the sidebar.",
@@ -224,7 +257,13 @@
     "before_state": "When the option is off, minimized windows appear in a separate area of the Dock. Several open windows can create several minimized-window items.",
     "after_state": "When the option is on, minimized windows go into their application icon and no longer occupy separate positions in the Dock.",
     "visual_demo": null,
-    "change_paths": [["System Settings", "Desktop & Dock", "Minimize windows into application icon"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Minimize windows into application icon"
+      ]
+    ],
     "steps": [
       "Open System Settings.",
       "Click Desktop & Dock in the sidebar.",
@@ -268,8 +307,18 @@
       "secondary_caption": "Hold Command + move to the top-right corner > put the display to sleep"
     },
     "change_paths": [
-      ["System Settings", "Desktop & Dock", "Desktop & Stage Manager", "Show Desktop", "Only in Stage Manager on Click"],
-      ["System Settings", "Desktop & Dock", "Hot Corners"]
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Desktop & Stage Manager",
+        "Show Desktop",
+        "Only in Stage Manager on Click"
+      ],
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Hot Corners"
+      ]
     ],
     "steps": [
       "Take a screenshot of the current Show Desktop setting and the actions assigned to the top-right and bottom-right corners.",
@@ -315,16 +364,24 @@
     "before_state": "If every available system control and third-party app item is allowed in the menu bar, icons can accumulate and make frequently used items harder to find.",
     "after_state": "The menu bar keeps only the system controls and app items you want for status or quick access; other controls remain available in Control Center or their apps.",
     "visual_demo": {
-      "type": "official_reference",
+      "type": "concept_reference",
       "title": "Menu bar structure",
       "description": "Apple describes the menu bar as containing the Apple menu and app menus on the left, with status menus, Spotlight, Control Center, privacy indicators, and Notification Center on the right.",
-      "image_src": "./assets/apple-menu-bar-official-reference.png",
-      "alt": "Apple diagram labeling the Apple menu, app menus, status menus, Spotlight, Control Center, privacy indicators, and Notification Center in the Mac menu bar.",
-      "caption": "Apple’s menu bar structure diagram provides orientation; it does not represent your current menu bar configuration."
+      "image_src": "./assets/original/menu-bar-en.svg",
+      "alt": "Original menu bar diagram: Apple and app menus on the left; status menus, Spotlight, Control Center, privacy indicators, and Notification Center on the right.",
+      "caption": "Original concept diagram based on Apple’s description; it does not represent your current menu bar."
     },
     "change_paths": [
-      ["System Settings", "Menu Bar", "Menu Bar Controls"],
-      ["System Settings", "Menu Bar", "Allow in the Menu Bar"]
+      [
+        "System Settings",
+        "Menu Bar",
+        "Menu Bar Controls"
+      ],
+      [
+        "System Settings",
+        "Menu Bar",
+        "Allow in the Menu Bar"
+      ]
     ],
     "steps": [
       "Take a screenshot of the system controls and third-party app items currently shown in the menu bar.",
@@ -369,21 +426,70 @@
       "title": "Finder list comparison",
       "description": "Both lists use name sorting. The only change is that folders move ahead of files. The filenames are fictional and the visual is not a macOS screenshot.",
       "before_rows": [
-        { "kind": "pdf", "name": "Special guest menu.pdf", "type": "PDF", "icon_asset": "./assets/adobe-pdf-icon.png" },
-        { "kind": "folder", "name": "TKKC", "type": "Folder" },
-        { "kind": "text", "name": "Reimagining Yiyuan.txt", "type": "Text" },
-        { "kind": "video", "name": "Self-introduction.mov", "type": "Video" },
-        { "kind": "folder", "name": "Project Files", "type": "Folder" }
+        {
+          "kind": "pdf",
+          "name": "01 Setup Guide.pdf",
+          "type": "PDF",
+          "icon_asset": "./assets/original/pdf.svg"
+        },
+        {
+          "kind": "folder",
+          "name": "02 Screenshots",
+          "type": "Folder"
+        },
+        {
+          "kind": "text",
+          "name": "03 Setup Notes.txt",
+          "type": "Text"
+        },
+        {
+          "kind": "video",
+          "name": "04 Setup Demo.mov",
+          "type": "Video"
+        },
+        {
+          "kind": "folder",
+          "name": "05 Backups",
+          "type": "Folder"
+        }
       ],
       "after_rows": [
-        { "kind": "folder", "name": "TKKC", "type": "Folder" },
-        { "kind": "folder", "name": "Project Files", "type": "Folder" },
-        { "kind": "pdf", "name": "Special guest menu.pdf", "type": "PDF", "icon_asset": "./assets/adobe-pdf-icon.png" },
-        { "kind": "text", "name": "Reimagining Yiyuan.txt", "type": "Text" },
-        { "kind": "video", "name": "Self-introduction.mov", "type": "Video" }
+        {
+          "kind": "folder",
+          "name": "02 Screenshots",
+          "type": "Folder"
+        },
+        {
+          "kind": "folder",
+          "name": "05 Backups",
+          "type": "Folder"
+        },
+        {
+          "kind": "pdf",
+          "name": "01 Setup Guide.pdf",
+          "type": "PDF",
+          "icon_asset": "./assets/original/pdf.svg"
+        },
+        {
+          "kind": "text",
+          "name": "03 Setup Notes.txt",
+          "type": "Text"
+        },
+        {
+          "kind": "video",
+          "name": "04 Setup Demo.mov",
+          "type": "Video"
+        }
       ]
     },
-    "change_paths": [["Finder", "Settings", "Advanced", "Keep folders on top"]],
+    "change_paths": [
+      [
+        "Finder",
+        "Settings",
+        "Advanced",
+        "Keep folders on top"
+      ]
+    ],
     "steps": [
       "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
@@ -419,7 +525,13 @@
     "before_state": "The Finder toolbar keeps its default items, and actions you need may require a search through the menu bar.",
     "after_state": "The Finder toolbar keeps the items that fit your workflow and removes items you do not need.",
     "visual_demo": null,
-    "change_paths": [["Finder", "View", "Customize Toolbar"]],
+    "change_paths": [
+      [
+        "Finder",
+        "View",
+        "Customize Toolbar"
+      ]
+    ],
     "steps": [
       "Open a Finder window.",
       "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
@@ -459,11 +571,19 @@
       "type": "state_comparison",
       "variant": "input-source-by-document",
       "title": "Input source memory across two documents",
-      "description": "Switch between “再造怡园” and “Special guest menu”. The document text stays unchanged; compare whether returning to a document restores its previously selected input source.",
+      "description": "Switch between “Chinese Setup Notes” and “English Setup Notes”. The document text stays unchanged; compare whether returning to a document restores its previously selected input source.",
       "before_caption": "The previous input source remains after switching documents",
       "after_caption": "The Chinese document restores Pinyin and the English document restores ABC"
     },
-    "change_paths": [["System Settings", "Keyboard", "Text Input", "Edit", "Automatically switch to a document’s input source"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Keyboard",
+        "Text Input",
+        "Edit",
+        "Automatically switch to a document’s input source"
+      ]
+    ],
     "prerequisites": [
       "Add at least two input sources and keep two test documents open."
     ],
@@ -503,7 +623,14 @@
     "before_state": "After waking the Mac, you need to use a password or Touch ID to unlock it.",
     "after_state": "While wearing your Apple Watch near the Mac, press any key or lift the laptop lid and the Mac unlocks automatically.",
     "visual_demo": null,
-    "change_paths": [["System Settings", "Touch ID & Password", "Apple Watch", "Your Apple Watch name"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Touch ID & Password",
+        "Apple Watch",
+        "Your Apple Watch name"
+      ]
+    ],
     "prerequisites": [
       "Use a compatible Apple Watch and sign in to the same Apple Account on the watch and the Mac.",
       "Turn on Wi-Fi, Bluetooth, two-factor authentication, and an Apple Watch passcode, and confirm that both devices meet Apple’s Auto Unlock system requirements."
@@ -542,7 +669,16 @@
     "before_state": "Dragging a file, folder, or window requires holding the trackpad down while moving a finger. Long drags can feel constrained or require repositioning.",
     "after_state": "With Three Finger Drag enabled, use three fingers to drag an item, then click or tap to drop it at the destination.",
     "visual_demo": null,
-    "change_paths": [["System Settings", "Accessibility", "Pointer Control", "Trackpad Options", "Use trackpad for dragging", "Three Finger Drag"]],
+    "change_paths": [
+      [
+        "System Settings",
+        "Accessibility",
+        "Pointer Control",
+        "Trackpad Options",
+        "Use trackpad for dragging",
+        "Three Finger Drag"
+      ]
+    ],
     "prerequisites": [
       "Record the gestures currently configured on the target Mac before changing the dragging style."
     ],
@@ -591,9 +727,22 @@
     "after_state": "Mos processes the mouse wheel separately: the trackpad can keep Natural Scrolling while the wheel uses the direction you prefer, with optional smooth scrolling.",
     "visual_demo": null,
     "change_paths": [
-      ["Mos website or GitHub Releases", "Download Mos", "Move it to Applications"],
-      ["System Settings", "Privacy & Security", "Accessibility", "Allow Mos"],
-      ["Mos", "Scroll", "Reverse scrolling"]
+      [
+        "Mos website or GitHub Releases",
+        "Download Mos",
+        "Move it to Applications"
+      ],
+      [
+        "System Settings",
+        "Privacy & Security",
+        "Accessibility",
+        "Allow Mos"
+      ],
+      [
+        "Mos",
+        "Scroll",
+        "Reverse scrolling"
+      ]
     ],
     "prerequisites": [
       "Use an external mouse with a scroll wheel.",
@@ -642,7 +791,13 @@
     "before_state": "Each action requires moving to the mouse or trackpad and finding a command in the menu bar.",
     "after_state": "Common actions can be completed directly with key combinations, and many menu commands show their shortcut beside the name.",
     "visual_demo": null,
-    "change_paths": [["Any app", "Menu bar in the upper-left corner", "Shortcut symbols beside menu commands"]],
+    "change_paths": [
+      [
+        "Any app",
+        "Menu bar in the upper-left corner",
+        "Shortcut symbols beside menu commands"
+      ]
+    ],
     "steps": [
       "Open an app such as Finder or Safari.",
       "Look at the menu bar in the upper-left corner of the screen. Open a menu such as File or Edit and notice that many commands show shortcut symbols on the right.",
@@ -652,33 +807,137 @@
     ],
     "shortcut_table": {
       "title": "Common keyboard shortcuts",
-      "headers": ["Action", "Shortcut", "Description"],
+      "headers": [
+        "Action",
+        "Shortcut",
+        "Description"
+      ],
       "rows": [
-        ["Close", "Command-W", "Close the window."],
-        ["Copy", "Command-C", "Copy the selected content."],
-        ["Cut", "Command-X", "Cut the selected content."],
-        ["Delete", "Delete", "Delete the character before the cursor."],
-        ["Find", "Command-F", "Find text."],
-        ["Force Quit", "Option-Command-Escape", "Force quit an unresponsive app."],
-        ["Forward Delete", "Fn-Delete", "Delete the character after the cursor."],
-        ["Hide", "Command-H", "Hide the active app."],
-        ["New", "Command-N", "Open a new Finder window or create a new document in another app."],
-        ["New Tab", "Command-T", "Open a new tab in Finder, a document, or Safari."],
-        ["Paste", "Command-V", "Paste a copy of the last copied or cut item."],
-        ["Paste and Match Style", "Option-Shift-Command-V", "Paste a copy while matching the current document’s style."],
-        ["Print", "Command-P", "Print a document."],
-        ["Quick Look", "Space bar", "Select one or more items, then preview their contents without opening the related app."],
-        ["Quit", "Command-Q", "Quit an app."],
-        ["Secondary Click", "Control-click", "Open a shortcut menu."],
-        ["Save", "Command-S", "Save a document."],
-        ["Capture the full screen", "Shift-Command-3", "Capture the entire screen."],
-        ["Capture a selected area", "Shift-Command-4", "Capture part of the screen."],
-        ["Open Screenshot", "Shift-Command-5", "Take a screenshot or screen recording."],
-        ["Select All", "Command-A", "Select all content."],
-        ["Show Emoji and Symbols", "Fn/Globe key", "Open the Character Viewer to find emoji and symbols."],
-        ["Spotlight search", "Command-Space", "Search for anything on your Mac."],
-        ["Switch apps", "Command-Tab", "Press Command-Tab again for the next app, or Shift-Command-Tab for the previous app."],
-        ["Undo", "Command-Z", "Undo the previous action."]
+        [
+          "Close",
+          "Command-W",
+          "Close the window."
+        ],
+        [
+          "Copy",
+          "Command-C",
+          "Copy the selected content."
+        ],
+        [
+          "Cut",
+          "Command-X",
+          "Cut the selected content."
+        ],
+        [
+          "Delete",
+          "Delete",
+          "Delete the character before the cursor."
+        ],
+        [
+          "Find",
+          "Command-F",
+          "Find text."
+        ],
+        [
+          "Force Quit",
+          "Option-Command-Escape",
+          "Force quit an unresponsive app."
+        ],
+        [
+          "Forward Delete",
+          "Fn-Delete",
+          "Delete the character after the cursor."
+        ],
+        [
+          "Hide",
+          "Command-H",
+          "Hide the active app."
+        ],
+        [
+          "New",
+          "Command-N",
+          "Open a new Finder window or create a new document in another app."
+        ],
+        [
+          "New Tab",
+          "Command-T",
+          "Open a new tab in Finder, a document, or Safari."
+        ],
+        [
+          "Paste",
+          "Command-V",
+          "Paste a copy of the last copied or cut item."
+        ],
+        [
+          "Paste and Match Style",
+          "Option-Shift-Command-V",
+          "Paste a copy while matching the current document’s style."
+        ],
+        [
+          "Print",
+          "Command-P",
+          "Print a document."
+        ],
+        [
+          "Quick Look",
+          "Space bar",
+          "Select one or more items, then preview their contents without opening the related app."
+        ],
+        [
+          "Quit",
+          "Command-Q",
+          "Quit an app."
+        ],
+        [
+          "Secondary Click",
+          "Control-click",
+          "Open a shortcut menu."
+        ],
+        [
+          "Save",
+          "Command-S",
+          "Save a document."
+        ],
+        [
+          "Capture the full screen",
+          "Shift-Command-3",
+          "Capture the entire screen."
+        ],
+        [
+          "Capture a selected area",
+          "Shift-Command-4",
+          "Capture part of the screen."
+        ],
+        [
+          "Open Screenshot",
+          "Shift-Command-5",
+          "Take a screenshot or screen recording."
+        ],
+        [
+          "Select All",
+          "Command-A",
+          "Select all content."
+        ],
+        [
+          "Show Emoji and Symbols",
+          "Fn/Globe key",
+          "Open the Character Viewer to find emoji and symbols."
+        ],
+        [
+          "Spotlight search",
+          "Command-Space",
+          "Search for anything on your Mac."
+        ],
+        [
+          "Switch apps",
+          "Command-Tab",
+          "Press Command-Tab again for the next app, or Shift-Command-Tab for the previous app."
+        ],
+        [
+          "Undo",
+          "Command-Z",
+          "Undo the previous action."
+        ]
       ]
     },
     "restore_steps": [

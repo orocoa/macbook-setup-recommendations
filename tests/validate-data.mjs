@@ -15,7 +15,7 @@ const supportedVisualVariants = new Set([
   "input-source-by-document",
   "folders-on-top",
 ]);
-const supportedVisualTypes = new Set(["state_comparison", "motion_comparison", "workflow", "official_reference"]);
+const supportedVisualTypes = new Set(["state_comparison", "motion_comparison", "workflow", "official_reference", "concept_reference"]);
 const requiredTextFields = ["id", "master_section", "title", "description", "before_state", "after_state"];
 const requiredArrayFields = ["change_paths", "steps", "restore_steps", "sources"];
 
@@ -66,7 +66,7 @@ for (const [locale, settings] of Object.entries(settingsByLocale)) {
     assert(setting.visual_demo === null || typeof setting.visual_demo === "object", `${label} 的 visual_demo 必须是对象或 null`);
     if (!setting.visual_demo) continue;
     assert(supportedVisualTypes.has(setting.visual_demo.type), `${label} 使用了未实现的视觉类型`);
-    if (setting.visual_demo.type === "official_reference") {
+    if (["official_reference", "concept_reference"].includes(setting.visual_demo.type)) {
       assert(typeof setting.visual_demo.image_src === "string" && setting.visual_demo.image_src, `${label} 缺少 image_src`);
       assert(typeof setting.visual_demo.alt === "string" && setting.visual_demo.alt, `${label} 缺少 alt`);
       const pageUrl = new URL("../index.html", localeFiles[locale]);
