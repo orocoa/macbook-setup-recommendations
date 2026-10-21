@@ -8,6 +8,10 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 [Open MacBook Setup Recommendations](https://kai-nex.com/macsetup/)
 
+[![Open guide](https://img.shields.io/badge/guide-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+
+![MacBook Setup Recommendations showing the Finder path bar guide and before/after illustrations](docs/preview-guide.png)
+
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
 ## Product case & ownership

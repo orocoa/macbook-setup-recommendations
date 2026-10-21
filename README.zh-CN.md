@@ -8,6 +8,10 @@
 
 [打开 MacBook 设置建议](https://kai-nex.com/macsetup/)
 
+[![打开指南](https://img.shields.io/badge/指南-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+
+![MacBook 设置建议：访达路径栏的设置说明与前后对比示意](docs/preview-guide-zh-CN.png)
+
 无需下载或安装，建议直接在 MacBook 的浏览器中打开。
 
 ## 产品案例与个人贡献
