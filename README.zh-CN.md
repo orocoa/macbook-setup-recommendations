@@ -8,6 +8,11 @@
 
 [打开 MacBook 设置建议](https://kai-nex.com/macsetup/)
 
+[![打开指南](https://img.shields.io/badge/指南-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+
+> **待补截图：** 主从布局，选中一条访达建议。规格：PNG/WebP，≤1.5MB，宽≥1200。路径：`docs/preview-guide.png`。
+
+
 无需下载或安装，建议直接在 MacBook 的浏览器中打开。
 
 ## 产品案例与个人贡献

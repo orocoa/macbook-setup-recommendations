@@ -8,6 +8,16 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 [Open MacBook Setup Recommendations](https://kai-nex.com/macsetup/)
 
+[![Open guide](https://img.shields.io/badge/guide-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+
+<!-- Replace with real screenshot when available:
+![MacBook Setup Recommendations — Master–Detail guide UI](docs/preview-guide.png)
+-->
+
+> **Screenshot needed:** Master–Detail UI with one Finder recommendation selected (EN or zh).  
+> Spec: PNG/WebP, ≤ 1.5 MB, width ≥ 1200px. Path: `docs/preview-guide.png`.
+
+
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
 ## Product case & ownership
