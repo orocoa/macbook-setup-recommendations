@@ -1,0 +1,10 @@
+[data-macsetup-loader] {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  background: #f1f1f1;
+}
+:root[data-macsetup-intro="loading"] [data-macsetup-content] {
+  opacity: 0;
+  pointer-events: none;
+}

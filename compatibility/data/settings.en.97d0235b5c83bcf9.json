@@ -1,0 +1,987 @@
+[
+  {
+    "id": "finder-path-bar",
+    "content_type": "system_setting",
+    "master_section": "Finder",
+    "master_order": 10,
+    "title": "Show the Finder path bar",
+    "description": "Show the location and nested folders for the current file or folder near the bottom of a Finder window.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on if you regularly work in nested project folders and want a persistent location cue."
+    },
+    "before_state": "When the Path Bar is hidden, the bottom of the Finder window does not show the current location and its parent folders.",
+    "after_state": "When the Path Bar is shown, the current location and its parent folders appear near the bottom of the Finder window.",
+    "visual_demo": {
+      "type": "state_comparison",
+      "variant": "finder-path-bar",
+      "title": "Path location comparison",
+      "description": "The same nested folder is shown in both states; the only difference is whether the Path Bar appears at the bottom of the window.",
+      "before_caption": "The full folder hierarchy is not shown at the bottom",
+      "after_caption": "The Path Bar shows Macintosh HD > Users > Documents > Mac Setups"
+    },
+    "change_paths": [
+      [
+        "Finder",
+        "View",
+        "Show Path Bar"
+      ]
+    ],
+    "steps": [
+      "Open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Choose View > Show Path Bar from the menu bar.",
+      "Check the bottom of the Finder window and confirm that the current folder hierarchy appears."
+    ],
+    "restore_steps": [
+      "In Finder, choose View > Hide Path Bar from the menu bar."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Get file, folder, and disk information on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp1774/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "finder-show-all-file-extensions",
+    "content_type": "system_setting",
+    "master_section": "Finder",
+    "master_order": 20,
+    "title": "Show all filename extensions",
+    "description": "Show extensions such as .txt, .pdf, and .mov at the end of filenames so the file type is easier to identify.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on when the file type indicated by the filename matters in your workflow."
+    },
+    "before_state": "Finder may hide some filename extensions and show names such as “Setup Notes,” “Setup Guide,” or “Setup Demo.” The file type may not be clear from the name alone.",
+    "after_state": "Finder shows full filenames such as “Setup Notes.txt,” “Setup Guide.pdf,” and “Setup Demo.mov,” making each format visible in the filename.",
+    "visual_demo": {
+      "type": "state_comparison",
+      "variant": "file-extensions",
+      "title": "Filename comparison",
+      "description": "The same files are shown in both states; the only difference is whether filename extensions are visible.",
+      "before_caption": "Similar names can make the file type unclear",
+      "after_caption": ".txt, .pdf, and .mov identify the format directly"
+    },
+    "change_paths": [
+      [
+        "Finder",
+        "Settings",
+        "Advanced",
+        "Show all filename extensions"
+      ]
+    ],
+    "steps": [
+      "Open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click Finder in the menu bar, then click Settings.",
+      "Click Advanced.",
+      "Turn on “Show all filename extensions.”",
+      "Return to a Finder window containing several file types and confirm that extensions such as .txt, .pdf, and .mov are visible."
+    ],
+    "restore_steps": [
+      "Open a Finder window, then click Finder > Settings > Advanced in the upper-left menu bar and turn off “Show all filename extensions.”"
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Show or hide filename extensions on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp2304/mac"
+      },
+      {
+        "label": "Apple Support — Change Finder settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp2803/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-19"
+    }
+  },
+  {
+    "id": "trackpad-tap-to-click",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 10,
+    "title": "Turn on Tap to Click",
+    "description": "Perform a click by tapping the trackpad with one finger instead of pressing it down.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on if you prefer a lighter click interaction."
+    },
+    "before_state": "When Tap to click is off, you need to press the trackpad to perform a click.",
+    "after_state": "When Tap to click is on, tapping the trackpad with one finger performs a click without requiring a physical press.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "System Settings",
+        "Trackpad",
+        "Point & Click",
+        "Tap to click"
+      ]
+    ],
+    "steps": [
+      "Open System Settings.",
+      "Click Trackpad in the sidebar, then click Point & Click.",
+      "Turn on “Tap to click.”",
+      "Tap the trackpad in Finder or on a webpage to confirm that a tap performs a click."
+    ],
+    "restore_steps": [
+      "Return to Trackpad > Point & Click, then turn off “Tap to click.”"
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Trackpad settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/-mchlp1226/mac"
+      },
+      {
+        "label": "Apple Support — Use Multi-Touch gestures on Mac",
+        "url": "https://support.apple.com/102482"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "trackpad-tracking-speed",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 20,
+    "title": "Adjust trackpad tracking speed",
+    "description": "Increase pointer speed to suit your control preference. The third position from the right is this guide’s suggested starting point, not a universal setting.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Personal starting point: Try the third position from the right, then adjust one position at a time based on accuracy and comfort."
+    },
+    "before_label": "Lower speed",
+    "after_label": "Suggested starting point",
+    "before_state": "At a lower Tracking speed, moving the pointer across a large display requires more finger movement.",
+    "after_state": "At the guide’s suggested starting point, the pointer travels farther for the same finger movement. This is a personal workflow recommendation, not an Apple default or official recommendation.",
+    "visual_demo": {
+      "type": "motion_comparison",
+      "variant": "tracking-speed",
+      "title": "Pointer travel for the same finger movement",
+      "description": "The finger moves the same distance in both states; only the resulting pointer distance changes.",
+      "before_caption": "Lower speed: shorter pointer travel",
+      "after_caption": "Suggested starting point: longer pointer travel"
+    },
+    "change_paths": [
+      [
+        "System Settings",
+        "Trackpad",
+        "Point & Click",
+        "Tracking speed"
+      ]
+    ],
+    "steps": [
+      "Take a screenshot of the current Tracking speed slider or record its position.",
+      "Open System Settings.",
+      "Click Trackpad in the sidebar, then click Point & Click.",
+      "As a personal starting point, move the Tracking speed slider to the third position from the right, leaving two positions to its right.",
+      "Test the pointer in Finder, a browser, or across a large display. If you regularly overshoot targets, move the slider one position to the left."
+    ],
+    "restore_steps": [
+      "Return to Trackpad > Point & Click and restore the Tracking speed slider using your screenshot or note."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change mouse or trackpad tracking, double-click, and scrolling speed on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp1138/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-19"
+    }
+  },
+  {
+    "id": "dock-hide-suggested-recent-apps",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 40,
+    "title": "Hide suggested and recent apps in the Dock",
+    "description": "Remove suggested and recently opened apps that macOS adds toward one end of the Dock when they are not already included there.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this off if you want the Dock to contain only the apps you intentionally keep there."
+    },
+    "before_state": "The end of the Dock can show suggested and recently opened apps that are not already included in the Dock, and this area changes with use.",
+    "after_state": "The Dock no longer shows suggested and recent apps. You can still add, remove, and arrange the apps you choose to keep in the Dock.",
+    "visual_demo": {
+      "type": "state_comparison",
+      "variant": "dock-recents",
+      "title": "Dock end comparison",
+      "description": "A partial Dock view using app names: the first three pinned apps stay the same; compare the suggested and recent apps after the separator. Other Dock areas are not shown.",
+      "before_caption": "Suggested or recent apps appear after the separator",
+      "after_caption": "The suggested/recent section is hidden; pinned apps stay"
+    },
+    "change_paths": [
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Show suggested and recent apps in Dock"
+      ]
+    ],
+    "steps": [
+      "Open System Settings.",
+      "Click Desktop & Dock in the sidebar.",
+      "In the Dock section, turn off “Show suggested and recent apps in Dock.”",
+      "Check the end of the Dock and confirm that suggested or recently opened apps are no longer added automatically."
+    ],
+    "restore_steps": [
+      "Return to Desktop & Dock and turn on “Show suggested and recent apps in Dock.”"
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Desktop & Dock settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp1119/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "dock-minimize-windows-into-application-icon",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 50,
+    "title": "Minimize windows into the application icon",
+    "description": "Minimize an app window into its app icon instead of giving each minimized window a separate position in the Dock.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on if separate minimized-window thumbnails make your Dock feel crowded."
+    },
+    "before_state": "When the option is off, minimized windows appear in a separate area of the Dock. Several open windows can create several minimized-window items.",
+    "after_state": "When the option is on, minimized windows go into their application icon and no longer occupy separate positions in the Dock.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Minimize windows into application icon"
+      ]
+    ],
+    "steps": [
+      "Open System Settings.",
+      "Click Desktop & Dock in the sidebar.",
+      "In the Dock section, turn on “Minimize windows into application icon.”",
+      "Minimize several windows from the same app and confirm that they no longer appear as separate items in the Dock."
+    ],
+    "restore_steps": [
+      "Return to Desktop & Dock and turn off “Minimize windows into application icon.”"
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Desktop & Dock settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp1119/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "hot-corners-desktop-and-display-sleep",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 56,
+    "title": "Set up Hot Corner workflows",
+    "description": "Use the bottom-right corner to show the desktop, and require Command with the top-right corner to put the display to sleep. Also limit wallpaper clicks that move windows out of the way.",
+    "guidance": {
+      "kind": "personal_workflow_recipe",
+      "note": "Personal workflow recommendation: These corner assignments and the Command modifier are the guide owner’s preferred setup, not Apple defaults or an Apple recommendation."
+    },
+    "before_label": "Before this setup",
+    "after_label": "After this setup",
+    "before_state": "A wallpaper click may move windows out of the way, and the two corners may have different actions or no deliberate workflow assigned.",
+    "after_state": "The bottom-right hot corner shows the desktop. The top-right hot corner puts the display to sleep only while Command is held. Wallpaper clicks move windows only when Stage Manager is active.",
+    "visual_demo": {
+      "type": "workflow",
+      "variant": "hot-corners",
+      "title": "Bottom-right file drag workflow",
+      "description": "While working in an app, use the bottom-right hot corner to show the desktop, begin dragging a file, trigger the same corner again while continuing to drag, and drop the file into the original app.",
+      "primary_caption": "Current app > bottom-right corner > show desktop > begin and continue dragging > bottom-right corner again > drop into the original app",
+      "secondary_caption": "Hold Command + move to the top-right corner > put the display to sleep"
+    },
+    "change_paths": [
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Desktop & Stage Manager",
+        "Click wallpaper to reveal desktop",
+        "Only in Stage Manager"
+      ],
+      [
+        "System Settings",
+        "Desktop & Dock",
+        "Hot Corners"
+      ]
+    ],
+    "steps": [
+      "Take a screenshot of the current Show Desktop setting and the actions assigned to the top-right and bottom-right corners.",
+      "Open System Settings, then click Desktop & Dock in the sidebar.",
+      "In Desktop & Stage Manager, set “Click wallpaper to reveal desktop” to “Only in Stage Manager.” This option may be labeled Show Desktop in other versions.",
+      "Scroll down and click Hot Corners.",
+      "For the top-right corner, hold Command while viewing that corner’s pop-up menu, then choose “Put Display to Sleep.”",
+      "For the bottom-right corner, choose “Desktop.” This replaces any action currently assigned to that corner.",
+      "Click Done.",
+      "Test the desktop round trip: In the current app, move the pointer to the bottom-right corner to show the desktop. Begin dragging a desktop file and keep holding it, move the pointer to the bottom-right corner again, wait for the original app to return, then drop the file. If you release the file early, it will not continue following the pointer.",
+      "Test display sleep: Hold Command and move the pointer to the top-right corner, then confirm that the display goes to sleep.",
+      "The password delay after display sleep is controlled by System Settings > Lock Screen. To lock your Mac immediately, press Control-Command-Q."
+    ],
+    "restore_steps": [
+      "Return to Desktop & Dock, use your screenshot to restore the original Show Desktop setting and both corner actions, then click Done."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Desktop & Dock settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp1119/mac"
+      },
+      {
+        "label": "Apple Support — Use hot corners on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp3000/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    }
+  },
+  {
+    "id": "menu-bar-customize-controls",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 60,
+    "title": "Customize menu bar items",
+    "description": "Choose which system controls and app items appear on the right side of the menu bar, keeping the items you need to check or use quickly.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Keep items that provide useful at-a-glance status or frequent one-click access; move occasional controls to Control Center or the app itself."
+    },
+    "before_label": "Before organizing",
+    "after_label": "After organizing",
+    "before_state": "If every available system control and third-party app item is allowed in the menu bar, icons can accumulate and make frequently used items harder to find.",
+    "after_state": "The menu bar keeps only the system controls and app items you want for status or quick access; other controls remain available in Control Center or their apps.",
+    "visual_demo": {
+      "type": "concept_reference",
+      "title": "Menu bar structure",
+      "description": "Apple describes the menu bar as containing the Apple menu and app menus on the left, with status menus, Spotlight, Control Center, privacy indicators, and Notification Center on the right.",
+      "image_src": "./assets/original/menu-bar-en.svg",
+      "alt": "Original menu bar diagram: Apple and app menus on the left; status menus, Spotlight, Control Center, privacy indicators, and Notification Center on the right.",
+      "caption": "Original concept diagram based on Apple’s description; it does not represent your current menu bar."
+    },
+    "change_paths": [
+      [
+        "System Settings",
+        "Menu Bar",
+        "Menu Bar Controls"
+      ],
+      [
+        "System Settings",
+        "Menu Bar",
+        "Allow in the Menu Bar"
+      ]
+    ],
+    "steps": [
+      "Take a screenshot of the system controls and third-party app items currently shown in the menu bar.",
+      "Review the icons on the right side of the menu bar and decide which ones you need for at-a-glance status or direct action.",
+      "Under Menu Bar Controls, keep the system items you use regularly. For items such as Focus, Screen Mirroring, Sound, and Now Playing, consider “Show When Active” so they appear only while active.",
+      "Under Allow in the Menu Bar, keep only the third-party app items you operate directly from the menu bar.",
+      "Return to the desktop and confirm that frequently used items are easy to find and unnecessary items no longer occupy persistent space."
+    ],
+    "restore_steps": [
+      "Return to Menu Bar settings and use your screenshot to restore the previous system controls and app items."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Customize the menu bar on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchl4af84660/mac"
+      },
+      {
+        "label": "Apple Support — Change Menu Bar settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlad96d366/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
+    }
+  },
+  {
+    "id": "finder-keep-folders-on-top",
+    "content_type": "system_setting",
+    "master_section": "Finder",
+    "master_order": 30,
+    "title": "Keep folders on top",
+    "description": "When sorting by name, show folders first in alphabetical order, followed by files in alphabetical order.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on if separating folders from files makes Finder and the desktop easier to scan."
+    },
+    "before_state": "When sorting by name, folders and files share one alphabetical sequence, so folders can appear between files of different types.",
+    "after_state": "When sorting by name in a Finder window or on the desktop, folders appear first in alphabetical order, followed by files in alphabetical order.",
+    "visual_demo": {
+      "type": "state_comparison",
+      "variant": "folders-on-top",
+      "title": "Finder list comparison",
+      "description": "Both lists use name sorting. The only change is that folders move ahead of files. The filenames are fictional and the visual is not a macOS screenshot.",
+      "before_rows": [
+        {
+          "kind": "pdf",
+          "name": "01 Setup Guide.pdf",
+          "type": "PDF",
+          "icon_asset": "./assets/original/pdf.svg"
+        },
+        {
+          "kind": "folder",
+          "name": "02 Screenshots",
+          "type": "Folder"
+        },
+        {
+          "kind": "text",
+          "name": "03 Setup Notes.txt",
+          "type": "Text"
+        },
+        {
+          "kind": "video",
+          "name": "04 Setup Demo.mov",
+          "type": "Video"
+        },
+        {
+          "kind": "folder",
+          "name": "05 Backups",
+          "type": "Folder"
+        }
+      ],
+      "after_rows": [
+        {
+          "kind": "folder",
+          "name": "02 Screenshots",
+          "type": "Folder"
+        },
+        {
+          "kind": "folder",
+          "name": "05 Backups",
+          "type": "Folder"
+        },
+        {
+          "kind": "pdf",
+          "name": "01 Setup Guide.pdf",
+          "type": "PDF",
+          "icon_asset": "./assets/original/pdf.svg"
+        },
+        {
+          "kind": "text",
+          "name": "03 Setup Notes.txt",
+          "type": "Text"
+        },
+        {
+          "kind": "video",
+          "name": "04 Setup Demo.mov",
+          "type": "Video"
+        }
+      ]
+    },
+    "change_paths": [
+      [
+        "Finder",
+        "Settings",
+        "Advanced",
+        "Keep folders on top"
+      ]
+    ],
+    "steps": [
+      "Open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click Finder in the menu bar, then click Settings.",
+      "Click Advanced.",
+      "Under Keep folders on top, turn on “In windows when sorting by name” and “On Desktop.”",
+      "Sort a Finder window and the desktop by name, then confirm that folders appear before files."
+    ],
+    "restore_steps": [
+      "Open a Finder window, then click Finder > Settings > Advanced in the upper-left menu bar and turn off the two options under Keep folders on top."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Finder settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp2803/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18"
+    }
+  },
+  {
+    "id": "finder-customize-toolbar",
+    "content_type": "system_setting",
+    "master_section": "Finder",
+    "master_order": 40,
+    "title": "Customize the Finder toolbar",
+    "description": "Keep the Finder actions you use most at the top of the window, so you do not have to look through menus every time.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Keep only the actions you regularly use. A toolbar with too many items is no quicker to scan."
+    },
+    "before_state": "The Finder toolbar keeps its default items, and actions you need may require a search through the menu bar.",
+    "after_state": "The Finder toolbar keeps the items that fit your workflow and removes items you do not need.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "Finder",
+        "View",
+        "Customize Toolbar"
+      ]
+    ],
+    "steps": [
+      "Open a Finder window.",
+      "Look at the menu bar in the upper-left corner of the screen and confirm that “Finder” appears there.",
+      "Click View in the menu bar, then click Customize Toolbar.",
+      "In the panel that appears, drag frequently used items into the toolbar at the top of the Finder window. Drag items you do not need out of the toolbar.",
+      "Close the panel, open a folder, and confirm that the actions you use most are available without making the toolbar crowded."
+    ],
+    "restore_steps": [
+      "Open View > Customize Toolbar again, drag out later additions you no longer need, and arrange the remaining items for your workflow."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Customize the Finder toolbar on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchlp3011/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20"
+    }
+  },
+  {
+    "id": "keyboard-switch-input-source-by-document",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 70,
+    "title": "Automatically switch to a document’s input source",
+    "description": "Let each open document use the input source previously chosen for it, even when you switch between documents.",
+    "guidance": {
+      "kind": "personal_recommendation",
+      "note": "Guide recommendation: Turn this on if you regularly switch between documents written with different input sources."
+    },
+    "before_label": "When off",
+    "after_label": "When on",
+    "before_state": "When you switch between Chinese and English documents, the input source remains the one most recently used, so you may need to change it manually.",
+    "after_state": "After you choose an input source for each open document, returning to that document restores its input source until the document is closed.",
+    "visual_demo": {
+      "type": "state_comparison",
+      "variant": "input-source-by-document",
+      "title": "Input source memory across two documents",
+      "description": "Switch between “Chinese Setup Notes” and “English Setup Notes”. The document text stays unchanged; compare whether returning to a document restores its previously selected input source.",
+      "before_caption": "The previous input source remains after switching documents",
+      "after_caption": "The Chinese document restores Pinyin and the English document restores ABC"
+    },
+    "change_paths": [
+      [
+        "System Settings",
+        "Keyboard",
+        "Text Input",
+        "Edit",
+        "All Input Sources",
+        "Automatically switch to a document’s input source"
+      ]
+    ],
+    "prerequisites": [
+      "Add at least two input sources and keep two test documents open."
+    ],
+    "steps": [
+      "Open System Settings, then click Keyboard in the sidebar.",
+      "In Text Input, click Edit, then select All Input Sources in the sidebar.",
+      "Confirm that at least two input sources have been added. This option appears only when more than one input source is available.",
+      "Turn on “Automatically switch to a document’s input source.”",
+      "Open two documents, choose a Chinese input source for one and an English input source for the other, then switch between the still-open documents and confirm that each input source is restored."
+    ],
+    "restore_steps": [
+      "Return to Keyboard > Text Input > Edit > All Input Sources and turn off “Automatically switch to a document’s input source.”"
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Change Input Sources settings on Mac",
+        "url": "https://support.apple.com/guide/mac-help/mchl84525d76/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    }
+  },
+  {
+    "id": "apple-watch-auto-unlock",
+    "content_type": "system_setting",
+    "master_section": "System Settings",
+    "master_order": 80,
+    "title": "Unlock your Mac with Apple Watch",
+    "description": "When you are wearing your unlocked Apple Watch and are near your Mac, use it to unlock the Mac without entering a password.",
+    "guidance": {
+      "kind": "optional_convenience_recommendation",
+      "note": "Optional guide recommendation: Use Auto Unlock only if your devices meet Apple’s requirements and the convenience fits your security preferences."
+    },
+    "before_label": "When requirements are not met",
+    "after_label": "When requirements are met",
+    "before_state": "After waking the Mac, you need to use a password or Touch ID to unlock it.",
+    "after_state": "While wearing your Apple Watch near the Mac, press any key or lift the laptop lid and the Mac unlocks automatically.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "System Settings",
+        "Touch ID & Password",
+        "Apple Watch",
+        "Your Apple Watch name"
+      ]
+    ],
+    "prerequisites": [
+      "Use a compatible Apple Watch and sign in to the same Apple Account on the watch and the Mac.",
+      "Turn on Wi-Fi, Bluetooth, two-factor authentication, and an Apple Watch passcode, and confirm that both devices meet Apple’s Auto Unlock system requirements.",
+      "If the Apple Watch section is unavailable, check device and account requirements first. Skip this item when it does not apply."
+    ],
+    "steps": [
+      "Confirm that the Mac and Apple Watch use the same Apple Account and that Wi-Fi, Bluetooth, two-factor authentication, and the Apple Watch passcode are turned on.",
+      "Open System Settings and click Touch ID & Password in the sidebar.",
+      "In the Apple Watch section, turn on the option next to the name of your watch.",
+      "Wear the Apple Watch near the Mac, press any key or lift the laptop lid, and confirm that the Mac unlocks automatically."
+    ],
+    "restore_steps": [
+      "Return to Touch ID & Password > Apple Watch and turn off the option next to the name of your watch."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Unlock your Mac and approve requests with Apple Watch",
+        "url": "https://support.apple.com/guide/mac-help/mchl4f800a42/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    }
+  },
+  {
+    "id": "trackpad-three-finger-drag",
+    "content_type": "setup_recipe",
+    "master_section": "System Settings",
+    "master_order": 30,
+    "title": "Drag items with three fingers",
+    "description": "Use three fingers to drag files, folders, or windows, then click or tap to drop. Check the gestures actually configured on the target Mac after enabling it.",
+    "guidance": {
+      "kind": "personal_recommendation_with_device_check",
+      "note": "Guide recommendation: Try Three Finger Drag if press-and-drag interactions feel tiring or limiting. Gesture assignments can vary by Mac, trackpad, and macOS version, so verify the result on the target Mac."
+    },
+    "target_mac_observation": "Observed on the target Mac used for this guide: after Three Finger Drag was enabled, conflicting Mission Control and App Exposé gestures changed to four fingers automatically. This is a device-specific observation, not an Apple-wide guarantee.",
+    "before_state": "Dragging a file, folder, or window requires holding the trackpad down while moving a finger. Long drags can feel constrained or require repositioning.",
+    "after_state": "With Three Finger Drag enabled, use three fingers to drag an item, then click or tap to drop it at the destination.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "System Settings",
+        "Accessibility",
+        "Pointer Control",
+        "Trackpad Options",
+        "Use trackpad for dragging",
+        "Dragging style",
+        "Three Finger Drag"
+      ]
+    ],
+    "prerequisites": [
+      "Record the gestures currently configured on the target Mac before changing the dragging style."
+    ],
+    "conflicts": [
+      "Only change a gesture if it actually conflicts with Three Finger Drag on the target Mac. If Mission Control or App Exposé already uses four fingers, leave it unchanged."
+    ],
+    "steps": [
+      "Open System Settings > Accessibility > Pointer Control > Trackpad Options.",
+      "Turn on “Use trackpad for dragging,” select Three-Finger Drag under Dragging style, then click OK.",
+      "After enabling it, open Trackpad > More Gestures and inspect the actual gesture assignments. On the target Mac used for this guide, conflicting gestures changed to four fingers automatically, but this may differ by device or macOS version.",
+      "If the system shows four-finger gestures, swipe up with four fingers to open Mission Control and swipe down with four fingers to open App Exposé.",
+      "In Finder, drag a test file or window with three fingers, click or tap to drop it, and confirm that Mission Control and App Exposé still work as shown in your current settings."
+    ],
+    "restore_steps": [
+      "In Trackpad Options, turn off “Use trackpad for dragging” or restore the previous dragging style, then click OK.",
+      "Return to Trackpad > More Gestures and restore the Mission Control and App Exposé gestures you recorded before the change."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Turn on three finger drag for your Mac trackpad",
+        "url": "https://support.apple.com/102341"
+      },
+      {
+        "label": "Apple Support — Use Multi-Touch gestures on Mac",
+        "url": "https://support.apple.com/102482"
+      },
+      {
+        "label": "Apple Support — Change Pointer Control settings for accessibility on Mac",
+        "url": "https://support.apple.com/guide/mac-help/unac899/mac"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-19",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    }
+  },
+  {
+    "id": "mos-separate-mouse-scroll-direction",
+    "content_type": "app_recommendation",
+    "master_section": "Utilities & shortcuts",
+    "master_order": 10,
+    "title": "Adjust mouse scrolling direction with Mos",
+    "description": "Mos is a separate app that you download and install. Keep Natural Scrolling on the trackpad while reversing an external mouse wheel independently, with optional smoother wheel movement.",
+    "before_label": "System settings only",
+    "after_label": "With Mos",
+    "before_state": "When you rely only on the macOS scroll-direction setting, the mouse and trackpad use the same direction. Natural Scrolling may feel right on a trackpad but unfamiliar on a mouse wheel.",
+    "after_state": "Mos processes the mouse wheel separately: the trackpad can keep Natural Scrolling while the wheel uses the direction you prefer, with optional smooth scrolling.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "Mos website or GitHub Releases",
+        "Download Mos",
+        "Move it to Applications"
+      ],
+      [
+        "System Settings",
+        "Privacy & Security",
+        "Device Control and Data Access (macOS 27)",
+        "Allow Mos"
+      ],
+      [
+        "System Settings",
+        "Privacy & Security",
+        "Accessibility (earlier macOS)",
+        "Allow Mos"
+      ],
+      [
+        "Mos",
+        "Preferences",
+        "Scrolling",
+        "Invert wheel direction"
+      ]
+    ],
+    "prerequisites": [
+      "Use an external mouse with a scroll wheel. Mos is a third-party app, not a built-in macOS setting.",
+      "Mos needs system permission to process mouse input. In the current English macOS 27 interface, the entry is Device Control and Data Access; earlier versions use Accessibility. Read the access scope shown by macOS before granting permission.",
+      "The macOS 27 permission label was verified in English; localized labels may differ. The Mos controls were checked in version 4.2.1 and may vary in other versions."
+    ],
+    "conflicts": [
+      "Running another mouse-management utility at the same time can apply scroll direction or smoothing twice. If scrolling behaves unexpectedly, test with only one utility enabled."
+    ],
+    "steps": [
+      "Keep Natural Scrolling turned on in System Settings > Trackpad > Scroll & Zoom.",
+      "Download Mos from its official website or GitHub Releases, then move Mos.app to the Applications folder.",
+      "On first launch, read the system permission request. If you accept the access scope, allow Mos in System Settings > Privacy & Security > Device Control and Data Access. On earlier macOS versions, use Accessibility.",
+      "In Mos itself, open Preferences > Scrolling and enable Invert wheel direction. Enable smooth scrolling only if it improves the feel of your mouse.",
+      "Scroll the same webpage with the trackpad and the mouse. Confirm that the trackpad keeps Natural Scrolling while the wheel uses your preferred direction."
+    ],
+    "restore_steps": [
+      "Turn off reverse scrolling and other scroll processing in Mos, or quit Mos.",
+      "If you no longer use Mos, turn off its permission in Privacy & Security > Device Control and Data Access (Accessibility on earlier macOS versions)."
+    ],
+    "sources": [
+      {
+        "label": "Mos — Separate mouse and trackpad scrolling behavior",
+        "url": "https://mos.caldis.me/"
+      },
+      {
+        "label": "Mos on GitHub — Features, installation, and Accessibility permission",
+        "url": "https://github.com/Caldis/Mos"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20",
+      "observation": "This app recommendation reflects the guide author's external-mouse workflow; it is not an Apple recommendation. Mos is a standalone menu bar app, not a system plug-in. The English macOS 27.0.1 permission entry and Mos 4.2.1 scrolling controls were checked read-only on 2026-10-14; the new permission entry’s official Chinese translation remains unverified.",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    }
+  },
+  {
+    "id": "keyboard-shortcuts-quick-actions",
+    "content_type": "usage_tip",
+    "master_section": "Utilities & shortcuts",
+    "master_order": 20,
+    "title": "Start with common keyboard shortcuts",
+    "description": "Use key combinations for common actions such as copy, paste, undo, switching apps, and searching, so you spend less time finding commands in menus.",
+    "guidance": {
+      "kind": "learning_recommendation",
+      "note": "Guide recommendation: Start with one repeated action rather than trying to memorize a long shortcut list."
+    },
+    "before_state": "Each action requires moving to the mouse or trackpad and finding a command in the menu bar.",
+    "after_state": "Common actions can be completed directly with key combinations, and many menu commands show their shortcut beside the name.",
+    "visual_demo": null,
+    "change_paths": [
+      [
+        "Any app",
+        "Menu bar in the upper-left corner",
+        "Shortcut symbols beside menu commands"
+      ]
+    ],
+    "steps": [
+      "Open an app such as Finder or Safari.",
+      "Look at the menu bar in the upper-left corner of the screen. Open a menu such as File or Edit and notice that many commands show shortcut symbols on the right.",
+      "Start with three combinations: hold the key labeled Command or ⌘, then press C to copy, V to paste, or Z to undo.",
+      "When those feel familiar, try Command-Tab to switch apps and Command-Space to open Spotlight search.",
+      "No system setting needs to be changed. Start using a shortcut whenever you repeat the related action."
+    ],
+    "shortcut_table": {
+      "title": "Common keyboard shortcuts",
+      "headers": [
+        "Action",
+        "Shortcut",
+        "Description"
+      ],
+      "rows": [
+        [
+          "Close",
+          "Command-W",
+          "Close the window."
+        ],
+        [
+          "Copy",
+          "Command-C",
+          "Copy the selected content."
+        ],
+        [
+          "Cut",
+          "Command-X",
+          "Cut the selected content."
+        ],
+        [
+          "Delete",
+          "Delete",
+          "Delete the character before the cursor."
+        ],
+        [
+          "Find",
+          "Command-F",
+          "Find text."
+        ],
+        [
+          "Force Quit",
+          "Option-Command-Escape",
+          "Force quit an unresponsive app."
+        ],
+        [
+          "Forward Delete",
+          "Fn-Delete",
+          "Delete the character after the cursor."
+        ],
+        [
+          "Hide",
+          "Command-H",
+          "Hide the active app."
+        ],
+        [
+          "New",
+          "Command-N",
+          "Open a new Finder window or create a new document in another app."
+        ],
+        [
+          "New Tab",
+          "Command-T",
+          "Open a new tab in Finder, a document, or Safari."
+        ],
+        [
+          "Paste",
+          "Command-V",
+          "Paste a copy of the last copied or cut item."
+        ],
+        [
+          "Paste and Match Style",
+          "Option-Shift-Command-V",
+          "Paste a copy while matching the current document’s style."
+        ],
+        [
+          "Print",
+          "Command-P",
+          "Print a document."
+        ],
+        [
+          "Quick Look",
+          "Space bar",
+          "Select one or more items, then preview their contents without opening the related app."
+        ],
+        [
+          "Quit",
+          "Command-Q",
+          "Quit an app."
+        ],
+        [
+          "Secondary Click",
+          "Control-click",
+          "Open a shortcut menu."
+        ],
+        [
+          "Save",
+          "Command-S",
+          "Save a document."
+        ],
+        [
+          "Capture the full screen",
+          "Shift-Command-3",
+          "Capture the entire screen."
+        ],
+        [
+          "Capture a selected area",
+          "Shift-Command-4",
+          "Capture part of the screen."
+        ],
+        [
+          "Open Screenshot",
+          "Shift-Command-5",
+          "Take a screenshot or screen recording."
+        ],
+        [
+          "Select All",
+          "Command-A",
+          "Select all content."
+        ],
+        [
+          "Show Emoji and Symbols",
+          "Control-Command-Space / Fn-E",
+          "Open the Character Viewer. Pressing the Fn/Globe key alone depends on the action selected in Keyboard settings."
+        ],
+        [
+          "Spotlight search",
+          "Command-Space",
+          "Search for anything on your Mac."
+        ],
+        [
+          "Switch apps",
+          "Command-Tab",
+          "Press Command-Tab again for the next app, or Shift-Command-Tab for the previous app."
+        ],
+        [
+          "Undo",
+          "Command-Z",
+          "Undo the previous action."
+        ]
+      ]
+    },
+    "restore_steps": [
+      "Nothing needs to be restored. To change or turn off system shortcuts, click the Apple menu in the upper-left corner, then choose System Settings > Keyboard > Keyboard Shortcuts."
+    ],
+    "sources": [
+      {
+        "label": "Apple Support — Intro to Mac keyboard shortcuts",
+        "url": "https://support.apple.com/guide/mac-help/mchld6b9e240/mac"
+      },
+      {
+        "label": "Apple Support — Mac keyboard shortcuts",
+        "url": "https://support.apple.com/102650"
+      }
+    ],
+    "_editorial": {
+      "last_verified": "2026-08-20",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "prerequisites": [
+      "The action for pressing the Fn/Globe key alone can be changed in System Settings > Keyboard, including switching input sources or showing emoji. To open emoji, use Control-Command-Space or Fn-E."
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "name": "MacSetup",
+  "legacyNames": [
+    "Mac Setup",
+    "MacBook Setup Recommendations",
+    "MacBook 设置建议"
+  ],
+  "repository": "https://github.com/orocoa/macbook-setup-recommendations",
+  "zh-CN": {
+    "title": "Mac 设置与快捷键图解指南 | MacSetup",
+    "description": "MacSetup 提供 15 项 Mac 设置与快捷操作指南，涵盖访达、触控板、程序坞、输入法和 Mos。查看设置路径、操作步骤、修改前后与恢复方法，用本地清单记录进度。",
+    "guideTitle": "Mac 设置与快捷键指南",
+    "guideIntro": "MacSetup 是由 orocoa 维护的中英双语 Mac 设置指南，收录 15 项访达、系统设置、工具与快捷操作建议。每项说明设置路径、操作步骤、修改前后的变化、恢复方法与来源。",
+    "sourceNote": "每项指南附有来源与适用条件。部分条目记录了路径核对版本和日期；没有版本核对记录的条目不代表已适配当前所有 macOS。",
+    "manualNote": "在自己的 Mac 上手动修改设置。清单仅记录已处理的建议，不能检测或确认真实系统状态；进度只保存在当前浏览器。"
+  },
+  "en": {
+    "title": "Mac Settings & Shortcuts Guide | MacSetup",
+    "description": "Explore 15 MacSetup guides for Finder, trackpad, Dock, input sources, Mos and keyboard shortcuts, with settings paths, before/after explanations, undo steps and a local checklist.",
+    "guideTitle": "Mac settings and shortcuts",
+    "guideIntro": "MacSetup is a bilingual Mac settings guide maintained by orocoa, covering 15 Finder, System Settings, utility and shortcut recommendations. Each guide explains where to find a setting, how to change it, what changes, how to undo it and its sources.",
+    "sourceNote": "Each guide includes sources and prerequisites. Some entries record a path-review version and date; an entry without that record is not a claim of compatibility with every current macOS release.",
+    "manualNote": "Change settings manually on your Mac. The checklist records handled recommendations and cannot detect or confirm system state. Progress stays in the current browser."
+  },
+  "questions": {
+    "finder-path-bar": [
+      "Mac 访达路径栏怎么显示",
+      "How to show the Finder path bar on Mac"
+    ],
+    "finder-show-all-file-extensions": [
+      "Mac 怎么显示文件扩展名",
+      "How to show file extensions on Mac"
+    ],
+    "trackpad-tap-to-click": [
+      "Mac 触控板怎么开启轻点来点按",
+      "How to enable tap to click on Mac"
+    ],
+    "trackpad-tracking-speed": [
+      "Mac 触控板追踪速度怎么调整",
+      "How to change trackpad tracking speed on Mac"
+    ],
+    "dock-hide-suggested-recent-apps": [
+      "Mac 程序坞怎么隐藏建议与最近使用的应用",
+      "How to hide suggested and recent apps in the Mac Dock"
+    ],
+    "dock-minimize-windows-into-application-icon": [
+      "Mac 怎么将窗口最小化为应用程序图标",
+      "How to minimize Mac windows into the app icon"
+    ],
+    "hot-corners-desktop-and-display-sleep": [
+      "Mac 触发角怎么设置显示桌面与显示器睡眠",
+      "How to set Mac Hot Corners for desktop and display sleep"
+    ],
+    "menu-bar-customize-controls": [
+      "Mac 菜单栏显示项怎么设置",
+      "How to customize Mac menu bar controls"
+    ],
+    "finder-keep-folders-on-top": [
+      "Mac 访达怎么让文件夹保持在顶部",
+      "How to keep folders on top in Mac Finder"
+    ],
+    "finder-customize-toolbar": [
+      "Mac 访达工具栏怎么自定义",
+      "How to customize the Finder toolbar on Mac"
+    ],
+    "keyboard-switch-input-source-by-document": [
+      "Mac 怎么自动切换到文稿的输入法",
+      "How to switch Mac input sources by document"
+    ],
+    "apple-watch-auto-unlock": [
+      "Apple Watch 怎么解锁 Mac",
+      "How to unlock your Mac with Apple Watch"
+    ],
+    "trackpad-three-finger-drag": [
+      "Mac 三指拖移怎么开启",
+      "How to enable three-finger drag on Mac"
+    ],
+    "mos-separate-mouse-scroll-direction": [
+      "Mac 鼠标和触控板怎么分别设置滚动方向",
+      "How to separate mouse and trackpad scrolling with Mos"
+    ],
+    "keyboard-shortcuts-quick-actions": [
+      "Mac 常用键盘快捷键有哪些",
+      "Common Mac keyboard shortcuts and quick actions"
+    ]
+  }
+}

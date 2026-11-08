@@ -207,3 +207,5 @@ h1, h2, h3 { font-weight: 500; }
   .demo-hot-sleep-screen { flex: 0 1 180px; min-width: 100px; }
   .guide-footer { line-height: 20px; }
 }
+
+.guide-links{display:flex;gap:18px;flex-wrap:wrap;font-size:12px}.guide-links a{color:inherit;text-underline-offset:3px}.progress-dialog{max-width:min(520px,calc(100% - 40px));padding:28px;border:2px solid #111;font:16px/1.6 -apple-system,system-ui,sans-serif}.progress-dialog::backdrop{background:#0006}.progress-dialog button{font:inherit;padding:8px 16px;margin:8px 12px 0 0;background:#fff;color:#111;border:1px solid #111}.progress-dialog h2{font-size:23px}

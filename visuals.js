@@ -1,4 +1,4 @@
-// Existing Mac Setup illustrations, reused in this local style experiment.
+// Existing MacSetup illustrations, reused in this local style experiment.
 export function createVisuals(textFor) {
   function replayAnimations(root) {
     root.getAnimations({ subtree: true }).forEach(animation => {
@@ -228,9 +228,9 @@ function addMotionControl(block, animationRoot, title) {
 function createInputSourceScene(scene, phase) {
   const documents = createDemoElement("div", "demo-documents");
   const chinese = createDemoElement("div", "demo-document doc-cn");
-  chinese.append(createDemoElement("span", "demo-document-title", textFor("chineseDocument")), createDemoElement("span", "demo-document-sample", "你好"), createDemoElement("span", "demo-document-input", textFor("pinyin")));
+  chinese.append(createDemoElement("span", "demo-document-title", textFor("chineseDocument")), createDemoElement("span", "demo-document-sample", textFor("chineseDocumentSample")), createDemoElement("span", "demo-document-input", textFor("pinyin")));
   const english = createDemoElement("div", "demo-document doc-en");
-  english.append(createDemoElement("span", "demo-document-title", textFor("englishDocument")), createDemoElement("span", "demo-document-sample", "Hello"), createDemoElement("span", "demo-document-input", phase === "after" ? "ABC" : textFor("pinyin")));
+  english.append(createDemoElement("span", "demo-document-title", textFor("englishDocument")), createDemoElement("span", "demo-document-sample", textFor("englishDocumentSample")), createDemoElement("span", "demo-document-input", phase === "after" ? "ABC" : textFor("pinyin")));
   documents.append(chinese, english);
   scene.append(documents);
 }

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Mac Settings & Shortcuts Guide | MacSetup</title>
+    
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="./visuals.css?v=20261009-release" />
+    <link rel="stylesheet" href="./styles.css?v=20261009-release" />
+    <link rel="stylesheet" href="./loading.css" />
+    <script>
+      document.documentElement.dataset.macsetupIntro = 'loading';
+      setTimeout(() => {
+        if (window.__macSetupIntroStarted) return;
+        document.documentElement.dataset.macsetupIntro = 'complete';
+        const content = document.querySelector('[data-macsetup-content]');
+        if (content) { content.inert = false; content.removeAttribute('aria-hidden'); }
+      }, 6000);
+    </script>
+  <meta name="robots" content="index,follow"><link rel="canonical" href="https://macsetup.kai-nex.com/en/"><meta name="description" content="Explore 15 MacSetup guides for Finder, trackpad, Dock, input sources, Mos and keyboard shortcuts, with settings paths, before/after explanations, undo steps and a local checklist."><meta property="og:type" content="website"><meta property="og:site_name" content="MacSetup"><meta property="og:locale" content="en_US"><meta property="og:title" content="Mac Settings & Shortcuts Guide | MacSetup"><meta property="og:description" content="Explore 15 MacSetup guides for Finder, trackpad, Dock, input sources, Mos and keyboard shortcuts, with settings paths, before/after explanations, undo steps and a local checklist."><meta property="og:url" content="https://macsetup.kai-nex.com/en/"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Mac Settings & Shortcuts Guide | MacSetup"><meta name="twitter:description" content="Explore 15 MacSetup guides for Finder, trackpad, Dock, input sources, Mos and keyboard shortcuts, with settings paths, before/after explanations, undo steps and a local checklist."><script id="public-search-schema" type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://macsetup.kai-nex.com/#website", "name": "MacSetup", "url": "https://macsetup.kai-nex.com/"}, {"@type": "WebApplication", "@id": "https://macsetup.kai-nex.com/#application", "name": "MacSetup", "alternateName": ["Mac Setup", "MacBook Setup Recommendations", "MacBook 设置建议"], "url": "https://macsetup.kai-nex.com/", "description": "MacSetup 是由 orocoa 维护的中英双语 Mac 设置指南，收录 15 项访达、系统设置、工具与快捷操作建议。每项说明设置路径、操作步骤、修改前后的变化、恢复方法与来源。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web", "inLanguage": ["zh-CN", "en"], "creator": {"@type": "Person", "name": "orocoa", "url": "https://github.com/orocoa"}, "sameAs": ["https://github.com/orocoa/macbook-setup-recommendations"], "hasPart": [{"@id": "https://macsetup.kai-nex.com/guides/#page"}, {"@id": "https://macsetup.kai-nex.com/en/guides/#page"}]}, {"@type": "WebPage", "@id": "https://macsetup.kai-nex.com/en/#page", "url": "https://macsetup.kai-nex.com/en/", "name": "Mac Settings & Shortcuts Guide | MacSetup", "description": "Explore 15 MacSetup guides for Finder, trackpad, Dock, input sources, Mos and keyboard shortcuts, with settings paths, before/after explanations, undo steps and a local checklist.", "inLanguage": "en", "mainEntity": {"@id": "https://macsetup.kai-nex.com/#application"}}]}</script><link rel="alternate" hreflang="zh-CN" href="https://macsetup.kai-nex.com/"><link rel="alternate" hreflang="en" href="https://macsetup.kai-nex.com/en/"><link rel="alternate" hreflang="x-default" href="https://macsetup.kai-nex.com/"></head>
+  <body>
+    <noscript><p>MacSetup：<a href="/guides/">阅读全部 15 项设置指南</a> · <a href="/en/guides/">Read all 15 guides in English</a>。交互清单需要 JavaScript。</p></noscript>
+    <div data-macsetup-loader data-stage="boot">
+    <main class="app-shell" data-macsetup-content>
+      <header class="app-header">
+        <div class="project-identity">
+          <h1 class="brand">MacSetup</h1>
+        </div>
+        <div class="language-switch" role="group" aria-label="语言 / Language">
+            <span aria-hidden="true">[</span>
+            <button type="button" data-language="zh-CN" aria-pressed="true">中</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language="en" aria-pressed="false">EN</button>
+            <span aria-hidden="true">]</span>
+        </div>
+      </header>
+
+      <section id="guide-view" class="view browser-layout" aria-label="MacSetup">
+        <aside id="settings-overview" class="settings-browser" aria-label="设置列表">
+          <div class="settings-browser-contents">
+            <label class="search-field">
+              <input id="setting-search" type="search" placeholder="搜索设置" aria-label="搜索设置" autocomplete="off" />
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="6.5" /><path d="m15 15 6 6" /></svg></span>
+            </label>
+            <div class="settings-list">
+              <p id="status" role="status">正在读取设置…</p>
+              <button id="retry" type="button" hidden>重新加载</button>
+              <ul id="settings-list"></ul>
+              <div class="empty-list" id="search-empty-state" hidden>
+                <p id="empty-message">没有找到相关设置</p>
+                <button id="clear-search" type="button">清除搜索</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <article id="setting-detail" class="setting-detail" hidden></article>
+      </section>
+      <footer class="guide-footer">
+        <p id="guide-caption">方框用于记录修改进度；设置需要在 Mac 上手动调整。</p>
+      <nav class="guide-links" aria-label="MacSetup"><a data-guide-link href="/guides/">设置指南</a><a data-about-link href="/about/">关于</a><a data-progress-link href="/progress/">导入旧站进度</a></nav></footer>
+    </main>
+    </div>
+    <script defer src="./progress-transfer.js"></script>
+    <script type="module" src="./loading.js"></script>
+    <script type="module" src="./app.js?v=20261009-release"></script>
+  </body>
+</html>

@@ -1,1 +1,6 @@
 .DS_Store
+
+/output/
+/.makers/
+/共享资源/
+__pycache__/

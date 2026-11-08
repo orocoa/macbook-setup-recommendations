@@ -14,7 +14,7 @@
       "title": "路径位置示意",
       "description": "使用同一个深层文件夹；只比较窗口底部是否出现层级路径。",
       "before_caption": "窗口底部不显示完整路径",
-      "after_caption": "底部直接显示 Macintosh HD > 用户 > 文稿 > Mac Setup"
+      "after_caption": "底部直接显示启动磁盘 > 用户 > 文稿 > 设置资料"
     },
     "change_paths": [
       [
@@ -34,13 +34,19 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上获取文件、文件夹和磁盘信息",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1774/mac"
+        "label": "苹果支持｜在 Mac 上获取文件、文件夹和磁盘信息",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1774/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
-    }
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "finder-show-all-file-extensions",
@@ -80,13 +86,19 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜显示或隐藏 Mac 上的文件扩展名",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp2304/mac"
+        "label": "苹果支持｜显示或隐藏 Mac 上的文件扩展名",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp2304/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-19"
-    }
+      "last_verified": "2026-08-19",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "trackpad-tap-to-click",
@@ -117,24 +129,30 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“触控板”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1226/mac"
+        "label": "苹果支持｜在 Mac 上更改“触控板”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1226/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
-    }
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "trackpad-tracking-speed",
     "content_type": "system_setting",
     "master_section": "系统设置",
     "master_order": 20,
-    "title": "调整触控板跟踪速度",
+    "title": "调整触控板追踪速度",
     "description": "提高指针移动速度，减少跨越屏幕所需的手指移动距离；滑块倒数第三格是本指南建议尝试的起点，不是 Apple 的统一建议。",
     "before_label": "较低速度",
     "after_label": "建议尝试",
-    "before_state": "较低的跟踪速度需要更大的手指移动距离。",
+    "before_state": "较低的追踪速度需要更大的手指移动距离。",
     "after_state": "调至本指南的建议起点后，相同的手指移动可以让指针移动更远。",
     "visual_demo": {
       "type": "motion_comparison",
@@ -149,14 +167,14 @@
         "系统设置",
         "触控板",
         "光标与点按",
-        "跟踪速度"
+        "追踪速度"
       ]
     ],
     "steps": [
-      "修改前截图或记录「跟踪速度」滑块的位置。",
+      "修改前截图或记录「追踪速度」滑块的位置。",
       "打开「系统设置」。",
       "选择「触控板」，然后打开「光标与点按」。",
-      "将「跟踪速度」调整到滑块倒数第三格，即右侧保留两格。",
+      "将「追踪速度」调整到滑块倒数第三格，即右侧保留两格。",
       "在访达、浏览器或大屏幕上移动指针；如果经常越过目标，就向左调回一格。"
     ],
     "restore_steps": [
@@ -164,55 +182,66 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改鼠标或触控板的跟踪、连按和滚动速度",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp1138/mac"
+        "label": "苹果支持｜在 Mac 上更改鼠标或触控板的跟踪、连按和滚动速度",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1138/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-19"
-    }
+      "last_verified": "2026-08-19",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "prerequisites": [
+      "新版使用「追踪速度」，旧版可能称「跟踪速度」；它们指向同一个速度滑块。"
+    ],
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "dock-hide-suggested-recent-apps",
     "content_type": "system_setting",
     "master_section": "系统设置",
     "master_order": 40,
-    "title": "隐藏程序坞中的建议与最近使用的 App",
-    "description": "移除程序坞末端由系统动态显示、但没有固定在程序坞中的 App。",
-    "before_state": "固定 App 后方可能显示建议和最近使用的 App。",
-    "after_state": "建议和最近使用的 App 不再显示；固定在程序坞中的 App 不受影响。",
+    "title": "隐藏程序坞中的建议与最近使用的应用程序",
+    "description": "移除程序坞末端由系统动态显示、但没有固定在程序坞中的应用程序。",
+    "before_state": "固定应用程序后方可能显示建议和最近使用的应用程序。",
+    "after_state": "建议和最近使用的应用程序不再显示；固定在程序坞中的应用程序不受影响。",
     "visual_demo": {
       "type": "state_comparison",
       "variant": "dock-recents",
       "title": "程序坞末端对比",
-      "description": "仅展示程序坞的部分区域，以 App 名称示意：前三项固定 App 保持不变；比较分隔线后的建议与最近 App。其他区域未展示。",
-      "before_caption": "末端多出自动变化的最近 App",
-      "after_caption": "此段不再显示建议与最近 App；固定 App 不变"
+      "description": "仅展示程序坞的部分区域，以应用程序名称示意：前三项固定应用程序保持不变；比较分隔线后的建议与最近应用程序。其他区域未展示。",
+      "before_caption": "末端多出自动变化的最近应用程序",
+      "after_caption": "此段不再显示建议与最近应用程序；固定应用程序不变"
     },
     "change_paths": [
       [
         "系统设置",
         "桌面与程序坞",
-        "在程序坞中显示建议的 App 和最近使用的 App"
+        "在程序坞中显示建议的应用程序和最近使用的应用程序"
       ]
     ],
     "steps": [
       "打开「系统设置」。",
       "选择「桌面与程序坞」。",
-      "在「程序坞」区域关闭「在程序坞中显示建议的 App 和最近使用的 App」。",
-      "查看程序坞末端，确认不再出现自动加入的建议或最近使用 App。"
+      "在「程序坞」区域关闭「在程序坞中显示建议的应用程序和最近使用的应用程序」。",
+      "查看程序坞末端，确认不再出现自动加入的建议或最近使用应用程序。"
     ],
     "restore_steps": [
-      "回到「桌面与程序坞」，重新开启「在程序坞中显示建议的 App 和最近使用的 App」。"
+      "回到「桌面与程序坞」，重新开启「在程序坞中显示建议的应用程序和最近使用的应用程序」。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“桌面与程序坞”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp1119/mac"
+        "label": "苹果支持｜在 Mac 上更改“桌面与程序坞”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1119/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -220,35 +249,37 @@
     "content_type": "system_setting",
     "master_section": "系统设置",
     "master_order": 50,
-    "title": "将窗口最小化至应用程序图标",
-    "description": "让最小化窗口收进所属 App 的程序坞图标，避免每个窗口单独占用程序坞位置。",
+    "title": "将窗口最小化为应用程序图标",
+    "description": "让最小化窗口收进所属应用程序的程序坞图标，避免每个窗口单独占用程序坞位置。",
     "before_state": "每个最小化窗口会在程序坞中单独显示。",
-    "after_state": "最小化窗口收进所属 App 的程序坞图标。",
+    "after_state": "最小化窗口收进所属应用程序的程序坞图标。",
     "visual_demo": null,
     "change_paths": [
       [
         "系统设置",
         "桌面与程序坞",
-        "将窗口最小化至应用程序图标"
+        "将窗口最小化为应用程序图标"
       ]
     ],
     "steps": [
       "打开「系统设置」。",
       "选择「桌面与程序坞」。",
-      "在「程序坞」区域开启「将窗口最小化至应用程序图标」。",
-      "最小化同一 App 的多个窗口，确认它们不再分别出现在程序坞的独立区域。"
+      "在「程序坞」区域开启「将窗口最小化为应用程序图标」。",
+      "最小化同一应用程序的多个窗口，确认它们不再分别出现在程序坞的独立区域。"
     ],
     "restore_steps": [
-      "回到「桌面与程序坞」，关闭「将窗口最小化至应用程序图标」。"
+      "回到「桌面与程序坞」，关闭「将窗口最小化为应用程序图标」。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“桌面与程序坞”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp1119/mac"
+        "label": "苹果支持｜在 Mac 上更改“桌面与程序坞”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1119/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -257,26 +288,26 @@
     "master_section": "系统设置",
     "master_order": 56,
     "title": "设置触发角快捷工作流",
-    "description": "使用右下角快速显示桌面；按住 Command 移到右上角时，使显示器进入睡眠。",
+    "description": "使用右下角快速显示桌面；按住 ⌘ 移到右上角时，使显示器进入睡眠。",
     "before_label": "未配置时",
     "after_label": "按本方案配置后",
-    "before_state": "右下角和 Command + 右上角不执行本指南中的快捷动作；点按墙纸的行为取决于当前设置。",
-    "after_state": "右下角显示桌面；按住 Command 移到右上角使显示器进入睡眠；点按墙纸仅在台前调度中显示桌面。",
+    "before_state": "右下角和 ⌘ + 右上角不执行本指南中的快捷动作；点按墙纸的行为取决于当前设置。",
+    "after_state": "右下角显示桌面；按住 ⌘ 移到右上角使显示器进入睡眠；点按墙纸仅在台前调度中显示桌面。",
     "visual_demo": {
       "type": "workflow",
       "variant": "hot-corners",
       "title": "右下角拖放文件流程",
-      "description": "在当前 App 中工作时，用右下角显示桌面；开始拖动文件后保持拖动，再次触发右下角并放入原 App。",
-      "primary_caption": "当前 App → 右下角显示桌面 → 开始并保持拖动文件 → 再次触发右下角 → 放入原 App",
-      "secondary_caption": "按住 Command + 移到右上角 → 使显示器进入睡眠"
+      "description": "在当前应用程序中工作时，用右下角显示桌面；开始拖动文件后保持拖动，再次触发右下角并放入原应用程序。",
+      "primary_caption": "当前应用程序→ 右下角显示桌面 → 开始并保持拖动文件 → 再次触发右下角 → 放入原应用程序",
+      "secondary_caption": "按住 ⌘ + 移到右上角 → 使显示器进入睡眠"
     },
     "change_paths": [
       [
         "系统设置",
         "桌面与程序坞",
         "桌面与台前调度",
-        "点按墙纸以显示桌面",
-        "仅在台前调度中"
+        "显示桌面（点按墙纸时）",
+        "仅在台前调度中点按墙纸时显示"
       ],
       [
         "系统设置",
@@ -287,29 +318,32 @@
     "steps": [
       "修改前截图记录「显示桌面」以及右上角、右下角当前的动作。",
       "打开「系统设置」，选择「桌面与程序坞」。",
-      "在「桌面与台前调度」区域，将「点按墙纸以显示桌面」设为「仅在台前调度中」。",
+      "在「桌面与台前调度」区域，找到控制点按墙纸时显示桌面的选项，选择「仅在台前调度中」。macOS 27 中文指南将这一组选项称为「显示桌面」。",
       "向下滚动并点按「触发角」。",
-      "右上角：按住 Command，同时在该角落的弹出式菜单中选择「使显示器进入睡眠」。",
+      "右上角：按住 ⌘，同时在该角落的弹出式菜单中选择「使显示器进入睡眠」。",
       "右下角：在弹出式菜单中选择「桌面」。这样会覆盖该角落原有的动作（如有）。",
       "点按「完成」。",
-      "测试桌面往返：在当前 App 中把指针移到右下角显示桌面；开始拖动桌面文件并保持按住，把指针再次移到右下角，等待原 App 返回后再放下文件。若中途松开文件，它不会自动跟随返回 App。",
-      "测试显示器睡眠：按住 Command 并移到右上角，确认显示器进入睡眠。"
+      "测试桌面往返：在当前应用程序中把指针移到右下角显示桌面；开始拖动桌面文件并保持按住，把指针再次移到右下角，等待原应用程序返回后再放下文件。若中途松开文件，它不会自动跟随返回应用程序。",
+      "测试显示器睡眠：按住 ⌘ 并移到右上角，确认显示器进入睡眠。",
+      "显示器睡眠后何时需要密码取决于「系统设置」>「锁定屏幕」中的等待时间。要立即锁定 Mac，可按 ⌃ + ⌘ + Q。"
     ],
     "restore_steps": [
       "回到「桌面与程序坞」，按修改前截图恢复「点按墙纸以显示桌面」、右上角和右下角的原始动作，然后点按「完成」。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“桌面与程序坞”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp1119/mac"
+        "label": "苹果支持｜在 Mac 上更改“桌面与程序坞”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp1119/27/mac/27"
       },
       {
-        "label": "Apple 支持｜在 Mac 上使用触发角",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp3000/mac"
+        "label": "苹果支持｜在 Mac 上使用触发角",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp3000/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -318,17 +352,17 @@
     "master_section": "系统设置",
     "master_order": 60,
     "title": "自定义菜单栏显示项",
-    "description": "选择哪些系统控制和 App 显示在菜单栏中，并减少不常使用的项目。",
+    "description": "选择哪些系统控制和应用程序显示在菜单栏中，并减少不常使用的项目。",
     "before_label": "整理前",
     "after_label": "整理后",
-    "before_state": "菜单栏持续显示较多系统控制和第三方 App。",
-    "after_state": "菜单栏保留需要随时查看或直接操作的项目；其他功能仍可从控制中心或 App 中访问。",
+    "before_state": "菜单栏持续显示较多系统控制和第三方应用程序。",
+    "after_state": "菜单栏保留需要随时查看或直接操作的项目；其他功能仍可从控制中心或应用程序中访问。",
     "visual_demo": {
       "type": "concept_reference",
       "title": "菜单栏结构示意",
-      "description": "Apple 官方将菜单栏分为苹果菜单、App 菜单与右侧的状态菜单、聚焦、控制中心、隐私指示符和通知中心。",
+      "description": "苹果官方将菜单栏分为苹果菜单、应用程序菜单与右侧的状态菜单、聚焦、控制中心、隐私指示符和通知中心。",
       "image_src": "./assets/original/menu-bar-zh-CN.svg",
-      "alt": "原创菜单栏结构示意：左侧为苹果菜单与 App 菜单，右侧为状态菜单、聚焦、控制中心、隐私指示符和通知中心。",
+      "alt": "原创菜单栏结构示意：左侧为苹果菜单与应用程序菜单，右侧为状态菜单、聚焦、控制中心、隐私指示符和通知中心。",
       "caption": "依据 Apple 说明绘制的概念示意；不代表你的实际菜单栏。"
     },
     "change_paths": [
@@ -344,27 +378,29 @@
       ]
     ],
     "steps": [
-      "修改前截图记录菜单栏当前显示的系统项目与第三方 App。",
+      "修改前截图记录菜单栏当前显示的系统项目与第三方应用程序。",
       "先查看屏幕右上角现有图标，判断每个图标是否需要随时查看状态或一键操作。",
       "在「菜单栏控制」中，保留你确实常用的系统项目；「专注模式」「屏幕镜像」「声音」「播放中」和「计时器」可选择「启用时显示」，让它们只在使用时出现。",
-      "在「允许在菜单栏显示」中，只保留你会从菜单栏直接操作的第三方 App；不常从右上角使用的 App 可以关闭显示。",
+      "在「允许在菜单栏显示」中，只保留你会从菜单栏直接操作的第三方应用程序；不常从右上角使用的应用程序可以关闭显示。",
       "回到桌面检查右上角：常用项目能快速找到，其他项目没有占用持续空间。"
     ],
     "restore_steps": [
-      "回到「菜单栏」，按修改前截图恢复原有的系统项目与第三方 App 显示状态。"
+      "回到「菜单栏」，按修改前截图恢复原有的系统项目与第三方应用程序显示状态。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上自定义菜单栏",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchl4af84660/mac"
+        "label": "苹果支持｜在 Mac 上自定义菜单栏",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchl4af84660/27/mac/27"
       },
       {
-        "label": "Apple 支持｜在 Mac 上更改“菜单栏”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlad96d366/mac"
+        "label": "苹果支持｜在 Mac 上更改“菜单栏”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlad96d366/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-20"
+      "last_verified": "2026-08-20",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -467,13 +503,19 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“访达”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchlp2803/mac"
+        "label": "苹果支持｜在 Mac 上更改“访达”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp2803/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
-    }
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "finder-customize-toolbar",
@@ -504,13 +546,19 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上自定义“访达”工具栏",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp3011/26/mac/26"
+        "label": "苹果支持｜在 Mac 上自定义“访达”工具栏",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchlp3011/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-20"
-    }
+      "last_verified": "2026-08-20",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "keyboard-switch-input-source-by-document",
@@ -527,7 +575,7 @@
       "type": "state_comparison",
       "variant": "input-source-by-document",
       "title": "两个文稿的输入法记忆",
-      "description": "在「中文设置笔记」和 English Setup Notes 之间切换。文稿正文不会改变；这里只比较返回文稿时，输入法是否恢复为该文稿之前选择的输入法。",
+      "description": "在「中文设置笔记」和 英文设置笔记 之间切换。文稿正文不会改变；这里只比较返回文稿时，输入法是否恢复为该文稿之前选择的输入法。",
       "before_caption": "切换文稿后仍停留在上一个输入法",
       "after_caption": "中文文稿恢复拼音，英文文稿恢复 ABC"
     },
@@ -537,6 +585,7 @@
         "键盘",
         "文字输入",
         "编辑",
+        "所有输入法",
         "自动切换到文稿的输入法"
       ]
     ],
@@ -545,22 +594,24 @@
     ],
     "steps": [
       "打开「系统设置」，然后选择「键盘」。",
-      "在「文字输入」区域点按「编辑」。",
+      "在「文字输入」区域点按「编辑」，再选择左侧的「所有输入法」。",
       "确认至少已添加两个输入法；这个选项只会在有多个输入法时出现。",
       "开启「自动切换到文稿的输入法」。",
       "打开两个文稿：为一个选择中文输入法、另一个选择英文输入法；在两个仍打开的文稿之间切换，确认输入法会随文稿恢复。"
     ],
     "restore_steps": [
-      "回到「键盘」>「文字输入」>「编辑」，关闭「自动切换到文稿的输入法」。"
+      "回到「键盘」>「文字输入」>「编辑」>「所有输入法」，关闭「自动切换到文稿的输入法」。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜在 Mac 上更改“输入法”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchl84525d76/mac"
+        "label": "苹果支持｜在 Mac 上更改“输入法”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchl84525d76/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -585,7 +636,8 @@
     ],
     "prerequisites": [
       "需要兼容的 Apple Watch，并与 Mac 登录同一 Apple 账户。",
-      "Wi‑Fi、蓝牙、双重认证和 Apple Watch 密码均需开启。"
+      "Wi‑Fi、蓝牙、双重认证和 Apple Watch 密码均需开启。",
+      "如果设置中没有 Apple Watch 区域，请先核对兼容设备和账户条件；当前不适用时可以跳过此项。"
     ],
     "steps": [
       "确认 Mac 与 Apple Watch 登录同一 Apple 账户，且 Wi‑Fi、蓝牙、双重认证和 Apple Watch 密码均已开启。",
@@ -598,12 +650,14 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜使用 Apple Watch 解锁你的 Mac 和批准请求",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help-cn/mchl4f800a42/mac"
+        "label": "苹果支持｜使用 Apple Watch 解锁你的 Mac 和批准请求",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchl4f800a42/27/mac/27"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -619,7 +673,7 @@
     "change_paths": [
       [
         "系统设置",
-        "辅助功能",
+        "无障碍（旧称辅助功能）",
         "指针控制",
         "触控板选项",
         "使用触控板进行拖移",
@@ -634,34 +688,40 @@
       "只调整实际与「三指拖移」冲突的三指手势；如果该动作已使用四指，不修改。"
     ],
     "steps": [
-      "打开「系统设置」>「辅助功能」>「指针控制」>「触控板选项」。",
-      "开启「使用触控板进行拖移」，并选择「三指拖移」。",
-      "开启后，到「触控板」>「更多手势」检查调度中心和 App Exposé 当前使用的手势；以系统实际显示为准。",
+      "打开「系统设置」>「无障碍」>「指针控制」>「触控板选项」。旧版可能称「辅助功能」。",
+      "开启「使用触控板进行拖移」，在「拖移样式」中选择「三指拖移」，然后点按「确定」。",
+      "开启后，到「触控板」>「更多手势」检查调度中心和应用程序窗口总览 当前使用的手势；以系统实际显示为准。",
       "在访达中拖移一个测试文件或窗口，确认三指拖移以及点按或轻点放下符合预期。",
-      "再次测试调度中心和 App Exposé，确认相关手势仍符合你的使用习惯。"
+      "再次测试调度中心和应用程序窗口总览，确认相关手势仍符合你的使用习惯。"
     ],
     "restore_steps": [
-      "在「触控板选项」中关闭「使用触控板进行拖移」，或改回原来的拖移样式。",
-      "回到「触控板」>「更多手势」，确认调度中心和 App Exposé 已恢复为你想要的手势。"
+      "在「触控板选项」中关闭「使用触控板进行拖移」，或改回原来的拖移样式，再点按「确定」。",
+      "回到「触控板」>「更多手势」，确认调度中心和应用程序窗口总览 已恢复为你想要的手势。"
     ],
     "sources": [
       {
-        "label": "Apple 支持｜打开 Mac 触控板的三指拖移功能",
+        "label": "苹果支持｜打开 Mac 触控板的三指拖移功能",
         "url": "https://support.apple.com/zh-cn/102341"
       },
       {
-        "label": "Apple 支持｜在 Mac 上使用多点触控手势",
+        "label": "苹果支持｜在 Mac 上使用多点触控手势",
         "url": "https://support.apple.com/zh-cn/102482"
       },
       {
-        "label": "Apple 支持｜在 Mac 上更改辅助功能中的“指针控制”设置",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/unac899/mac"
+        "label": "苹果支持｜在 Mac 上更改辅助功能中的“指针控制”设置",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/unac899/27/mac/27"
       }
     ],
     "_editorial": {
       "last_verified": "2026-08-19",
-      "observation": "在当前目标 Mac 上，开启三指拖移后，原本冲突的三指手势会自动改为四指；这是单台设备的人工观察，不是 Apple 的通用承诺。"
-    }
+      "observation": "在当前目标 Mac 上，开启三指拖移后，原本冲突的三指手势会自动改为四指；这是单台设备的人工观察，不是 Apple 的通用承诺。",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "mos-separate-mouse-scroll-direction",
@@ -669,7 +729,7 @@
     "master_section": "工具与快捷操作",
     "master_order": 10,
     "title": "用 Mos 调整鼠标滚动方向",
-    "description": "使用外接鼠标时，让触控板继续自然滚动，同时单独反转鼠标滚轮，并可改善滚轮的平滑度。",
+    "description": "Mos 是需要自行下载安装的独立应用程序。使用外接鼠标时，可让触控板继续自然滚动，同时单独反转鼠标滚轮，并按需要调整平滑度。",
     "before_label": "只使用系统设置",
     "after_label": "使用 Mos",
     "before_state": "只使用 macOS 的滚动方向设置时，鼠标与触控板需要采用同一种方向；适合触控板的自然滚动不一定符合鼠标滚轮习惯。",
@@ -677,39 +737,47 @@
     "visual_demo": null,
     "change_paths": [
       [
-        "Mos 官方网站或 GitHub Releases",
+        "Mos 官方网站或 GitHub 发布页",
         "下载 Mos",
         "移到应用程序文件夹"
       ],
       [
         "系统设置",
         "隐私与安全性",
-        "辅助功能",
+        "设备控制与数据访问（新版系统）",
+        "允许 Mos"
+      ],
+      [
+        "系统设置",
+        "隐私与安全性",
+        "辅助功能（旧版 macOS）",
         "允许 Mos"
       ],
       [
         "Mos",
+        "偏好设置",
         "滚动",
-        "反转滚动方向"
+        "反转滚轮方向"
       ]
     ],
     "prerequisites": [
-      "需要带滚轮的外接鼠标。",
-      "Mos 需要辅助功能权限来读取和改写鼠标输入；只在理解这一用途并信任下载来源后授权。"
+      "需要带滚轮的外接鼠标。Mos 是第三方应用程序，不是 macOS 内建设置。",
+      "Mos 需要系统权限来处理鼠标输入。新版系统从「设备控制与数据访问」进入，旧版从「辅助功能」进入；请阅读系统显示的访问范围，再决定是否授权。",
+      "系统权限名称按功能含义表述，具体名称可能随版本变化；Mos 内部选项按 4.2.1 核对，其他版本的文案可能不同。"
     ],
     "conflicts": [
       "如果同时运行其他鼠标管理工具，滚动方向或平滑效果可能重复生效；出现异常时先只保留一个工具测试。"
     ],
     "steps": [
-      "在「系统设置」>「触控板」>「滚动与缩放」中保留「自然滚动」。",
-      "从 Mos 官方网站或 GitHub Releases 下载 Mos，并将 Mos.app 移到「应用程序」文件夹。",
-      "首次打开 Mos 时，阅读权限提示；如接受其处理鼠标输入，在「系统设置」>「隐私与安全性」>「辅助功能」中允许 Mos。",
-      "打开 Mos 的滚动设置，为鼠标开启「反转滚动方向」；是否开启平滑滚动按鼠标手感决定。",
+      "在「系统设置」>「触控板」>「滚动缩放」中保留「自然滚动」。",
+      "从 Mos 官方网站或 GitHub 发布页 下载 Mos，并将 Mos.app 移到「应用程序」文件夹。",
+      "首次打开 Mos 时，阅读系统权限提示；如接受相应访问范围，在「系统设置」>「隐私与安全性」>「设备控制与数据访问」中允许 Mos。旧版从「辅助功能」进入。",
+      "打开 Mos 自己的「偏好设置」>「滚动」，开启「反转滚轮方向」；平滑滚动按鼠标手感选择。",
       "分别用触控板和鼠标滚动同一网页，确认触控板保持自然滚动，鼠标滚轮采用你习惯的方向。"
     ],
     "restore_steps": [
       "在 Mos 中关闭「反转滚动方向」和其他滚动处理，或退出 Mos。",
-      "如果不再使用 Mos，可在「系统设置」>「隐私与安全性」>「辅助功能」中关闭其权限。"
+      "如果不再使用 Mos，可在「隐私与安全性」>「设备控制与数据访问」（旧版为「辅助功能」）中关闭 Mos 的权限。"
     ],
     "sources": [
       {
@@ -723,7 +791,10 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-20",
-      "observation": "工具推荐来自本指南作者的外接鼠标工作流，不代表 Apple 推荐；Mos 是独立菜单栏 App，不是系统插件。"
+      "observation": "工具推荐来自本指南作者的外接鼠标工作流，不代表 Apple 推荐；Mos 是独立菜单栏 App，不是系统插件。 macOS 27.0.1 英文权限入口与 Mos 4.2.1 滚动面板已于 2026-10-14 只读核对；新版权限入口的正式中文译名尚未核实。",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1",
+      "chinese_permission_label": "Descriptive translation; official Chinese system label not verified."
     }
   },
   {
@@ -732,22 +803,22 @@
     "master_section": "工具与快捷操作",
     "master_order": 20,
     "title": "从常用键盘快捷键开始",
-    "description": "用组合按键完成拷贝、粘贴、撤销、切换 App 和搜索等常用操作，减少在菜单中寻找的次数。",
+    "description": "用组合按键完成拷贝、粘贴、撤销、切换应用程序和搜索等常用操作，减少在菜单中寻找的次数。",
     "before_state": "每次操作都需要移动鼠标或触控板，再从菜单栏中寻找命令。",
     "after_state": "常用操作可以直接用组合按键完成；菜单栏也会在许多命令右侧显示对应的快捷键。",
     "visual_demo": null,
     "change_paths": [
       [
-        "任意 App",
+        "任意应用程序",
         "屏幕左上角菜单栏",
         "菜单项右侧的快捷键符号"
       ]
     ],
     "steps": [
-      "先打开一个 App，例如访达或 Safari 浏览器。",
+      "先打开一个应用程序，例如访达或 Safari 浏览器。",
       "查看屏幕左上角的菜单栏；点开「文件」或「编辑」等菜单，观察许多命令右侧显示的快捷键符号。",
-      "先尝试三个最常用组合：按住键盘上标有 Command 或 ⌘ 的键，再按 C 拷贝、V 粘贴或 Z 撤销。",
-      "熟悉后再尝试 Command + Tab 切换 App，以及 Command + 空格键打开聚焦搜索。",
+      "先尝试三个最常用组合：按住键盘上的 ⌘ 键，再按 C 拷贝、V 粘贴或 Z 撤销。",
+      "熟悉后再尝试 ⌘ + 制表键切换应用程序，以及 ⌘ + 空格键打开聚焦搜索。",
       "不需要打开系统设置；从每天会重复的一个操作开始使用即可。"
     ],
     "shortcut_table": {
@@ -760,127 +831,127 @@
       "rows": [
         [
           "关闭",
-          "Command-W",
+          "⌘-W",
           "关闭窗口。"
         ],
         [
           "拷贝",
-          "Command-C",
+          "⌘-C",
           "拷贝所选内容。"
         ],
         [
           "剪切",
-          "Command-X",
+          "⌘-X",
           "剪切所选内容。"
         ],
         [
           "删除",
-          "Delete",
+          "删除键",
           "删除光标前的字符。"
         ],
         [
           "查找",
-          "Command-F",
+          "⌘-F",
           "查找文本。"
         ],
         [
           "强制退出",
-          "Option-Command-Escape",
-          "强制退出无响应的 App。"
+          "⌥-⌘-退出键",
+          "强制退出无响应的应用程序。"
         ],
         [
           "向前删除键",
-          "Fn-Delete",
+          "功能键 + 删除键",
           "删除光标后的字符。"
         ],
         [
           "隐藏",
-          "Command-H",
-          "隐藏正在使用的 App。"
+          "⌘-H",
+          "隐藏正在使用的应用程序。"
         ],
         [
           "新建",
-          "Command-N",
-          "打开新访达窗口，或在其他 App 中创建新文稿。"
+          "⌘-N",
+          "打开新访达窗口，或在其他应用程序中创建新文稿。"
         ],
         [
           "新建标签页",
-          "Command-T",
+          "⌘-T",
           "在访达、文稿或 Safari 浏览器中打开新标签页。"
         ],
         [
           "粘贴",
-          "Command-V",
+          "⌘-V",
           "粘贴上一个拷贝或剪切项目的副本。"
         ],
         [
           "粘贴并匹配样式",
-          "Option-Shift-Command-V",
+          "⌥-⇧-⌘-V",
           "粘贴副本，并匹配当前文稿的样式，而不是保留原始样式。"
         ],
         [
           "打印",
-          "Command-P",
+          "⌘-P",
           "打印文稿。"
         ],
         [
           "快速查看",
           "空格键",
-          "选中一个或多个项目后，在不打开对应 App 的情况下预览内容。"
+          "选中一个或多个项目后，在不打开对应应用程序的情况下预览内容。"
         ],
         [
           "退出",
-          "Command-Q",
-          "退出 App。"
+          "⌘-Q",
+          "退出应用程序。"
         ],
         [
           "右键点按",
-          "按住 Control 键点按",
+          "按住 ⌃ 键点按",
           "打开快捷键菜单。"
         ],
         [
           "保存",
-          "Command-S",
+          "⌘-S",
           "保存文稿。"
         ],
         [
           "全屏截屏",
-          "Shift-Command-3",
+          "⇧-⌘-3",
           "将整个屏幕截屏。"
         ],
         [
           "截取屏幕所选部分",
-          "Shift-Command-4",
+          "⇧-⌘-4",
           "将屏幕的一部分截屏。"
         ],
         [
           "打开“截屏”选项",
-          "Shift-Command-5",
+          "⇧-⌘-5",
           "截屏或录屏。"
         ],
         [
           "全选",
-          "Command-A",
+          "⌘-A",
           "选择所有内容。"
         ],
         [
           "显示表情和符号",
-          "Fn/地球仪键",
-          "打开字符检视器以查找表情和符号。"
+          "⌃⌘ + 空格键 / 功能键 + E",
+          "打开字符检视器。单按功能键／地球仪键的结果取决于「键盘」设置。"
         ],
         [
           "聚焦搜索",
-          "Command-空格键",
+          "⌘-空格键",
           "搜索 Mac 上的任何内容。"
         ],
         [
-          "切换 App",
-          "Command-Tab",
-          "再次按下 Command-Tab 移到下一个 App；按下 Shift-Command-Tab 移到上一个 App。"
+          "切换应用程序",
+          "⌘-制表键",
+          "再次按下 ⌘ + 制表键 移到下一个应用程序；按下 ⇧⌘ + 制表键 移到上一个应用程序。"
         ],
         [
           "撤销",
-          "Command-Z",
+          "⌘-Z",
           "撤销上次操作。"
         ]
       ]
@@ -890,16 +961,25 @@
     ],
     "sources": [
       {
-        "label": "Apple 支持｜Mac 键盘快捷键介绍",
-        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchld6b9e240/26/mac/26"
+        "label": "苹果支持｜Mac 键盘快捷键介绍",
+        "url": "https://support.apple.com/zh-cn/guide/mac-help/mchld6b9e240/27/mac/27"
       },
       {
-        "label": "Apple 支持｜Mac 键盘快捷键",
+        "label": "苹果支持｜Mac 键盘快捷键",
         "url": "https://support.apple.com/zh-cn/102650"
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-20"
-    }
+      "last_verified": "2026-08-20",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "prerequisites": [
+      "功能键／地球仪键的单键动作可在「系统设置」>「键盘」中配置为切换输入法、显示表情等。打开表情建议使用 ⌃⌘ + 空格键，或功能键 + E。"
+    ],
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   }
 ]

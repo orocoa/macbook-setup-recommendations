@@ -44,7 +44,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-18"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "finder-show-all-file-extensions",
@@ -98,7 +102,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-19"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "trackpad-tap-to-click",
@@ -143,7 +151,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-18"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "trackpad-tracking-speed",
@@ -194,7 +206,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-19"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "dock-hide-suggested-recent-apps",
@@ -311,8 +327,8 @@
         "System Settings",
         "Desktop & Dock",
         "Desktop & Stage Manager",
-        "Show Desktop",
-        "Only in Stage Manager on Click"
+        "Click wallpaper to reveal desktop",
+        "Only in Stage Manager"
       ],
       [
         "System Settings",
@@ -323,13 +339,14 @@
     "steps": [
       "Take a screenshot of the current Show Desktop setting and the actions assigned to the top-right and bottom-right corners.",
       "Open System Settings, then click Desktop & Dock in the sidebar.",
-      "In Desktop & Stage Manager, set Show Desktop to “Only in Stage Manager on Click.”",
+      "In Desktop & Stage Manager, set “Click wallpaper to reveal desktop” to “Only in Stage Manager.” This option may be labeled Show Desktop in other versions.",
       "Scroll down and click Hot Corners.",
       "For the top-right corner, hold Command while viewing that corner’s pop-up menu, then choose “Put Display to Sleep.”",
       "For the bottom-right corner, choose “Desktop.” This replaces any action currently assigned to that corner.",
       "Click Done.",
       "Test the desktop round trip: In the current app, move the pointer to the bottom-right corner to show the desktop. Begin dragging a desktop file and keep holding it, move the pointer to the bottom-right corner again, wait for the original app to return, then drop the file. If you release the file early, it will not continue following the pointer.",
-      "Test display sleep: Hold Command and move the pointer to the top-right corner, then confirm that the display goes to sleep."
+      "Test display sleep: Hold Command and move the pointer to the top-right corner, then confirm that the display goes to sleep.",
+      "The password delay after display sleep is controlled by System Settings > Lock Screen. To lock your Mac immediately, press Control-Command-Q."
     ],
     "restore_steps": [
       "Return to Desktop & Dock, use your screenshot to restore the original Show Desktop setting and both corner actions, then click Done."
@@ -345,7 +362,9 @@
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -509,7 +528,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-18"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "finder-customize-toolbar",
@@ -550,7 +573,11 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-20"
-    }
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "keyboard-switch-input-source-by-document",
@@ -581,6 +608,7 @@
         "Keyboard",
         "Text Input",
         "Edit",
+        "All Input Sources",
         "Automatically switch to a document’s input source"
       ]
     ],
@@ -589,13 +617,13 @@
     ],
     "steps": [
       "Open System Settings, then click Keyboard in the sidebar.",
-      "In the Text Input section, click Edit.",
+      "In Text Input, click Edit, then select All Input Sources in the sidebar.",
       "Confirm that at least two input sources have been added. This option appears only when more than one input source is available.",
       "Turn on “Automatically switch to a document’s input source.”",
       "Open two documents, choose a Chinese input source for one and an English input source for the other, then switch between the still-open documents and confirm that each input source is restored."
     ],
     "restore_steps": [
-      "Return to Keyboard > Text Input > Edit and turn off “Automatically switch to a document’s input source.”"
+      "Return to Keyboard > Text Input > Edit > All Input Sources and turn off “Automatically switch to a document’s input source.”"
     ],
     "sources": [
       {
@@ -604,7 +632,9 @@
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -633,7 +663,8 @@
     ],
     "prerequisites": [
       "Use a compatible Apple Watch and sign in to the same Apple Account on the watch and the Mac.",
-      "Turn on Wi-Fi, Bluetooth, two-factor authentication, and an Apple Watch passcode, and confirm that both devices meet Apple’s Auto Unlock system requirements."
+      "Turn on Wi-Fi, Bluetooth, two-factor authentication, and an Apple Watch passcode, and confirm that both devices meet Apple’s Auto Unlock system requirements.",
+      "If the Apple Watch section is unavailable, check device and account requirements first. Skip this item when it does not apply."
     ],
     "steps": [
       "Confirm that the Mac and Apple Watch use the same Apple Account and that Wi-Fi, Bluetooth, two-factor authentication, and the Apple Watch passcode are turned on.",
@@ -651,7 +682,9 @@
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-18"
+      "last_verified": "2026-08-18",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -676,6 +709,7 @@
         "Pointer Control",
         "Trackpad Options",
         "Use trackpad for dragging",
+        "Dragging style",
         "Three Finger Drag"
       ]
     ],
@@ -687,13 +721,13 @@
     ],
     "steps": [
       "Open System Settings > Accessibility > Pointer Control > Trackpad Options.",
-      "Turn on “Use trackpad for dragging,” then choose the Three Finger Drag dragging style.",
+      "Turn on “Use trackpad for dragging,” select Three-Finger Drag under Dragging style, then click OK.",
       "After enabling it, open Trackpad > More Gestures and inspect the actual gesture assignments. On the target Mac used for this guide, conflicting gestures changed to four fingers automatically, but this may differ by device or macOS version.",
       "If the system shows four-finger gestures, swipe up with four fingers to open Mission Control and swipe down with four fingers to open App Exposé.",
       "In Finder, drag a test file or window with three fingers, click or tap to drop it, and confirm that Mission Control and App Exposé still work as shown in your current settings."
     ],
     "restore_steps": [
-      "In Trackpad Options, turn off “Use trackpad for dragging” or restore the previous dragging style.",
+      "In Trackpad Options, turn off “Use trackpad for dragging” or restore the previous dragging style, then click OK.",
       "Return to Trackpad > More Gestures and restore the Mission Control and App Exposé gestures you recorded before the change."
     ],
     "sources": [
@@ -711,8 +745,14 @@
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-19"
-    }
+      "last_verified": "2026-08-19",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   },
   {
     "id": "mos-separate-mouse-scroll-direction",
@@ -720,7 +760,7 @@
     "master_section": "Utilities & shortcuts",
     "master_order": 10,
     "title": "Adjust mouse scrolling direction with Mos",
-    "description": "Keep Natural Scrolling on the trackpad while reversing an external mouse wheel independently, with optional smoother wheel movement.",
+    "description": "Mos is a separate app that you download and install. Keep Natural Scrolling on the trackpad while reversing an external mouse wheel independently, with optional smoother wheel movement.",
     "before_label": "System settings only",
     "after_label": "With Mos",
     "before_state": "When you rely only on the macOS scroll-direction setting, the mouse and trackpad use the same direction. Natural Scrolling may feel right on a trackpad but unfamiliar on a mouse wheel.",
@@ -735,18 +775,26 @@
       [
         "System Settings",
         "Privacy & Security",
-        "Accessibility",
+        "Device Control and Data Access (macOS 27)",
+        "Allow Mos"
+      ],
+      [
+        "System Settings",
+        "Privacy & Security",
+        "Accessibility (earlier macOS)",
         "Allow Mos"
       ],
       [
         "Mos",
-        "Scroll",
-        "Reverse scrolling"
+        "Preferences",
+        "Scrolling",
+        "Invert wheel direction"
       ]
     ],
     "prerequisites": [
-      "Use an external mouse with a scroll wheel.",
-      "Mos needs Accessibility permission to observe and rewrite mouse input. Grant it only after you understand this purpose and trust the download source."
+      "Use an external mouse with a scroll wheel. Mos is a third-party app, not a built-in macOS setting.",
+      "Mos needs system permission to process mouse input. In the current English macOS 27 interface, the entry is Device Control and Data Access; earlier versions use Accessibility. Read the access scope shown by macOS before granting permission.",
+      "The macOS 27 permission label was verified in English; localized labels may differ. The Mos controls were checked in version 4.2.1 and may vary in other versions."
     ],
     "conflicts": [
       "Running another mouse-management utility at the same time can apply scroll direction or smoothing twice. If scrolling behaves unexpectedly, test with only one utility enabled."
@@ -754,13 +802,13 @@
     "steps": [
       "Keep Natural Scrolling turned on in System Settings > Trackpad > Scroll & Zoom.",
       "Download Mos from its official website or GitHub Releases, then move Mos.app to the Applications folder.",
-      "On first launch, review the permission request. If you accept its need to process mouse input, allow Mos in System Settings > Privacy & Security > Accessibility.",
-      "Open Mos scroll settings and turn on reverse scrolling for the mouse. Enable smooth scrolling only if it improves the feel of your mouse.",
+      "On first launch, read the system permission request. If you accept the access scope, allow Mos in System Settings > Privacy & Security > Device Control and Data Access. On earlier macOS versions, use Accessibility.",
+      "In Mos itself, open Preferences > Scrolling and enable Invert wheel direction. Enable smooth scrolling only if it improves the feel of your mouse.",
       "Scroll the same webpage with the trackpad and the mouse. Confirm that the trackpad keeps Natural Scrolling while the wheel uses your preferred direction."
     ],
     "restore_steps": [
       "Turn off reverse scrolling and other scroll processing in Mos, or quit Mos.",
-      "If you no longer use Mos, turn off its permission in System Settings > Privacy & Security > Accessibility."
+      "If you no longer use Mos, turn off its permission in Privacy & Security > Device Control and Data Access (Accessibility on earlier macOS versions)."
     ],
     "sources": [
       {
@@ -774,7 +822,9 @@
     ],
     "_editorial": {
       "last_verified": "2026-08-20",
-      "observation": "This app recommendation reflects the guide author's external-mouse workflow; it is not an Apple recommendation. Mos is a standalone menu bar app, not a system plug-in."
+      "observation": "This app recommendation reflects the guide author's external-mouse workflow; it is not an Apple recommendation. Mos is a standalone menu bar app, not a system plug-in. The English macOS 27.0.1 permission entry and Mos 4.2.1 scrolling controls were checked read-only on 2026-10-14; the new permission entry’s official Chinese translation remains unverified.",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
     }
   },
   {
@@ -920,8 +970,8 @@
         ],
         [
           "Show Emoji and Symbols",
-          "Fn/Globe key",
-          "Open the Character Viewer to find emoji and symbols."
+          "Control-Command-Space / Fn-E",
+          "Open the Character Viewer. Pressing the Fn/Globe key alone depends on the action selected in Keyboard settings."
         ],
         [
           "Spotlight search",
@@ -954,7 +1004,16 @@
       }
     ],
     "_editorial": {
-      "last_verified": "2026-08-20"
-    }
+      "last_verified": "2026-08-20",
+      "path_reviewed_on": "2026-10-14",
+      "path_reviewed_macos": "27.0.1"
+    },
+    "prerequisites": [
+      "The action for pressing the Fn/Globe key alone can be changed in System Settings > Keyboard, including switching input sources or showing emoji. To open emoji, use Control-Command-Space or Fn-E."
+    ],
+    "search_keywords": [
+      "Finder",
+      "访达"
+    ]
   }
 ]

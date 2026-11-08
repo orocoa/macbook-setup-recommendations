@@ -49,6 +49,7 @@ function readStorage(key, fallback) {
 function initialLanguage() {
   const routeLanguage = new URL(location.href).searchParams.get("lang");
   if (languages.has(routeLanguage)) return routeLanguage;
+  if (new URL(location.href).pathname.startsWith("/en/")) return "en";
   try {
     const stored = localStorage.getItem(LANGUAGE_KEY);
     if (languages.has(stored)) return stored;
@@ -79,6 +80,19 @@ function listOf(values, tag = "ol") {
 
 function applyLanguage() {
   document.documentElement.lang = language;
+  document.title = text("pageTitle");
+  for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+    document.querySelector(selector)?.setAttribute("content", text("metaDescription"));
+  }
+  for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+    document.querySelector(selector)?.setAttribute("content", text("pageTitle"));
+  }
+  const prefix = language === "en" ? "/en/" : "/";
+  document.querySelector('link[rel="canonical"]')?.setAttribute("href", "https://macsetup.kai-nex.com" + prefix);
+  document.querySelector('meta[property="og:url"]')?.setAttribute("content", "https://macsetup.kai-nex.com" + prefix);
+  for (const [selector, path, zh, en] of [["[data-guide-link]", "guides/", "设置指南", "Guides"], ["[data-about-link]", "about/", "关于", "About"], ["[data-progress-link]", "progress/", "导入旧站进度", "Import previous progress"]]) {
+    const link=document.querySelector(selector); if(link){link.href=prefix+path;link.textContent=language==="en"?en:zh;}
+  }
   browser.setAttribute("aria-label", label("directory"));
   $("#guide-caption").textContent = label("footer");
   search.placeholder = document.activeElement === search ? "" : label("search");
@@ -379,7 +393,7 @@ async function load() {
   status.textContent = label("loading");
   $("#retry").hidden = true;
   try {
-    const response = await fetch("./data/" + (language === "en" ? "settings.en.json" : "settings.json"), { cache: "no-cache" });
+    const response = await fetch(new URL(language === "en" ? "./data/settings.en.json" : "./data/settings.json", import.meta.url), { cache: "no-cache" });
     if (!response.ok) throw new Error("HTTP " + response.status);
     const data = await response.json();
     if (version !== loadingVersion) return;

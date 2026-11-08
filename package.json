@@ -1,8 +1,14 @@
 {
-  "name": "macbook-setup-recommendations",
+  "name": "macsetup",
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "test": "node tests/validate-data.mjs && node --test tests/storage.test.mjs tests/search.test.mjs"
+    "test": "node tests/validate-data.mjs && node --test tests/storage.test.mjs tests/search.test.mjs && node --test tests/progress.test.mjs",
+    "build": "node scripts/build-site.mjs"
+  },
+  "type": "module",
+  "homepage": "https://macsetup.kai-nex.com/",
+  "engines": {
+    "node": ">=22"
   }
 }

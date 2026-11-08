@@ -1,6 +1,6 @@
 # MacSetup
 
-Mac settings, illustrated. Read the [15 English guides](https://kai-nex.com/en/macsetup/guides/) or the [project overview](https://kai-nex.com/en/project/macsetup/).
+Mac settings, illustrated. Read the [15 English guides](https://macsetup.kai-nex.com/en/guides/) or the [project overview](https://macsetup.kai-nex.com/en/about/).
 
 [简体中文](./README.zh-CN.md)
 
@@ -8,9 +8,9 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 ## Open the guide
 
-[Open MacSetup](https://kai-nex.com/macsetup/)
+[Open MacSetup](https://macsetup.kai-nex.com/)
 
-[![Open guide](https://img.shields.io/badge/guide-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+[![Open guide](https://img.shields.io/badge/guide-macsetup.kai--nex.com-0A7EA4)](https://macsetup.kai-nex.com/)
 
 ![MacSetup showing the Finder path bar guide and before/after illustrations](docs/preview-guide-en-20261108.webp)
 
@@ -128,3 +128,10 @@ Avoid adding a framework, backend, account system, database, or AI feature unles
 
 This is an independent project. It is not an official Apple product and is not affiliated with, endorsed by, or sponsored by Apple Inc. Apple, Mac, MacBook, macOS, Finder, and related marks and interface assets belong to their respective rights holders.
 
+
+
+## Independent deployment
+
+Production: https://macsetup.kai-nex.com/ · [English guides](https://macsetup.kai-nex.com/en/guides/).
+
+Makers builds main with `node scripts/build-site.mjs`; output `.makers/site`. No runtime dependency or account is required. Use `python3 scripts/generate-guides.py` after changing guide data, then `npm test` and the static build. Sources, tests, historical materials and resource caches are excluded from the publish output. Old-site progress can be imported explicitly from `/progress/`; the original record is retained.

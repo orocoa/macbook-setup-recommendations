@@ -1,6 +1,6 @@
 # MacSetup
 
-Mac 设置与快捷键图解指南。阅读[全部 15 项设置指南](https://kai-nex.com/macsetup/guides/)或[项目说明](https://kai-nex.com/project/macsetup/)。
+Mac 设置与快捷键图解指南。阅读[全部 15 项设置指南](https://macsetup.kai-nex.com/guides/)或[项目说明](https://macsetup.kai-nex.com/about/)。
 
 [English](./README.md)
 
@@ -8,9 +8,9 @@ Mac 设置与快捷键图解指南。阅读[全部 15 项设置指南](https://k
 
 ## 直接使用
 
-[打开 MacSetup](https://kai-nex.com/macsetup/)
+[打开 MacSetup](https://macsetup.kai-nex.com/)
 
-[![打开指南](https://img.shields.io/badge/指南-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
+[![打开指南](https://img.shields.io/badge/指南-macsetup.kai--nex.com-0A7EA4)](https://macsetup.kai-nex.com/)
 
 ![MacSetup：访达路径栏的设置说明与前后对比示意](docs/preview-guide-zh-CN-20261108.webp)
 
@@ -128,3 +128,8 @@ THIRD_PARTY_NOTICES.md      资产来源与再分发说明
 
 这是一个独立项目，不是 Apple 官方产品，与 Apple Inc. 不存在隶属、认可、背书或赞助关系。Apple、Mac、MacBook、macOS、访达及相关商标和界面资产归各自权利人所有。
 
+
+
+## 独立部署
+
+正式地址：https://macsetup.kai-nex.com/ 。Makers 从 main 执行 `node scripts/build-site.mjs`，输出 `.makers/site`。无运行依赖；指南数据更新后执行 `python3 scripts/generate-guides.py`，再测试和构建。源码、测试、历史资料与资源缓存不会发布。旧站进度可从 `/progress/` 明确确认后导入，原记录保留。
