@@ -48,7 +48,8 @@ Mac 设置与快捷键图解指南。阅读[全部 15 项设置指南](https://m
 在本目录运行：
 
 ```bash
-python3 -m http.server 4177 --bind 127.0.0.1
+node scripts/build-site.mjs
+python3 -m http.server 4177 --bind 127.0.0.1 --directory .makers/site
 ```
 
 然后打开：
@@ -65,7 +66,7 @@ python3 -m http.server 4177 --bind 127.0.0.1
 
 Mos 条目属于独立 App 推荐，不是 macOS 设置，也不代表 Apple 推荐。Mos 需要辅助功能权限来处理鼠标输入，因此指南会先解释权限用途，再引导用户决定是否授权。
 
-网站的视觉内容是原创 HTML/CSS 概念示意和 SVG 图，不是系统截图。历史参考图片保留在 Git，但通过 `_config.yml` 排除在发布网站之外。其他再分发仍需遵循 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
+网站的视觉内容是原创 HTML/CSS 概念示意和 SVG 图，不是系统截图。历史参考图片保留在 Git，但由构建白名单排除在 Makers 发布包之外；`_config.yml` 仅保留作历史 GitHub Pages 配置。其他再分发仍需遵循 [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md)。
 
 ## 数据检查
 
@@ -79,7 +80,7 @@ npm test
 
 ```bash
 node tests/validate-data.mjs
-node --test tests/storage.test.mjs tests/search.test.mjs
+node --test tests/storage.test.mjs tests/search.test.mjs tests/progress.test.mjs
 ```
 
 测试会检查两种语言的数据文件、必填字段、唯一 ID、来源 URL、视觉类型、引用资产，以及中英文内容的结构一致性。测试不能证明每项建议在所有 Mac 或 macOS 版本上都完全正确。

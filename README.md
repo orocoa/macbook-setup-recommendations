@@ -48,7 +48,8 @@ The page loads its JSON files with `fetch`, so preview it through a local HTTP s
 From this directory, run:
 
 ```bash
-python3 -m http.server 4177 --bind 127.0.0.1
+node scripts/build-site.mjs
+python3 -m http.server 4177 --bind 127.0.0.1 --directory .makers/site
 ```
 
 Then open:
@@ -65,7 +66,7 @@ Some values and workflows are editorial recommendations rather than Apple defaul
 
 The Mos entry is an independent app recommendation, not a macOS setting or an Apple recommendation. Mos needs Accessibility permission to process mouse input, so the guide explains that permission before asking the reader to enable it.
 
-Website visuals are original HTML/CSS concepts and SVG illustrations, not system screenshots. Historical reference images remain in Git but are excluded from the published website by `_config.yml`. Other redistribution must follow [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) before publishing or redistributing the repository.
+Website visuals are original HTML/CSS concepts and SVG illustrations, not system screenshots. Historical reference images remain in Git but are excluded from the Makers publish output by the build allowlist (`_config.yml` is retained for historical GitHub Pages use). Other redistribution must follow [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) before publishing or redistributing the repository.
 
 ## Validation
 
@@ -79,7 +80,7 @@ The underlying command is:
 
 ```bash
 node tests/validate-data.mjs
-node --test tests/storage.test.mjs tests/search.test.mjs
+node --test tests/storage.test.mjs tests/search.test.mjs tests/progress.test.mjs
 ```
 
 The test checks both language files, required fields, unique IDs, source URLs, visual types, referenced assets, and structural parity between Chinese and English content. It does not prove that every recommendation is factually correct on every Mac or macOS release.
