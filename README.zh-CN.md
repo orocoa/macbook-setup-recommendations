@@ -1,4 +1,6 @@
-# MacBook 设置建议
+# MacSetup
+
+Mac 设置与快捷键图解指南。阅读[全部 15 项设置指南](https://kai-nex.com/macsetup/guides/)或[项目说明](https://kai-nex.com/project/macsetup/)。
 
 [English](./README.md)
 
@@ -6,11 +8,11 @@
 
 ## 直接使用
 
-[打开 MacBook 设置建议](https://kai-nex.com/macsetup/)
+[打开 MacSetup](https://kai-nex.com/macsetup/)
 
 [![打开指南](https://img.shields.io/badge/指南-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
 
-![MacBook 设置建议：访达路径栏的设置说明与前后对比示意](docs/preview-guide-zh-CN.png)
+![MacSetup：访达路径栏的设置说明与前后对比示意](docs/preview-guide-zh-CN-20261108.webp)
 
 无需下载或安装，建议直接在 MacBook 的浏览器中打开。
 
@@ -125,3 +127,4 @@ THIRD_PARTY_NOTICES.md      资产来源与再分发说明
 ## 独立项目声明
 
 这是一个独立项目，不是 Apple 官方产品，与 Apple Inc. 不存在隶属、认可、背书或赞助关系。Apple、Mac、MacBook、macOS、访达及相关商标和界面资产归各自权利人所有。
+

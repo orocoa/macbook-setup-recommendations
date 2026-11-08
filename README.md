@@ -1,4 +1,6 @@
-# MacBook Setup Recommendations
+# MacSetup
+
+Mac settings, illustrated. Read the [15 English guides](https://kai-nex.com/en/macsetup/guides/) or the [project overview](https://kai-nex.com/en/project/macsetup/).
 
 [简体中文](./README.zh-CN.md)
 
@@ -6,11 +8,11 @@ A bilingual, visual, and interactive guide to 15 Finder, System Settings, utilit
 
 ## Open the guide
 
-[Open MacBook Setup Recommendations](https://kai-nex.com/macsetup/)
+[Open MacSetup](https://kai-nex.com/macsetup/)
 
 [![Open guide](https://img.shields.io/badge/guide-kai--nex.com%2Fmacsetup-0A7EA4)](https://kai-nex.com/macsetup/)
 
-![MacBook Setup Recommendations showing the Finder path bar guide and before/after illustrations](docs/preview-guide.png)
+![MacSetup showing the Finder path bar guide and before/after illustrations](docs/preview-guide-en-20261108.webp)
 
 No download or installation is required. For the intended experience, open it in a browser on a MacBook.
 
@@ -125,3 +127,4 @@ Avoid adding a framework, backend, account system, database, or AI feature unles
 ## Independence notice
 
 This is an independent project. It is not an official Apple product and is not affiliated with, endorsed by, or sponsored by Apple Inc. Apple, Mac, MacBook, macOS, Finder, and related marks and interface assets belong to their respective rights holders.
+

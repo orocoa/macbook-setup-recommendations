@@ -1,8 +1,8 @@
 export const UI_TEXT = {
   "zh-CN": {
-    productTitle: "MacBook 设置建议",
+    productTitle: "MacSetup",
     tagline: "理解变化，手动调整，需要时恢复原状",
-    search: "搜索 MacBook 设置建议",
+    search: "搜索 MacSetup",
     noResults: "没有找到相关设置",
     clearSearch: "清除搜索",
     retry: "重新加载",
@@ -32,7 +32,7 @@ export const UI_TEXT = {
     unsupportedVisual: "暂无视觉示意",
     projectMaterials: "设置资料",
     folders: ["01 截图", "02 备份", "03 笔记"],
-    pathVisible: "Macintosh HD  ›  用户  ›  文稿  ›  Mac Setup",
+    pathVisible: "Macintosh HD  ›  用户  ›  文稿  ›  MacSetup",
     pathHidden: "路径栏隐藏",
     exampleFilesBefore: ["设置笔记", "使用指南", "操作演示"],
     exampleFilesAfter: ["设置笔记.txt", "使用指南.pdf", "操作演示.mov"],
@@ -65,7 +65,7 @@ export const UI_TEXT = {
     settingsApp: "系统设置",
   },
   en: {
-    productTitle: "MacBook Setup Recommendations",
+    productTitle: "MacSetup",
     tagline: "Understand the change, adjust it manually, and restore it when needed",
     search: "Search MacBook setup recommendations",
     noResults: "No matching settings",
@@ -97,7 +97,7 @@ export const UI_TEXT = {
     unsupportedVisual: "No visual available",
     projectMaterials: "Setup Files",
     folders: ["01 Screenshots", "02 Backups", "03 Notes"],
-    pathVisible: "Macintosh HD  ›  Users  ›  Documents  ›  Mac Setup",
+    pathVisible: "Macintosh HD  ›  Users  ›  Documents  ›  MacSetup",
     pathHidden: "Path bar hidden",
     exampleFilesBefore: ["Setup Notes", "Setup Guide", "Setup Demo"],
     exampleFilesAfter: ["Setup Notes.txt", "Setup Guide.pdf", "Setup Demo.mov"],
@@ -130,3 +130,4 @@ export const UI_TEXT = {
     settingsApp: "System Settings",
   },
 };
+
