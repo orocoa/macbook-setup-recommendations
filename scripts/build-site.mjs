@@ -11,7 +11,7 @@ const manifest=[];const copied=new Set();
 async function copy(src,rel){const dest=resolve(out,rel);assert(dest.startsWith(out+'/'));await mkdir(dirname(dest),{recursive:true});await copyFile(src,dest);copied.add(rel);}
 async function tree(folder,prefix='',filter=()=>true){for(const e of await readdir(folder,{withFileTypes:true})){const rel=prefix+e.name;if(e.isDirectory())await tree(resolve(folder,e.name),rel+'/',filter);else if(e.isFile()&&filter(rel))await copy(resolve(folder,e.name),rel);}}
 // Explicit public runtime only. Source, tests, docs and historical PNG references stay private to the checkout.
-for(const name of ['index.html','app.js','ui-text.js','grid-motion.js','visuals.js','visuals.css','styles.css','loading.js','loading.css','mondrian-engine.js','MONDRIAN-LICENSE.txt','progress-transfer.js','progress-contract.js','data/settings.json','data/settings.en.json'])await copy(resolve(root,name),name);
+for(const name of ['index.html','favicon.svg','favicon.ico','app.js','ui-text.js','grid-motion.js','visuals.js','visuals.css','styles.css','loading.js','loading.css','mondrian-engine.js','MONDRIAN-LICENSE.txt','progress-transfer.js','progress-contract.js','data/settings.json','data/settings.en.json'])await copy(resolve(root,name),name);
 await tree(resolve(root,'assets/original'),'assets/original/');
 await tree(resolve(root,'compatibility'));
 await tree(resolve(root,'pages'));
